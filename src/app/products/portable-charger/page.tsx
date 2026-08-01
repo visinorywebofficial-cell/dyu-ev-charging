@@ -72,21 +72,22 @@ export default function PortableChargerPage() {
   const c4Opacity = useTransform(scrollYProgress, [0.6, 0.8], [1, 0]);
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-transparent">
-      {/* FIXED BACKGROUND VIDEO & LIGHT OVERLAY */}
-      <div className="fixed inset-0 z-[-2]">
+    <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
+      {/* FIXED BACKGROUND VIDEO & DARK CINEMATIC OVERLAY */}
+      <div className="fixed inset-0 z-0">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="w-full h-full object-cover"
-          src="/ev-charging-2.mp4"
-        />
+          className="w-full h-full object-cover opacity-85"
+        >
+          <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60 z-0" />
       </div>
-      <div className="fixed inset-0 z-[-1] bg-gradient-to-br from-white/90 via-white/80 to-slate-100/95 backdrop-blur-[2px]" />
 
-      <main className="pt-24 pb-20 relative">
+      <main className="pt-24 pb-20 relative z-10">
         
         {/* HERO SECTION */}
         <section className="min-h-[70vh] flex items-center justify-center relative z-10">
@@ -96,11 +97,11 @@ export default function PortableChargerPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-md border border-white mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/30 mb-8 shadow-sm"
               style={{ fontFamily: 'var(--font-figtree)' }}
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-base font-semibold text-[#222222]" style={{ fontFamily: 'Figtree, sans-serif' }}>Home & Travel Ready</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Figtree, sans-serif' }}>Home & Travel Ready</span>
             </motion.div>
             
             <motion.h1 
@@ -110,15 +111,15 @@ export default function PortableChargerPage() {
               className="flex flex-col gap-1 mb-6 tracking-tighter"
               style={{ fontFamily: '"Gilroy", sans-serif', fontSize: 'clamp(36px, 4vw, 56px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em' }}
             >
-              <span className="text-[#222222]">3.3 kW Portable</span>
-              <span className="text-[#888888] italic">EV Charger</span>
+              <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">3.3 kW Portable</span>
+              <span className="text-white italic font-extrabold drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">EV Charger</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-medium text-black/80 max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="text-2xl md:text-3xl font-bold text-white max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
             >
               Simple charging, wherever you need it. Just plug into any standard 3-pin socket and power up your electric vehicle safely.
             </motion.p>
@@ -129,10 +130,10 @@ export default function PortableChargerPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-black text-white rounded-xl font-extrabold text-lg hover:bg-black/80 transition-all shadow-lg flex items-center justify-center gap-2">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-xl font-extrabold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
                 Buy Now <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/80 backdrop-blur-md text-black border border-gray-300 rounded-xl font-extrabold text-lg hover:bg-white transition-all shadow-sm">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-extrabold text-lg hover:bg-white hover:text-black transition-all shadow-sm">
                 Talk to an Expert
               </button>
             </motion.div>
@@ -144,11 +145,11 @@ export default function PortableChargerPage() {
           <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-24 pb-8">
             <div className="container mx-auto px-4 max-w-5xl h-full flex flex-col justify-center">
               <div className="text-center max-w-3xl mx-auto mb-4 md:mb-8 shrink-0">
-                <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                  <span className="text-[#222222]">Key</span>
-                  <span className="text-[#888888] italic">Features</span>
+                <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+                  <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Key</span>
+                  <span className="text-white italic font-extrabold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Features</span>
                 </h2>
-                <p className="text-sm md:text-lg font-medium text-black/70">
+                <p className="text-sm md:text-xl font-bold text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   Scroll down slowly to reveal. Designed for reliability and ultimate convenience.
                 </p>
               </div>
@@ -265,9 +266,9 @@ export default function PortableChargerPage() {
         <section className="py-20 relative z-10">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-[#222222]">What Our Users</span>
-                <span className="text-[#888888] italic">Say</span>
+              <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+                <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">What Our Users</span>
+                <span className="text-white italic font-extrabold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Say</span>
               </h2>
             </div>
 
