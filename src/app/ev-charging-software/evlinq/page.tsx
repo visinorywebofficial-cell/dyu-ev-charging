@@ -77,21 +77,22 @@ export default function EVLinqPage() {
   const introWords = introText.split(" ");
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
-      {/* FIXED BACKGROUND VIDEO & LIGHT OVERLAY */}
-      <div className="fixed inset-0 z-[-2]">
+    <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
+      {/* FIXED BACKGROUND VIDEO & DARK OVERLAY */}
+      <div className="fixed inset-0 z-0">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="w-full h-full object-cover opacity-10"
-          src="/ev-charging-2.mp4" 
-        />
+          className="w-full h-full object-cover opacity-85"
+        >
+          <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60 z-0" />
       </div>
-      <div className="fixed inset-0 z-[-1] bg-gradient-to-b from-[#F1EFE1]/80 via-[#F1EFE1]/90 to-[#F1EFE1] backdrop-blur-[2px]" />
 
-      <main className="pt-32 pb-20 relative">
+      <main className="pt-32 pb-20 relative z-10">
         
         {/* TOP HERO TEXT (Scrolls away normally) */}
         <div className="container mx-auto px-4 text-center mb-16 relative z-10">

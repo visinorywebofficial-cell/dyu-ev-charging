@@ -27,27 +27,26 @@ export default function EVCalculatorPage() {
   const treesAbsorbed = Math.round(Number(co2Prevented) / 21);
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
+    <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
       
-      {/* FIXED BACKGROUND OVERLAY (matching DYU Franchise page) */}
-      <div className="fixed inset-0 z-[-1] bg-gradient-to-b from-[#F1EFE1]/80 via-[#F1EFE1]/90 to-[#F1EFE1] backdrop-blur-[2px]" />
+      {/* FIXED BACKGROUND VIDEO & DARK OVERLAY */}
+      <div className="fixed inset-0 z-0">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover opacity-85"
+        >
+          <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60 z-0" />
+      </div>
 
-      <main className="pb-20 relative">
+      <main className="pb-20 relative z-10">
         
         {/* HERO SECTION */}
         <section className="min-h-[50vh] flex items-center justify-center relative z-10 pt-[8.5rem] pb-16 overflow-hidden">
-          {/* BACKGROUND VIDEO */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
-          {/* DARK OVERLAY (Light Black Parda) */}
-          <div className="absolute inset-0 bg-black/60 z-0" />
           
           <div className="container mx-auto px-4 text-center relative z-10">
             
@@ -55,7 +54,7 @@ export default function EVCalculatorPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/30 mb-8 shadow-sm"
               style={{ fontFamily: 'var(--font-figtree)' }}
             >
               <span className="text-base font-extrabold text-white" style={{ fontFamily: 'Figtree, sans-serif' }}>Real-Time Environmental Savings</span>
