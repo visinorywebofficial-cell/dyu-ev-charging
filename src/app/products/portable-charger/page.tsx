@@ -322,15 +322,15 @@ export default function PortableChargerPage() {
         {/* CTA SECTION */}
         <section className="py-20 relative z-10">
           <div className="container mx-auto px-4 max-w-4xl">
-            <div className="bg-black/90 backdrop-blur-2xl rounded-3xl p-12 text-center shadow-2xl">
-              <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-white">Ready to Charge</span>
-                <span className="text-[#888888] italic">Anywhere?</span>
+            <div className="bg-[#111111]/95 border border-white/20 backdrop-blur-2xl rounded-3xl p-12 text-center shadow-2xl">
+              <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+                <span className="text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Ready to Charge</span>
+                <span className="text-[#F97316] italic font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Anywhere?</span>
               </h2>
-              <p className="text-lg font-medium text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl font-medium text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 Carry it with you or keep it at home - just plug in and charge whenever you need it. No setup, no extra steps required.
               </p>
-              <button className="px-8 py-3.5 bg-white text-black rounded-xl font-extrabold text-lg hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center gap-2">
+              <button className="px-9 py-4 bg-white text-black rounded-xl font-extrabold text-lg hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg">
                 Enquire Now <ArrowRight className="w-5 h-5" />
               </button>
             </div>

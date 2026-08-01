@@ -318,15 +318,16 @@ export default function HomePage() {
           </div>
         </div>
 
-          {/* Stats row with white borders and text */}
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
+          {/* Stats row with white borders and permanent crisp white text */}
+          <div
             style={{
-              borderTop: '1px solid rgba(255,255,255,0.2)',
-              borderBottom: '1px solid rgba(255,255,255,0.2)',
+              borderTop: '1px solid rgba(255,255,255,0.3)',
+              borderBottom: '1px solid rgba(255,255,255,0.3)',
               marginTop: '80px',
+              backgroundColor: 'rgba(0,0,0,0.25)',
+              backdropFilter: 'blur(8px)',
             }}
-            className="grid grid-cols-2 md:grid-cols-4"
+            className="grid grid-cols-2 md:grid-cols-4 relative z-20"
           >
             {[
               { value: 10000, suffix: '+', label: 'EV Chargers' },
@@ -334,26 +335,26 @@ export default function HomePage() {
               { value: 99, suffix: '%', label: 'Uptime Reliability' },
               { value: 100, suffix: ' Cr+', label: 'KM Powered' },
             ].map((stat, i) => (
-              <motion.div key={i} variants={fadeUp} 
-                className={`p-6 md:p-10 text-center border-white/20 transition-colors duration-300 ${
+              <div key={i} 
+                className={`p-6 md:p-10 text-center border-white/30 transition-colors duration-300 ${
                   i % 2 === 0 ? 'border-r' : ''
                 } ${
                   i < 3 ? 'md:border-r' : ''
                 } ${
                   i < 2 ? 'border-b md:border-b-0' : ''
                 }`}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'none')}
               >
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 700, color: '#ffffff', lineHeight: 1 }}>
+                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 800, color: '#ffffff', lineHeight: 1, textShadow: '0 4px 12px rgba(0,0,0,0.9)' }}>
                   <CountUp value={stat.value} suffix={stat.suffix} />
                 </div>
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '13px', color: 'rgba(255,255,255,0.6)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500 }}>
+                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: '#ffffff', marginTop: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
                   {stat.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
       </section>
 
       {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}

@@ -1057,20 +1057,20 @@ export default function AdWallPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="bg-[#002B36] border border-[#005F73]/40 rounded-3xl p-8 md:p-12 shadow-2xl"
+            className="bg-[#222222] border border-[#F1EFE1]/30 rounded-3xl p-8 md:p-12 shadow-2xl"
           >
             {formSubmitted ? (
               <div className="text-center py-12 space-y-6">
-                <div className="w-20 h-20 bg-[#00F0FF]/20 rounded-full flex items-center justify-center mx-auto text-[#00F0FF]">
+                <div className="w-20 h-20 bg-[#F1EFE1]/20 rounded-full flex items-center justify-center mx-auto text-[#F1EFE1]">
                   <CheckCircle2 size={48} />
                 </div>
                 <h3 className="text-3xl font-extrabold text-white">Thank You for Getting in Touch!</h3>
-                <p className="text-gray-300 text-lg max-w-md mx-auto">
+                <p className="text-[#F1EFE1] text-lg max-w-md mx-auto">
                   Our advertising strategy team has received your message and will get back to you within 24 hours.
                 </p>
                 <button 
                   onClick={() => setFormSubmitted(false)}
-                  className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all"
+                  className="px-8 py-3 bg-[#F1EFE1] hover:bg-white text-[#222222] font-bold rounded-xl transition-all shadow-md"
                 >
                   Submit Another Inquiry
                 </button>
@@ -1080,50 +1080,50 @@ export default function AdWallPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-2">First Name *</label>
+                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">First Name *</label>
                     <input 
                       type="text" 
                       required
                       placeholder="Rajesh"
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#00F0FF] transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#F1EFE1]/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#F1EFE1] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-2">Last Name *</label>
+                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Last Name *</label>
                     <input 
                       type="text" 
                       required
                       placeholder="Sharma"
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#00F0FF] transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#F1EFE1]/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#F1EFE1] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-2">Work Email *</label>
+                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Work Email *</label>
                     <input 
                       type="email" 
                       required
                       placeholder="rajesh@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#00F0FF] transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#F1EFE1]/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#F1EFE1] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-2">Phone Number *</label>
+                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Phone Number *</label>
                     <input 
                       type="tel" 
                       required
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#00F0FF] transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#F1EFE1]/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#F1EFE1] transition-colors"
                     />
                   </div>
                 </div>

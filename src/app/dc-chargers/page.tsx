@@ -70,7 +70,12 @@ export default function DCChargersPage() {
         <ScrollRevealSection
           imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1200"
           imageAlt="DYU Configurable DC Fast Charger"
-          title="Configurable DC Fast Charger"
+          title={
+            <>
+              <span className="text-[#222222]">Configurable </span>
+              <span className="text-[#005F73] font-bold">DC Fast Charger</span>
+            </>
+          }
           description="High-power DC fast charging solutions available in multiple variants from 60 kW to 360 kW, built to support different business use cases and scalable deployments across locations."
           features={[
             {
@@ -93,7 +98,7 @@ export default function DCChargersPage() {
           imageAlt="DC Charger 60kW to 120kW"
           title={
             <>
-              <span className="text-[#222222]">DC Charger</span>
+              <span className="text-[#222222]">DC Charger </span>
               <span className="text-[#005F73] font-bold">60kW to 120kW</span>
             </>
           }
@@ -117,11 +122,11 @@ export default function DCChargersPage() {
 
         <ScrollRevealSection
           imageSrc="/images/ev-8.jpg"
-          imageAlt="DC Charger 80kW to 360kW"
+          imageAlt="DC Charger 180kW to 360kW"
           title={
             <>
-              <span className="text-[#222222]">DC Charger</span>
-              <span className="text-[#005F73] font-bold">80kW to 360kW</span>
+              <span className="text-[#222222]">DC Charger </span>
+              <span className="text-[#005F73] font-bold">180kW to 360kW</span>
             </>
           }
           description="A DC fast charger with high-efficiency performance and support for standard charging network integration, built for smooth and reliable charging operations."
