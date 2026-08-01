@@ -36,37 +36,35 @@ function CountUp({ end, duration = 2, suffix = "" }: { end: number; duration?: n
   return <>{count}{suffix}</>;
 }
 
+import AutoPlayVideo from '@/components/AutoPlayVideo';
+
 export default function PortableChargerPage() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Card 1: Top-Left (Fly out to top left)
-  const c1X = useTransform(scrollYProgress, [0.1, 0.3], ["0vw", "-100vw"]);
-  const c1Y = useTransform(scrollYProgress, [0.1, 0.3], ["0vh", "-100vh"]);
-  const c1Rotate = useTransform(scrollYProgress, [0.1, 0.3], [0, -45]);
-  const c1Scale = useTransform(scrollYProgress, [0.1, 0.3], [1, 0.5]);
-  const c1Opacity = useTransform(scrollYProgress, [0.1, 0.3], [1, 0]);
+  const c1X = useTransform(scrollYProgress, [0.0, 0.2], [0, -450]);
+  const c1Y = useTransform(scrollYProgress, [0.0, 0.2], [0, -450]);
+  const c1Rotate = useTransform(scrollYProgress, [0.0, 0.2], [0, -45]);
+  const c1Scale = useTransform(scrollYProgress, [0.0, 0.2], [1, 0.5]);
+  const c1Opacity = useTransform(scrollYProgress, [0.0, 0.2], [1, 0]);
 
-  // Card 2: Top-Right (Fly out to top right)
-  const c2X = useTransform(scrollYProgress, [0.2, 0.4], ["0vw", "100vw"]);
-  const c2Y = useTransform(scrollYProgress, [0.2, 0.4], ["0vh", "-100vh"]);
+  const c2X = useTransform(scrollYProgress, [0.2, 0.4], [0, 450]);
+  const c2Y = useTransform(scrollYProgress, [0.2, 0.4], [0, -450]);
   const c2Rotate = useTransform(scrollYProgress, [0.2, 0.4], [0, 45]);
   const c2Scale = useTransform(scrollYProgress, [0.2, 0.4], [1, 0.5]);
   const c2Opacity = useTransform(scrollYProgress, [0.2, 0.4], [1, 0]);
 
-  // Card 3: Bottom-Left (Fly out to bottom left)
-  const c3X = useTransform(scrollYProgress, [0.4, 0.6], ["0vw", "-100vw"]);
-  const c3Y = useTransform(scrollYProgress, [0.4, 0.6], ["0vh", "100vh"]);
+  const c3X = useTransform(scrollYProgress, [0.4, 0.6], [0, -450]);
+  const c3Y = useTransform(scrollYProgress, [0.4, 0.6], [0, 450]);
   const c3Rotate = useTransform(scrollYProgress, [0.4, 0.6], [0, -45]);
   const c3Scale = useTransform(scrollYProgress, [0.4, 0.6], [1, 0.5]);
   const c3Opacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
 
-  // Card 4: Bottom-Right (Fly out to bottom right)
-  const c4X = useTransform(scrollYProgress, [0.6, 0.8], ["0vw", "100vw"]);
-  const c4Y = useTransform(scrollYProgress, [0.6, 0.8], ["0vh", "100vh"]);
+  const c4X = useTransform(scrollYProgress, [0.6, 0.8], [0, 450]);
+  const c4Y = useTransform(scrollYProgress, [0.6, 0.8], [0, 450]);
   const c4Rotate = useTransform(scrollYProgress, [0.6, 0.8], [0, 45]);
   const c4Scale = useTransform(scrollYProgress, [0.6, 0.8], [1, 0.5]);
   const c4Opacity = useTransform(scrollYProgress, [0.6, 0.8], [1, 0]);
@@ -75,15 +73,10 @@ export default function PortableChargerPage() {
     <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
       {/* FIXED BACKGROUND VIDEO & DARK CINEMATIC OVERLAY */}
       <div className="fixed inset-0 z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+        <AutoPlayVideo 
+          sources={["https://files.catbox.moe/hbruau.mp4", "/ev-charging-2.mp4"]}
           className="w-full h-full object-cover opacity-85"
-        >
-          <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/60 z-0" />
       </div>
 
