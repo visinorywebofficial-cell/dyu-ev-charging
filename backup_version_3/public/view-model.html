@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Car Model Preview</title>
+  <style>
+    body { margin: 0; overflow: hidden; background-color: #F1EFE1; }
+    #info {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      color: #222;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: bold;
+      pointer-events: none;
+      z-index: 100;
+      font-size: 1.2rem;
+    }
+    #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1.5rem;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div id="info">Drag to rotate, scroll to zoom<br/>(Futuristic Sports Car Model)</div>
+  <div id="loading">Loading High-Quality 3D Model...</div>
+
+  <!-- Import Map for Three.js -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    let camera, scene, renderer;
+
+    init();
+
+    function init() {
+      const container = document.createElement( 'div' );
+      document.body.appendChild( container );
+
+      renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setAnimationLoop( render );
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+      container.appendChild( renderer.domElement );
+
+      camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 100 );
+      camera.position.set( 4, 2, 4 );
+
+      scene = new THREE.Scene();
+
+      // Environment for realistic reflections
+      const pmremGenerator = new THREE.PMREMGenerator( renderer );
+      scene.environment = pmremGenerator.fromScene( new RoomEnvironment( renderer ), 0.04 ).texture;
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      
+      const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+      dirLight.position.set(5, 5, 5);
+      scene.add(dirLight);
+
+      // Load 3D Model
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/versioned/decoders/1.5.6/' );
+
+      const loader = new GLTFLoader();
+      loader.setDRACOLoader( dracoLoader );
+
+      // We use the Ferrari from Three.js examples (extremely realistic, sleek sports car)
+      loader.load( 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/models/gltf/ferrari.glb', function ( gltf ) {
+        const carModel = gltf.scene;
+        
+        // Center and scale the car
+        carModel.scale.set( 1, 1, 1 );
+        
+        // Update materials to make it white with blue accents (like BMW i8)
+        carModel.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material.name === 'body') {
+              child.material.color.setHex(0xffffff); // White body
+              child.material.metalness = 0.5;
+              child.material.roughness = 0.1;
+            }
+            if (child.material.name === 'glass') {
+              child.material.color.setHex(0x000000); // Black glass
+              child.material.opacity = 0.8;
+            }
+            // Try to find trim/details for blue accents
+            if (child.material.name === 'trim' || child.material.name === 'brakes') {
+               child.material.color.setHex(0x0088ff); // Blue accent
+            }
+          }
+        });
+
+        scene.add( carModel );
+        
+        document.getElementById('loading').style.display = 'none';
+
+      }, undefined, function ( e ) {
+        console.error( e );
+        document.getElementById('loading').innerText = "Error loading model. Check console.";
+      } );
+
+      // Controls
+      const controls = new OrbitControls( camera, renderer.domElement );
+      controls.target.set( 0, 0.5, 0 );
+      controls.update();
+
+      window.addEventListener( 'resize', onWindowResize );
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+    }
+
+    function render() {
+      renderer.render( scene, camera );
+    }
+  </script>
+</body>
+</html>

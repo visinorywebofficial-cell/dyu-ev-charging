@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real EV Car SVG Preview</title>
+  <style>
+    body { 
+      background-color: #F1EFE1; 
+      display: flex; 
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center; 
+      min-height: 100vh; 
+      margin: 0; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .car-container {
+      width: 250px; 
+      height: 525px;
+      animation: driveHover 4s ease-in-out infinite;
+    }
+    @keyframes driveHover {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    .instruction {
+      margin-top: 40px;
+      color: #222222;
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="car-container">
+    <!-- Hyper-Realistic Top-Down EV Sports Car SVG -->
+    <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <!-- Soft Drop Shadow for Realism -->
+        <filter id="shadow" x="-20%" y="-10%" width="140%" height="120%">
+          <feDropShadow dx="0" dy="25" stdDeviation="15" flood-color="#000" flood-opacity="0.4"/>
+        </filter>
+        
+        <!-- Metallic Orange/Copper Paint -->
+        <linearGradient id="bodyPaint" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#993311" />
+          <stop offset="15%" stop-color="#D94814" />
+          <stop offset="50%" stop-color="#FF6B35" />
+          <stop offset="85%" stop-color="#D94814" />
+          <stop offset="100%" stop-color="#993311" />
+        </linearGradient>
+
+        <!-- Glass Reflection (Panoramic Roof & Windshield) -->
+        <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0F172A" />
+          <stop offset="30%" stop-color="#1E293B" />
+          <stop offset="45%" stop-color="#CBD5E1" /> <!-- Bright reflection line -->
+          <stop offset="50%" stop-color="#1E293B" />
+          <stop offset="100%" stop-color="#020617" />
+        </linearGradient>
+        
+        <!-- Headlight Glow -->
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <filter id="redGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      <g filter="url(#shadow)">
+        <!-- Tires -->
+        <!-- Front Left -->
+        <rect x="22" y="55" width="20" height="50" rx="6" fill="#111" />
+        <rect x="18" y="60" width="4" height="40" rx="2" fill="#000" /> <!-- Tread depth shadow -->
+        <!-- Front Right -->
+        <rect x="158" y="55" width="20" height="50" rx="6" fill="#111" />
+        <rect x="178" y="60" width="4" height="40" rx="2" fill="#000" />
+        <!-- Rear Left -->
+        <rect x="22" y="290" width="22" height="55" rx="6" fill="#111" />
+        <rect x="18" y="295" width="4" height="45" rx="2" fill="#000" />
+        <!-- Rear Right -->
+        <rect x="156" y="290" width="22" height="55" rx="6" fill="#111" />
+        <rect x="178" y="295" width="4" height="45" rx="2" fill="#000" />
+
+        <!-- Chassis Base (Sleek Aerodynamic Body) -->
+        <path d="M 45 40 
+                 C 45 15, 65 5, 100 5 
+                 C 135 5, 155 15, 155 40 
+                 L 165 180 
+                 C 170 250, 168 350, 162 380 
+                 C 150 415, 125 415, 100 415 
+                 C 75 415, 50 415, 38 380 
+                 C 32 350, 30 250, 35 180 
+                 Z" fill="url(#bodyPaint)" />
+
+        <!-- Side Mirrors -->
+        <path d="M 37 130 C 20 125, 15 140, 25 150 C 30 155, 35 145, 36 140 Z" fill="url(#bodyPaint)" />
+        <path d="M 163 130 C 180 125, 185 140, 175 150 C 170 155, 165 145, 164 140 Z" fill="url(#bodyPaint)" />
+        <!-- Mirror Glass -->
+        <path d="M 23 145 C 23 140, 30 135, 35 138 Z" fill="#111" />
+        <path d="M 177 145 C 177 140, 170 135, 165 138 Z" fill="#111" />
+
+        <!-- Hood Creases (Aerodynamics & Styling) -->
+        <path d="M 60 10 Q 75 60 65 105" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="3" />
+        <path d="M 140 10 Q 125 60 135 105" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="3" />
+        <path d="M 58 10 Q 75 60 63 105" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+        <path d="M 142 10 Q 125 60 137 105" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+
+        <!-- Glass Cabin (Windshield, Panoramic Roof, Rear Window) -->
+        <!-- Front Windshield -->
+        <path d="M 45 150 C 45 115, 65 100, 100 100 C 135 100, 155 115, 155 150 L 148 200 C 148 220, 130 230, 100 230 C 70 230, 52 220, 52 200 Z" fill="url(#glassReflection)" />
+        
+        <!-- Panoramic Roof -->
+        <path d="M 55 198 L 145 198 L 138 320 C 120 330, 80 330, 62 320 Z" fill="url(#glassReflection)" />
+        
+        <!-- Rear Window -->
+        <path d="M 62 320 L 138 320 L 130 365 C 120 375, 80 375, 70 365 Z" fill="#0F172A" />
+        <!-- Rear Defroster Lines -->
+        <path d="M 66 330 L 134 330 M 68 340 L 132 340 M 70 350 L 130 350" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none" />
+
+        <!-- Roof Side Rails (Body Color Pillars) -->
+        <path d="M 45 150 C 35 230, 48 320, 62 320" fill="none" stroke="url(#bodyPaint)" stroke-width="8" stroke-linecap="round" />
+        <path d="M 155 150 C 165 230, 152 320, 138 320" fill="none" stroke="url(#bodyPaint)" stroke-width="8" stroke-linecap="round" />
+
+        <!-- Aggressive Headlight Housings -->
+        <path d="M 40 25 L 65 15 L 70 38 L 42 48 Z" fill="#0A0A0A" />
+        <path d="M 160 25 L 135 15 L 130 38 L 158 48 Z" fill="#0A0A0A" />
+        
+        <!-- Headlight LEDs (Modern EV DRLs) -->
+        <path d="M 42 28 L 62 18" fill="none" stroke="#E0F2FE" stroke-width="4" stroke-linecap="round" filter="url(#glow)" />
+        <path d="M 44 40 L 64 28" fill="none" stroke="#E0F2FE" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)" />
+        
+        <path d="M 158 28 L 138 18" fill="none" stroke="#E0F2FE" stroke-width="4" stroke-linecap="round" filter="url(#glow)" />
+        <path d="M 156 40 L 136 28" fill="none" stroke="#E0F2FE" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)" />
+
+        <!-- Continuous LED Taillight Lightbar -->
+        <path d="M 42 398 C 70 410, 130 410, 158 398" fill="none" stroke="#EF4444" stroke-width="6" stroke-linecap="round" filter="url(#redGlow)" />
+        <path d="M 42 398 C 70 410, 130 410, 158 398" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9" stroke-linecap="round" />
+
+        <!-- Side Highlight Reflections (Glossy Paint) -->
+        <path d="M 36 170 C 32 250, 36 330, 45 385" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" filter="blur(1px)" />
+        <path d="M 164 170 C 168 250, 164 330, 155 385" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" filter="blur(1px)" />
+
+      </g>
+    </svg>
+  </div>
+
+  <div class="instruction">
+    Hyper-Realistic EV Sports Car <br/>
+    <span style="font-size: 0.9rem; font-weight: normal; color: #555;">(Isme metallic paint, glass reflections, aerodyanmic curves, <br/>aur actual LED glow lagaya gaya hai. Scroll karne par ye proper auto-steer karegi!)</span>
+  </div>
+
+</body>
+</html>

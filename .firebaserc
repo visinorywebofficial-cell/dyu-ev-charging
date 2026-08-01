@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "dyu-ev-charging"
+  },
+  "targets": {
+    "dyu-ev-charging": {
+      "hosting": {
+        "v2": [
+          "dyu-ev-charging-v2"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

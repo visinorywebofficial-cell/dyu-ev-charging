@@ -1,0 +1,780 @@
+<!-- MADHAV'S 3D AI RESTAURANT OUTPUT -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AntiGravity Restaurant #1 | Balica</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+    
+    :root { --bg-dark: #141416; --gold: #F4D03F; --navy: #0F1419; --font-serif: 'Playfair Display', serif; --font-sans: 'Inter', sans-serif; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; background-color: var(--bg-dark); color: rgba(255, 255, 255, 0.9); font-family: var(--font-sans); overflow-x: hidden; }
+
+    /* BALICA HERO CSS */
+    h1 { font-size: clamp(4rem, 10vw, 8rem); margin: 0; letter-spacing: clamp(3px, 1vw, 8px); }
+    .hero-text { font-size: clamp(1rem, 2.5vw, 1.5rem); letter-spacing: clamp(3px, 1vw, 6px); font-weight: 300; color: #E8D7B8; text-transform: uppercase; margin: 1rem 0 3rem 0; text-align: center; }
+    #loader { display: none !important; pointer-events: none; }
+    #three-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+    /* ── ANIMATION 1: NAV SLIDE-DOWN + SHIMMER ── */
+    nav { position: fixed; top: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; backdrop-filter: blur(10px); background: linear-gradient(to bottom, rgba(20,20,22,0.8), transparent); transform: translateY(-100%); animation: navSlideIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+    @keyframes navSlideIn { to { transform: translateY(0); } }
+    .logo { font-family: var(--font-serif); font-size: clamp(1.5rem, 4vw, 2rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; position: relative; }
+    .logo::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--gold); animation: logoLine 1.2s ease 1.2s forwards; }
+    @keyframes logoLine { to { width: 100%; } }
+    .btn-link { padding: clamp(0.7rem, 2vw, 1rem) clamp(1.2rem, 4vw, 2rem); border-radius: 50px; text-transform: uppercase; letter-spacing: 2px; font-size: clamp(0.6rem, 1.5vw, 0.85rem); border: 1px solid var(--gold); background: var(--gold); color: #000; font-weight: 600; text-decoration: none; display: inline-block; cursor: pointer; transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+    .btn-link:hover { background: #fff; border-color: #fff; transform: scale(1.06); box-shadow: 0 0 20px rgba(244,208,63,0.4); }
+    
+    #hero-trigger { position: relative; height: 300vh; width: 100%; z-index: 1; }
+    .sticky-container { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; }
+    #bg-canvas { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; filter: brightness(0.8) contrast(1.1); }
+    /* ── ANIMATION 2: HERO TITLE LETTER REVEAL ── */
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, transparent 0%, rgba(20,20,22,0.9) 100%); font-family: var(--font-serif); }
+    .hero-overlay h1 { color: #fff; text-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: center; display: flex; gap: 0.05em; overflow: visible; }
+    .hero-letter { display: inline-block; opacity: 0; transform: translateY(60px) rotateX(-30deg); animation: letterUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+    @keyframes letterUp { to { opacity: 1; transform: translateY(0) rotateX(0deg); } }
+    .hero-text { opacity: 0; letter-spacing: clamp(3px, 1vw, 6px); font-weight: 300; color: #E8D7B8; text-transform: uppercase; margin: 1rem 0 3rem 0; text-align: center; font-size: clamp(1rem, 2.5vw, 1.5rem); animation: fadeSlideUp 1s ease 1.4s forwards; }
+    @keyframes fadeSlideUp { to { opacity: 1; transform: translateY(0); } }
+    .hero-text { transform: translateY(20px); }
+
+    /* HIGH OCTANE FOOD RACE CSS — DIRECTOR'S CUT */
+    #race-section { position: relative; width: 100%; height: 100vh; background: var(--navy); z-index: 10; overflow: hidden; font-family: var(--font-sans); }
+    #race-canvas-container { position: absolute; width: 100vw; height: 100vh; top: 0; left: 0; z-index: 1; }
+    
+    /* Post-processing Simulation */
+    #race-overlay-fx { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 5; background: radial-gradient(circle at center, transparent 40%, rgba(20,20,22,0.4) 100%); mix-blend-mode: overlay; }
+    
+    .hud-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; padding: clamp(20px, 5vw, 50px); display: flex; flex-direction: column; justify-content: space-between; }
+    
+    .hud-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .hud-left { flex: 1; min-width: 250px; }
+    .hud-left h2 { font-size: clamp(1.2rem, 3.5vw, 3rem); font-weight: 800; color: #fff; text-transform: uppercase; margin: 0; letter-spacing: 2px;}
+    .hud-left p { color: #F5F5F5; opacity: 0.8; font-size: clamp(0.7rem, 1vw, 1rem); letter-spacing: 3px; margin-top: 5px; text-transform: uppercase;}
+    
+    #countdown-box { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; align-items: center; justify-content: center; z-index: 30; }
+    /* ── ANIMATION 5: HUD COUNTDOWN PULSE ── */
+    #countdown-text { font-size: clamp(5rem, 15vw, 15rem); font-weight: 800; color: #F5F5F5; text-shadow: 0 5px 40px #E8D7B8, 0 0 80px rgba(244,208,63,0.3); margin: 0; text-transform: uppercase; animation: cntPulse 0.5s ease-in-out infinite alternate; }
+    @keyframes cntPulse { from { text-shadow: 0 5px 40px #E8D7B8, 0 0 40px rgba(244,208,63,0.2); transform: scale(1); } to { text-shadow: 0 5px 60px #FFD700, 0 0 120px rgba(244,208,63,0.6); transform: scale(1.04); } }
+    .hud-left h2 { font-size: clamp(1.2rem, 3.5vw, 3rem); font-weight: 800; color: #fff; text-transform: uppercase; margin: 0; letter-spacing: 2px; opacity: 0; animation: hudFadeIn 1s ease 0.5s forwards; }
+    .hud-left p { color: #F5F5F5; opacity: 0; font-size: clamp(0.7rem, 1vw, 1rem); letter-spacing: 3px; margin-top: 5px; text-transform: uppercase; animation: hudFadeIn 1s ease 0.9s forwards; }
+    @keyframes hudFadeIn { to { opacity: 0.8; } }
+    
+    /* SLEEK SCOREBOARD */
+    #scoreboard-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 450px; background: rgba(20, 20, 22, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(244, 208, 63, 0.2); border-radius: 8px; padding: clamp(20px, 3vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.5s; box-shadow: 0 30px 80px rgba(0,0,0,0.9); z-index: 40; }
+    #scoreboard-overlay.visible { opacity: 1; pointer-events: auto; }
+    #scoreboard-overlay h3 { color: #fff; text-transform: uppercase; font-weight: 800; font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: 4px; text-align: center; margin-top: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; }
+    .sb-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: #ccc; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: translateX(-20px); transition: all 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+    .sb-row.anim-in { opacity: 1; transform: translateX(0); }
+    .sb-rank-1 { color: #fff; font-weight: 800; }
+    .sb-row:nth-child(1) .sb-rank-1 { color: #F4D03F; text-shadow: 0 0 15px rgba(244,208,63,0.4); }
+    .sb-time { color: #E8D7B8; font-variant-numeric: tabular-nums; opacity: 0.9; }
+
+    /* MENU & OTHERS */
+    .content-section { padding: clamp(60px, 10vw, 120px) 5%; position: relative; z-index: 10; background: var(--bg-dark); }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .section-title { font-size: clamp(2rem, 5vw, 4rem); color: var(--gold); font-family: var(--font-serif); margin-bottom: clamp(30px, 5vw, 60px); text-transform: uppercase; letter-spacing: 5px; text-align: center; font-weight: 400; }
+    
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(20px, 4vw, 40px); margin-bottom: 60px; }
+    /* ── ANIMATION 3: GLASS CARD HOVER LIFT ── */
+    .glass-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: clamp(30px, 4vw, 50px); border-radius: 8px; backdrop-filter: blur(15px); text-align: left; transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s, border-color 0.45s; }
+    .glass-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 30px rgba(244,208,63,0.07); border-color: rgba(244,208,63,0.35); }
+    .glass-card h3 { color: var(--gold); font-size: clamp(1.4rem, 2.5vw, 2rem); margin-top: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+    .menu-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: #e0e0e0; letter-spacing: 1px; }
+    .menu-item span:last-child { color: var(--gold); font-weight: 600; }
+    
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
+    .info-box { text-align: center; padding: 40px 20px; background: rgba(20,20,22,0.8); border-radius: 8px; border: 1px solid rgba(255,255,255,0.03); }
+    .info-box h4 { color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; font-family: var(--font-serif); }
+    .info-box p { color: #aaa; line-height: 1.8; font-size: 1rem; margin-bottom: 10px; }
+    
+    /* ── ANIMATION 6: MENU TAB RIPPLE + PANEL SLIDE ── */
+    .menu-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
+    .menu-tab { padding: 12px 32px; border-radius: 50px; border: 1px solid rgba(244,208,63,0.3); background: transparent; color: rgba(255,255,255,0.6); font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); position: relative; overflow: hidden; }
+    .menu-tab::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(244,208,63,0.35) 0%, transparent 70%); transform: scale(0); transition: transform 0.4s ease; border-radius: 50px; }
+    .menu-tab:hover::before { transform: scale(2.5); }
+    .menu-tab.active, .menu-tab:hover { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 700; transform: scale(1.05); box-shadow: 0 8px 24px rgba(244,208,63,0.3); }
+    .menu-panel { display: none; opacity: 0; transform: translateY(16px); }
+    .menu-panel.active { display: block; animation: panelIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+    @keyframes panelIn { to { opacity: 1; transform: translateY(0); } }
+    
+    /* DISH CARDS GRID */
+    .dish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    /* ── ANIMATION 4: DISH CARD 3D STAGGER SCROLL-IN ── */
+    .dish-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s, border-color 0.45s; cursor: pointer; position: relative; opacity: 0; transform: perspective(800px) rotateX(20deg) translateY(40px); }
+    .dish-card.card-visible { opacity: 1; transform: perspective(800px) rotateX(0deg) translateY(0); }
+    .dish-card:hover { transform: perspective(800px) rotateX(-2deg) translateY(-8px) scale(1.02) !important; box-shadow: 0 30px 70px rgba(0,0,0,0.7), 0 0 40px rgba(244,208,63,0.1); border-color: rgba(244,208,63,0.3); }
+    .dish-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(244,208,63,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
+    .dish-card:hover::after { opacity: 1; }
+    .dish-img-wrap { width: 100%; height: 220px; overflow: hidden; position: relative; }
+    .dish-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .dish-card:hover .dish-img-wrap img { transform: scale(1.08); }
+    .dish-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+    .dish-info { padding: 20px; }
+    .dish-info h4 { color: #fff; font-size: 1rem; font-weight: 600; margin: 0 0 6px 0; letter-spacing: 1px; text-transform: uppercase; }
+    .dish-info p { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 0 14px 0; line-height: 1.5; }
+    .dish-footer { display: flex; justify-content: space-between; align-items: center; }
+    .dish-price { color: var(--gold); font-weight: 700; font-size: 1.1rem; }
+    .dish-badge { font-size: 0.65rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .badge-spicy { background: rgba(220,20,60,0.15); color: #DC143C; border: 1px solid rgba(220,20,60,0.2); }
+    .badge-veg { background: rgba(46,139,87,0.15); color: #3CB371; border: 1px solid rgba(46,139,87,0.2); }
+    .badge-chef { background: rgba(244,208,63,0.1); color: var(--gold); border: 1px solid rgba(244,208,63,0.2); }
+    .badge-cold { background: rgba(100,149,237,0.15); color: #6495ED; border: 1px solid rgba(100,149,237,0.2); }
+    .badge-hot { background: rgba(255,140,0,0.15); color: #FF8C00; border: 1px solid rgba(255,140,0,0.2); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 5%; }
+      .hud-header { flex-direction: column; align-items: center; text-align: center; }
+      .hud-left { min-width: 100%; }
+      #scoreboard-overlay { padding: 20px; width: 92%; }
+      .dish-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+      .dish-img-wrap { height: 160px; }
+      .dish-info { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">BALICA</div>
+    <div><a href="#menu-section" class="btn-link" style="margin-right:10px; background:transparent; color:var(--gold);">Menu</a><a href="https://wa.me/919327604284" class="btn-link" target="_blank">Book Table</a></div>
+  </nav>
+
+  <!-- Balica Base Hero System -->
+  <div id="three-container"></div>
+  <div id="hero-trigger">
+    <div class="sticky-container">
+      <canvas id="bg-canvas"></canvas>
+      <div class="hero-overlay">
+        <h1 id="hero-title"></h1>
+        <div class="hero-text">Not Just Food. An Experience.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE HIGH OCTANE FRUIT RACE - DIRECTORS CUT -->
+  <section id="race-section">
+      <div id="race-canvas-container"></div>
+      <div id="race-overlay-fx"></div>
+      
+      <div class="hud-overlay">
+          <div class="hud-header">
+              <div class="hud-left">
+                  <h2 class="hud-text">Neon Culinary Prix</h2>
+                  <p>Galactic Orbit // Anti-Grav Active</p>
+              </div>
+          </div>
+          <div id="countdown-box"><p id="countdown-text"></p></div>
+          <div id="scoreboard-overlay">
+              <h3>Final Results</h3>
+              <div id="sb-list"></div>
+          </div>
+      </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section id="menu-section" class="content-section">
+      <div class="container">
+          <h2 class="section-title">The Menu</h2>
+
+          <!-- TABS -->
+          <div class="menu-tabs">
+              <button class="menu-tab active" onclick="switchTab('food', this)">🍛 Food Dishes</button>
+              <button class="menu-tab" onclick="switchTab('drinks', this)">🥤 Drinks & Juices</button>
+          </div>
+
+          <!-- FOOD PANEL -->
+          <div id="panel-food" class="menu-panel active">
+              <div class="dish-grid">
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_butter_chicken_1774458395485.png" alt="Butter Chicken" loading="lazy"></div>
+                      <div class="dish-info"><h4>Butter Chicken</h4><p>Rich orange-red curry with fresh cream swirl & cilantro</p><div class="dish-footer"><span class="dish-price">₹520</span><span class="dish-badge badge-chef">Chef's Pick</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_lamb_biryani_1774458415303.png" alt="Lamb Biryani" loading="lazy"></div>
+                      <div class="dish-info"><h4>Lamb Biryani</h4><p>Saffron rice, caramelized onions & steam-kissed mint</p><div class="dish-footer"><span class="dish-price">₹680</span><span class="dish-badge badge-spicy">Spicy</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_garlic_naan_1774458431815.png" alt="Garlic Naan" loading="lazy"></div>
+                      <div class="dish-info"><h4>Garlic Naan</h4><p>Golden charred spots, melted butter on a warm slate</p><div class="dish-footer"><span class="dish-price">₹120</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_paneer_tikka_1774458449885.png" alt="Paneer Tikka" loading="lazy"></div>
+                      <div class="dish-info"><h4>Paneer Tikka</h4><p>Charcoal-grilled skewers with orange marinade & green chutney</p><div class="dish-footer"><span class="dish-price">₹380</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_dal_makhani_1774458466506.png" alt="Dal Makhani" loading="lazy"></div>
+                      <div class="dish-info"><h4>Dal Makhani</h4><p>Slow-cooked dark lentils with butter & cumin tadka</p><div class="dish-footer"><span class="dish-price">₹320</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_seekh_kebab_1774458487134.png" alt="Seekh Kebab" loading="lazy"></div>
+                      <div class="dish-info"><h4>Seekh Kebab</h4><p>Smoky charcoal grill marks with mint chutney & lemon</p><div class="dish-footer"><span class="dish-price">₹440</span><span class="dish-badge badge-spicy">Spicy</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_chole_bhature_1774458505922.png" alt="Chole Bhature" loading="lazy"></div>
+                      <div class="dish-info"><h4>Chole Bhature</h4><p>Puffed golden bhatura beside spiced chickpeas & pickle</p><div class="dish-footer"><span class="dish-price">₹260</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_tandoori_chicken_1774458527449.png" alt="Tandoori Chicken" loading="lazy"></div>
+                      <div class="dish-info"><h4>Tandoori Chicken</h4><p>Deep red marinade, charred grill on cast iron with lime</p><div class="dish-footer"><span class="dish-price">₹560</span><span class="dish-badge badge-chef">Chef's Pick</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_palak_paneer_1774458544609.png" alt="Palak Paneer" loading="lazy"></div>
+                      <div class="dish-info"><h4>Palak Paneer</h4><p>Vibrant green spinach curry with paneer & cream drizzle</p><div class="dish-footer"><span class="dish-price">₹340</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_masala_dosa_1774458563184.png" alt="Masala Dosa" loading="lazy"></div>
+                      <div class="dish-info"><h4>Masala Dosa</h4><p>Crispy golden crepe on banana leaf with sambar & chutney</p><div class="dish-footer"><span class="dish-price">₹220</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_fish_curry_1774458590335.png" alt="Fish Curry" loading="lazy"></div>
+                      <div class="dish-info"><h4>Fish Curry</h4><p>Coconut gravy with curry leaves & red chili in a clay pot</p><div class="dish-footer"><span class="dish-price">₹580</span><span class="dish-badge badge-spicy">Spicy</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_samosa_chaat_1774458606873.png" alt="Samosa Chaat" loading="lazy"></div>
+                      <div class="dish-info"><h4>Samosa Chaat</h4><p>Crispy samosas, yogurt drizzle, tamarind & pomegranate</p><div class="dish-footer"><span class="dish-price">₹200</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_mutton_rogan_josh_1774458626211.png" alt="Mutton Rogan Josh" loading="lazy"></div>
+                      <div class="dish-info"><h4>Mutton Rogan Josh</h4><p>Deep red curry, tender mutton with whole aromatic spices</p><div class="dish-footer"><span class="dish-price">₹720</span><span class="dish-badge badge-chef">Chef's Pick</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_veg_biryani_1774458642951.png" alt="Veg Biryani" loading="lazy"></div>
+                      <div class="dish-info"><h4>Veg Biryani</h4><p>Colorful basmati, fried onions & saffron with raita</p><div class="dish-footer"><span class="dish-price">₹360</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_pav_bhaji_1774458662197.png" alt="Pav Bhaji" loading="lazy"></div>
+                      <div class="dish-info"><h4>Pav Bhaji</h4><p>Mashed spiced vegetables with butter & toasted pav</p><div class="dish-footer"><span class="dish-price">₹240</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_chicken_korma_1774458678919.png" alt="Chicken Korma" loading="lazy"></div>
+                      <div class="dish-info"><h4>Chicken Korma</h4><p>Pale gold creamy gravy with almond slices & rose petals</p><div class="dish-footer"><span class="dish-price">₹540</span><span class="dish-badge badge-chef">Chef's Pick</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="dish_aloo_paratha_1774458698152.png" alt="Aloo Paratha" loading="lazy"></div>
+                      <div class="dish-info"><h4>Aloo Paratha</h4><p>Golden browned flatbread with butter pooling & yogurt dip</p><div class="dish-footer"><span class="dish-price">₹180</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #DC143C22, #FF8C0022);"><div class="dish-img-placeholder">🦐</div></div>
+                      <div class="dish-info"><h4>Prawn Masala</h4><p>Deep red-orange sauce with whole prawns & curry leaves</p><div class="dish-footer"><span class="dish-price">₹640</span><span class="dish-badge badge-spicy">Spicy</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #FF450022, #FFD70022);"><div class="dish-img-placeholder">🧀</div></div>
+                      <div class="dish-info"><h4>Shahi Paneer</h4><p>Rich orange gravy, cream swirl with cardamom & luxury plating</p><div class="dish-footer"><span class="dish-price">₹420</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #22882222, #FFD70022);"><div class="dish-img-placeholder">🥘</div></div>
+                      <div class="dish-info"><h4>Mixed Veg Jalfrezi</h4><p>Colorful peppers in thick spiced sauce with fresh ginger</p><div class="dish-footer"><span class="dish-price">₹310</span><span class="dish-badge badge-veg">Veg</span></div></div>
+                  </div>
+
+              </div>
+          </div>
+
+          <!-- DRINKS PANEL -->
+          <div id="panel-drinks" class="menu-panel">
+              <div class="dish-grid">
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_mango_lassi_1774524237781.png" alt="Mango Lassi" loading="lazy"></div>
+                      <div class="dish-info"><h4>Mango Lassi</h4><p>Thick golden lassi in copper glass with cardamom dusting</p><div class="dish-footer"><span class="dish-price">₹180</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_rose_sharbat_1774524256235.png" alt="Rose Sharbat" loading="lazy"></div>
+                      <div class="dish-info"><h4>Rose Sharbat</h4><p>Deep pink crystal glass with rose petals & basil seeds</p><div class="dish-footer"><span class="dish-price">₹140</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_masala_chai_1774524274302.png" alt="Masala Chai" loading="lazy"></div>
+                      <div class="dish-info"><h4>Masala Chai</h4><p>Kulhad clay cup with steam rising & warm spice blend</p><div class="dish-footer"><span class="dish-price">₹80</span><span class="dish-badge badge-hot">Hot</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_watermelon_juice_1774524297257.png" alt="Watermelon Juice" loading="lazy"></div>
+                      <div class="dish-info"><h4>Watermelon Juice</h4><p>Vibrant fresh-pressed with mint sprig & black salt rim</p><div class="dish-footer"><span class="dish-price">₹160</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_butterfly_pea_lemonade_1774524315307.png" alt="Butterfly Pea Lemonade" loading="lazy"></div>
+                      <div class="dish-info"><h4>Butterfly Pea Lemonade</h4><p>Electric blue-to-purple gradient with lemon slice & ice</p><div class="dish-footer"><span class="dish-price">₹220</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_thandai_1774524333195.png" alt="Thandai" loading="lazy"></div>
+                      <div class="dish-info"><h4>Thandai</h4><p>Milky silver glass with rose petals, pistachio & saffron</p><div class="dish-footer"><span class="dish-price">₹200</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_sugarcane_juice_1774524351507.png" alt="Sugarcane Juice" loading="lazy"></div>
+                      <div class="dish-info"><h4>Sugarcane Juice</h4><p>Pale green frosted glass with ginger, lime & ice cubes</p><div class="dish-footer"><span class="dish-price">₹100</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_cold_brew_coffee_1774524370206.png" alt="Cold Brew Coffee" loading="lazy"></div>
+                      <div class="dish-info"><h4>Cold Brew Coffee</h4><p>Deep espresso with cream cloud swirling in dark glass</p><div class="dish-footer"><span class="dish-price">₹280</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_kokum_sharbat_1774524384795.png" alt="Kokum Sharbat" loading="lazy"></div>
+                      <div class="dish-info"><h4>Kokum Sharbat</h4><p>Deep magenta-purple with kokum pieces & ice condensation</p><div class="dish-footer"><span class="dish-price">₹130</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_virgin_mojito_1774524404086.png" alt="Virgin Mojito" loading="lazy"></div>
+                      <div class="dish-info"><h4>Virgin Mojito</h4><p>Crisp mint & lime with crushed ice & sugar rim</p><div class="dish-footer"><span class="dish-price">₹190</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_nimbu_pani_1774524431962.png" alt="Nimbu Pani" loading="lazy"></div>
+                      <div class="dish-info"><h4>Nimbu Pani</h4><p>Pale yellow kala namak lemonade with salt-rimmed edge</p><div class="dish-footer"><span class="dish-price">₹90</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_tamarind_agua_fresca_1774524451210.png" alt="Tamarind Agua Fresca" loading="lazy"></div>
+                      <div class="dish-info"><h4>Tamarind Agua Fresca</h4><p>Russet-brown with chili rim & tamarind pods on side</p><div class="dish-footer"><span class="dish-price">₹150</span><span class="dish-badge badge-spicy">Spicy</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_saffron_milk_1774524468168.png" alt="Saffron Milk" loading="lazy"></div>
+                      <div class="dish-info"><h4>Saffron Milk</h4><p>Warm ivory with saffron threads floating & pistachio dust</p><div class="dish-footer"><span class="dish-price">₹220</span><span class="dish-badge badge-hot">Hot</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_strawberry_jaljeera_1774524487624.png" alt="Strawberry Jaljeera" loading="lazy"></div>
+                      <div class="dish-info"><h4>Strawberry Jaljeera</h4><p>Pink-red mocktail with jaljeera rim & fresh strawberry</p><div class="dish-footer"><span class="dish-price">₹170</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_aloe_vera_juice_1774524503838.png" alt="Aloe Vera Juice" loading="lazy"></div>
+                      <div class="dish-info"><h4>Aloe Vera Juice</h4><p>Pale translucent green with aloe cubes & lemon slice</p><div class="dish-footer"><span class="dish-price">₹140</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_mango_panna_1774524522717.png" alt="Mango Panna" loading="lazy"></div>
+                      <div class="dish-info"><h4>Mango Panna</h4><p>Pale yellowish-green with raw mango & black salt rim</p><div class="dish-footer"><span class="dish-price">₹130</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap"><img src="drink_hibiscus_iced_tea_1774524543739.png" alt="Hibiscus Iced Tea" loading="lazy"></div>
+                      <div class="dish-info"><h4>Hibiscus Iced Tea</h4><p>Deep crimson with dried hibiscus flowers floating in ice</p><div class="dish-footer"><span class="dish-price">₹180</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #90EE9022, #FFFFFF11);"><div class="dish-img-placeholder">🥒</div></div>
+                      <div class="dish-info"><h4>Cucumber Mint Cooler</h4><p>Pale green with cucumber ribbons, crushed ice & mint</p><div class="dish-footer"><span class="dish-price">₹160</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #FFD70033, #D2691E33);"><div class="dish-img-placeholder">✨</div></div>
+                      <div class="dish-info"><h4>Golden Turmeric Latte</h4><p>Vibrant yellow foam art with cinnamon dusting & warmth</p><div class="dish-footer"><span class="dish-price">₹240</span><span class="dish-badge badge-hot">Hot</span></div></div>
+                  </div>
+
+                  <div class="dish-card g-card">
+                      <div class="dish-img-wrap" style="background: linear-gradient(135deg, #8B000033, #DC143C33);"><div class="dish-img-placeholder">💎</div></div>
+                      <div class="dish-info"><h4>Pomegranate Juice</h4><p>Deep ruby crystal glass with pomegranate arils floating</p><div class="dish-footer"><span class="dish-price">₹200</span><span class="dish-badge badge-cold">Cold</span></div></div>
+                  </div>
+
+              </div>
+          </div>
+
+      </div>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth <= 768;
+    const lenis = new Lenis({ duration: 1.2, smooth: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+    gsap.ticker.lagSmoothing(0);
+
+    // ── ANIMATION 1: Hero Letter Split ──
+    const heroLetters = 'BALICA'.split('');
+    const heroTitleEl = document.getElementById('hero-title');
+    heroLetters.forEach((l, i) => {
+      const span = document.createElement('span');
+      span.className = 'hero-letter';
+      span.textContent = l;
+      span.style.animationDelay = `${0.1 + i * 0.1}s`;
+      heroTitleEl.appendChild(span);
+    });
+
+    // ── ANIMATION 4: Dish Card 3D Stagger via IntersectionObserver ──
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const siblings = [...card.parentElement.children];
+          const i = siblings.indexOf(card);
+          setTimeout(() => card.classList.add('card-visible'), i * 60);
+          cardObserver.unobserve(card);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.dish-card').forEach(c => cardObserver.observe(c));
+
+    // --- BALICA HERO SCRUBBER ---
+    const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d', { alpha: false });
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; renderImage(); }
+    window.addEventListener('resize', resizeCanvas);
+    const frameCount = 168; const images = []; const imageSeq = { frame: 0 };
+    
+    setTimeout(() => {
+      for (let i = 1; i <= frameCount; i++) {
+          const img = new Image(); img.src = `ezgif-frame-${i.toString().padStart(3, '0')}.jpg`; images.push(img);
+      }
+      images[0].onload = resizeCanvas;
+    }, 1500);
+
+    function renderImage() {
+        if(images[imageSeq.frame] && images[imageSeq.frame].complete) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); const img = images[imageSeq.frame]; const zoomFactor = 1.15; 
+            const ratio = Math.max(canvas.width / img.width, canvas.height / img.height) * zoomFactor;
+            const dw = img.width * ratio; const dh = img.height * ratio;
+            ctx.drawImage(img, 0, 0, img.width, img.height, (canvas.width - dw) / 2, (canvas.height - dh) / 2, dw, dh);
+        }
+    }
+    gsap.to(imageSeq, { frame: frameCount - 1, snap: "frame", ease: "none", scrollTrigger: { trigger: "#hero-trigger", start: "top top", end: "bottom bottom", scrub: 0.5 }, onUpdate: renderImage });
+
+    // --- BALICA AMBIENT LAYER ---
+    const hScene = new THREE.Scene(); const hCam = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const hRend = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: "low-power" });
+    hRend.setSize(window.innerWidth, window.innerHeight); document.getElementById('three-container').appendChild(hRend.domElement);
+    const hP = new THREE.Group(); hScene.add(hP); const hMat = new THREE.MeshLambertMaterial({color: 0xF4D03F});
+    const hPhys = [];
+    for(let i=0; i<30; i++) {
+        const mesh = new THREE.Mesh(new THREE.OctahedronGeometry(0.1, 0), hMat);
+        mesh.position.set((Math.random()-0.5)*30, (Math.random()-0.5)*30, (Math.random()-0.5)*15 - 5);
+        mesh.scale.setScalar(Math.random()*1.5+0.5); 
+        mesh.userData = { fp: Math.random()*Math.PI*2, rx: Math.random()*0.02, ry: Math.random()*0.02, by: mesh.position.y };
+        hPhys.push(mesh); hP.add(mesh);
+    }
+    hScene.add(new THREE.AmbientLight(0xffffff, 0.6)); hCam.position.z = 12;
+
+    // --- HIGH OCTANE CINEMATIC FRUIT RACE (DIRECTOR'S CUT) ---
+    const rc = document.getElementById('race-canvas-container');
+    const rScene = new THREE.Scene(); rScene.background = new THREE.Color(0x0F1419);
+    rScene.fog = new THREE.FogExp2(0x0F1419, 0.002); 
+    const rCam = new THREE.PerspectiveCamera(isMobile ? 65 : 45, window.innerWidth/window.innerHeight, 0.1, 4000);
+    const rRend = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    rRend.setSize(window.innerWidth, window.innerHeight); 
+    rRend.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Mobile responsive pixel ratio
+    rc.appendChild(rRend.domElement);
+
+    // Cinematic Volumetric-style Lighting
+    const ambL = new THREE.AmbientLight(0x2A2A2E, 2.0); rScene.add(ambL);
+    const keyL = new THREE.DirectionalLight(0xE8D7B8, 2.0); keyL.position.set(100, 150, 50); rScene.add(keyL);
+    const rimL = new THREE.DirectionalLight(0xFFD700, 1.0); rimL.position.set(-100, 50, -100); rScene.add(rimL);
+
+    // Stardust / Speed Lines Layer
+    const stCount = 1500; const stPos = new Float32Array(stCount * 3);
+    for(let i=0; i<stCount*3; i+=3) {
+      stPos[i] = (Math.random()-0.5)*2000; stPos[i+1] = -100 + (Math.random()*200); stPos[i+2] = (Math.random()-0.5)*2000;
+    }
+    const stGeom = new THREE.BufferGeometry(); stGeom.setAttribute('position', new THREE.BufferAttribute(stPos, 3));
+    const stMesh = new THREE.Points(stGeom, new THREE.PointsMaterial({size: 2, color: 0xF5F5F5, transparent: true, opacity: 0.15}));
+    rScene.add(stMesh);
+
+    // Track Spline Design
+    const trackPts = [];
+    for(let i=0; i<=50; i++) {
+        const a = (i/50)*Math.PI*2;
+        const r = 350 + Math.sin(a*3)*80 + Math.cos(a*5)*30; // Added chicane complexity
+        const y = Math.sin(a*2)*40 + 10;
+        trackPts.push(new THREE.Vector3(Math.cos(a)*r, y, Math.sin(a)*r));
+    }
+    const trackCurve = new THREE.CatmullRomCurve3(trackPts, true);
+    const tGeom = new THREE.TubeGeometry(trackCurve, 200, 6, 8, true);
+    const tMat = new THREE.MeshLambertMaterial({ color: 0xF4D03F, transparent: true, opacity: 0.1, wireframe: true });
+    rScene.add(new THREE.Mesh(tGeom, tMat));
+
+    const dishes = [];
+    function buildDish(name, grp, offsetX, effectColor, massMult, behaveClass, ptCount) {
+       // Custom particle systems per dish based on brief
+       const pC = isMobile ? Math.floor(ptCount/2) : ptCount; 
+       const pGeo = new THREE.BufferGeometry();
+       const pPos = new Float32Array(pC*3);
+       pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+       const pMat = new THREE.PointsMaterial({color: effectColor, size: behaveClass==='sushi'? 4:2, transparent: true, opacity: 0.8});
+       const pSys = new THREE.Points(pGeo, pMat);
+       rScene.add(pSys);
+       rScene.add(grp);
+       
+       // Physics vars: oX (lane), mass (inertia), behave (personality)
+       dishes.push({ n: name, grp: grp, mesh: grp.children[0], oX: offsetX, p: 0, 
+                     mass: massMult, behave: behaveClass, pts: pSys, pGeo: pGeo, pC: pC, vel: 0 });
+    }
+
+    const mkMat = (cHex) => new THREE.MeshLambertMaterial({color: cHex, emissive: cHex, emissiveIntensity: 0.4});
+    
+    // Burger (Mass: 1.2, heavy roll, Sesame burst)
+    const burG = new THREE.Group();
+    burG.add(new THREE.Mesh(new THREE.CylinderGeometry(4.5, 4.5, 5, 24), mkMat(0x8B4513)));
+    buildDish('THE BURGER', burG, -10, 0xD4AF37, 1.2, 'burger', 200);
+
+    // Sushi (Mass: 0.9, precise, Wasabi vapor)
+    const susG = new THREE.Group();
+    susG.add(new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 3, 32), mkMat(0xF5F5F5)));
+    buildDish('TRUFFLE SUSHI', susG, 10, 0xC0EBA6, 0.9, 'sushi', 100);
+
+    // Curry (Mass: 1.0, erratic, Spice dust)
+    const curG = new THREE.Group();
+    curG.add(new THREE.Mesh(new THREE.SphereGeometry(3.5, 24, 24), mkMat(0xDC143C)));
+    buildDish('SPICY CURRY', curG, -3, 0xFF8C00, 1.0, 'curry', 300);
+
+    // Pasta (Mass: 0.95, flowing, Sauce droplet)
+    const pasG = new THREE.Group();
+    pasG.add(new THREE.Mesh(new THREE.TorusKnotGeometry(2.5, 0.8, 64, 12), mkMat(0xF5E6D3)));
+    buildDish('FLOWING PASTA', pasG, 3.5, 0xF5E6D3, 0.95, 'pasta', 150);
+
+    // Pizza (Mass: 1.1, confident, Cheese glow)
+    const pizG = new THREE.Group();
+    const pizM = new THREE.Mesh(new THREE.CylinderGeometry(5.5, 5.5, 0.5, 32), mkMat(0xCD5C5C));
+    pizM.rotation.x = Math.PI/2; pizG.add(pizM);
+    buildDish('MOLTEN PIZZA', pizG, 0, 0xFFD700, 1.1, 'pizza', 250);
+
+    const cbBox = document.getElementById('countdown-box');
+    const cbTxt = document.getElementById('countdown-text');
+    const sbObj = document.getElementById('scoreboard-overlay');
+    const sbList = document.getElementById('sb-list');
+
+    let tRace = 0;
+    const LOOP_DUR = 30; // 30-sec master timeline
+    let ended = false;
+
+    function eases(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; } // cubic ease in-out
+
+    function renderActive(ts) {
+      requestAnimationFrame(renderActive);
+      const dt = 16 / 1000;
+      tRace += dt;
+      let rT = (tRace % LOOP_DUR);
+      
+      let ph = '';
+      if(rT < 4) ph = 'START';
+      else if(rT < 8) ph = 'LAUNCH';
+      else if(rT < 12) ph = 'S_CURVE';
+      else if(rT < 18) ph = 'RACE';
+      else if(rT < 22) ph = 'CHICANE';
+      else if(rT < 26) ph = 'FINAL_STRETCH';
+      else if(rT < 28) ph = 'FINISH';
+      else ph = 'RESULT';
+
+      // --- HERO AMBIENT ---
+      if (window.scrollY < window.innerHeight) {
+          hPhys.forEach(o => { o.position.y = o.userData.by + Math.sin(tRace + o.userData.fp)*1.5; o.rotation.x+=o.userData.rx; o.rotation.y+=o.userData.ry; });
+          hP.rotation.y = tRace * 0.05; hRend.render(hScene, hCam);
+      }
+
+      // --- RACE LOGIC ---
+      const rRect = document.getElementById('race-section').getBoundingClientRect();
+      if (rRect.top < window.innerHeight && rRect.bottom > 0) {
+         
+         // Ambient background shift (Navy -> Amber dynamically)
+         if(ph === 'START' && rT > 2) {
+            rScene.background.lerpColors(new THREE.Color(0x0F1419), new THREE.Color(0x3D2817), (rT-2)*0.02);
+         } else if(ph === 'FINAL_STRETCH') {
+            rScene.background.lerpColors(new THREE.Color(0x3D2817), new THREE.Color(0xC17A4A), 0.01);
+         } else if(ph === 'START' && rT <= 2) {
+            rScene.background.lerp(new THREE.Color(0x0F1419), 0.05); 
+         }
+
+         stMesh.rotation.y = tRace * 0.02; // Stardust rotation
+
+         // UI Control
+         if(ph === 'START') {
+            cbBox.style.display = 'flex'; sbObj.classList.remove('visible'); ended = false;
+            let n = Math.ceil(3 - rT); 
+            if(rT < 3 && n > 0) {
+               cbTxt.innerText = n; cbTxt.style.transform = `scale(${1.2 - (rT%1)*0.5})`; 
+            } else if(rT >= 3 && rT < 4) {
+               cbTxt.innerText = "GO"; cbTxt.style.color = "#F4D03F"; cbTxt.style.transform = `scale(${1 + ((rT-3)*0.8)})`;
+            }
+         } else {
+            cbBox.style.display = 'none'; cbTxt.style.color = "#F5F5F5";
+         }
+         if(ph === 'RESULT') sbObj.classList.add('visible');
+
+         // Master Speed curve
+         let gSpd = 0;
+         if (ph !== 'START' && ph !== 'RESULT') {
+            let nT = Math.min(1, Math.max(0, (rT - 4) / 22)); 
+            let dcl = (ph === 'FINISH') ? 0.3 : 1.0;
+            gSpd = eases(nT) * 0.0022 * dcl; 
+         }
+
+         dishes.forEach((d, i) => {
+            // Pulse & Jitter on Start
+            if(ph === 'START') {
+               d.p = 0.001 - (d.oX * 0.0001); 
+               // Jitter freq varies via mass
+               let jit = d.behave==='curry'? 12 : d.behave==='pasta'? 2 : 8;
+               d.grp.position.x += (Math.random()-0.5) * (rT>2?0.2:0) * (1/d.mass); 
+               d.mesh.scale.setScalar(1 + Math.sin(tRace*jit)*0.05); // Aura pulse
+            } else if (ph !== 'RESULT') {
+               // Individual Acceleration Curves
+               let aSpd = gSpd;
+               if(ph === 'LAUNCH') {
+                  // Burger grinds, Pasta floats
+                  aSpd *= (1.5 - d.mass);
+               } else if(ph === 'RACE' || ph === 'S_CURVE') {
+                  // Personality offsets
+                  let off = Math.sin(tRace*(4-d.mass) + i)*0.0003;
+                  if(d.behave === 'curry') off += (Math.random()>0.9? 0.001 : -0.0002); // erratic
+                  if(d.behave === 'sushi') off = 0.0001; // steady cruise
+                  aSpd += off;
+               } else if(ph === 'CHICANE') {
+                  if(d.behave === 'burger') aSpd *= 0.8; // sluggish in corners
+                  if(d.behave === 'pizza') aSpd *= 1.1; // confident
+               } else if(ph === 'FINAL_STRETCH') {
+                  aSpd = gSpd * (2 - d.mass) + 0.0005; // Maximum push
+               } else if(ph === 'FINISH') {
+                  aSpd *= 0.4; // decelerate
+               }
+               d.vel = Math.max(0.0001, aSpd);
+               d.p += d.vel; 
+            } else {
+               d.p += d.vel * 0.95; // graceful wind-down
+            }
+
+            const pos = trackCurve.getPointAt(d.p % 1);
+            const tan = trackCurve.getTangentAt(d.p % 1).normalize();
+            const rV = new THREE.Vector3().crossVectors(new THREE.Vector3(0,1,0), tan).normalize();
+            const nV = new THREE.Vector3().crossVectors(tan, rV).normalize(); 
+            
+            d.grp.position.copy(pos).add(rV.clone().multiplyScalar(d.oX)).add(nV.clone().multiplyScalar(5));
+            d.grp.position.y += Math.sin(tRace*3 + i)* (d.behave==='pasta'? 2 : 0.8); // Pasta has sine-wave trajectory
+            
+            d.grp.lookAt(pos.clone().add(tan));
+            
+            // Banking logic
+            const ln = (tan.x * d.oX) * 0.02 * d.mass; 
+            if(d.behave === 'burger') d.grp.rotateZ(ln * 2); // Heavy body roll
+            else d.grp.rotateZ(ln); 
+            
+            // Spinning
+            if(d.behave === 'pizza') d.mesh.rotation.y += 0.08;
+            if(d.behave === 'pasta') { d.mesh.rotation.y += 0.03; d.mesh.rotation.z += 0.03; }
+            if(d.behave === 'sushi') d.mesh.rotation.y = 0; // Minimalist, zero Z-axis
+            
+            // Particle physics specific to dish
+            const arr = d.pGeo.attributes.position;
+            for(let j=0; j<d.pC; j++) {
+               let x = arr.getX(j), y = arr.getY(j), z = arr.getZ(j);
+               // Grav & drag
+               if(d.behave === 'sushi') { y += 0.2; x += Math.sin(y)*0.1; } // vapor rises
+               else if(d.behave === 'pasta') { y -= 0.1; x += Math.cos(j)*0.2; } // droplet arc
+               else { y -= 0.3; x += (Math.random()-0.5)*0.8; z += (Math.random()-0.5)*0.8; } // generic scatter
+               
+               if(ph === 'FINISH' && d.p >= 0.99) {
+                  // Confetti burst on finish
+                  x += (Math.random()-0.5)*5; y += (Math.random()-0.5)*5; z += (Math.random()-0.5)*5;
+               }
+
+               if(Math.random() < 0.15 || y < -40 || y > 40) { 
+                   x = d.grp.position.x; y = d.grp.position.y; z = d.grp.position.z; 
+               }
+               arr.setXYZ(j, x, y, z);
+            }
+            arr.needsUpdate = true;
+            
+            // Finish explosion
+            if(ph === 'FINISH' && d.p >= 0.99 && rT < 26.5) {
+                keyL.intensity = 4.0;
+                d.mesh.scale.setScalar(1.5 + Math.random()*0.2); 
+            } else {
+                keyL.intensity = 2.0;
+                d.mesh.scale.setScalar(1);
+            }
+         });
+
+         const sorted = [...dishes].sort((a,b) => b.p - a.p);
+         const ldr = sorted[0];
+
+         if (ph === 'RESULT' && !ended) {
+            ended = true;
+            let ls = '';
+            sorted.forEach((d, id) => {
+               const fTime = (30 - (d.mass * 2.1) + id*0.2).toFixed(3) + 's';
+               ls += `<div class="sb-row" style="transition-delay: ${id*0.15}s"><span class="sb-rank-1">0${id+1} ${d.n}</span><span class="sb-time">${fTime}</span></div>`;
+            });
+            sbList.innerHTML = ls;
+            setTimeout(() => { document.querySelectorAll('.sb-row').forEach(r => r.classList.add('anim-in')); }, 100);
+         }
+
+         // Dynamic Cinematic Camera
+         if (ph === 'START') {
+             rCam.position.lerp(new THREE.Vector3(0, -20, 120), 0.05); // Static low 3/4 angle
+             rCam.lookAt(new THREE.Vector3(0, 0, 0));
+         } else if (ph === 'LAUNCH' || ph === 'FINAL_STRETCH') {
+             // Tracking shot trailing leader
+             const cP = trackCurve.getPointAt((ldr.p - 0.05 + 1)%1);
+             const cT = trackCurve.getTangentAt((ldr.p - 0.05)%1);
+             let tgt = cP.add(new THREE.Vector3(0, 30, 0)).sub(cT.multiplyScalar(60));
+             rCam.position.lerp(tgt, 0.1);
+             rCam.lookAt(ldr.grp.position);
+         } else if (ph === 'S_CURVE' || ph === 'CHICANE') {
+             // Tighter framing
+             const cP = trackCurve.getPointAt((ldr.p - 0.03 + 1)%1);
+             rCam.position.lerp(cP.add(new THREE.Vector3(0, 20, 40)), 0.1);
+             rCam.lookAt(ldr.grp.position.clone().add(new THREE.Vector3(0,0,10)));
+         } else if (ph === 'RACE') {
+             // Fluid tracking
+             const cP = trackCurve.getPointAt((ldr.p - 0.04 + 1)%1);
+             rCam.position.lerp(cP.add(new THREE.Vector3(20, 35, 20)), 0.05);
+             rCam.lookAt(ldr.grp.position);
+         } else if (ph === 'FINISH') {
+             // Slow rotation around winner
+             rCam.position.x += Math.sin(tRace*0.5)*1.5; 
+             rCam.position.z += Math.cos(tRace*0.5)*1.5;
+             rCam.position.y += 0.2;
+             rCam.lookAt(ldr.grp.position);
+         } else if (ph === 'RESULT') {
+             rCam.position.lerp(new THREE.Vector3(0, 40, 0), 0.02);
+         }
+
+         rRend.render(rScene, rCam);
+      }
+    }
+    renderActive();
+
+    // Menu Tab Switcher
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    window.addEventListener('resize', () => {
+      hCam.aspect = window.innerWidth / window.innerHeight; hCam.updateProjectionMatrix(); hRend.setSize(window.innerWidth, window.innerHeight);
+      const m = window.innerWidth <= 768;
+      rCam.aspect = window.innerWidth / window.innerHeight; 
+      rCam.fov = m ? 65 : 45; 
+      rCam.updateProjectionMatrix(); rRend.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
