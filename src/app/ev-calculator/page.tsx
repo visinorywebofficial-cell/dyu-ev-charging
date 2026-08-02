@@ -16,46 +16,32 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { ImageTrail } from "../../components/ImageTrail";
-import AutoPlayVideo from '@/components/AutoPlayVideo';
 
 export default function EVCalculatorPage() {
-  const [vehicleType, setVehicleType] = useState<'2w' | '3w' | '4w'>('4w');
-  const [dailyKm, setDailyKm] = useState<number>(45);
+  const [dailyKm, setDailyKm] = useState<number>(50);
   const [daysPerWeek, setDaysPerWeek] = useState<number>(5);
 
-  const calculateSavings = () => {
-    const petrolRatePerKm = vehicleType === '2w' ? 2.2 : vehicleType === '3w' ? 3.5 : 7.5;
-    const evRatePerKm = vehicleType === '2w' ? 0.35 : vehicleType === '3w' ? 0.6 : 1.2;
-
-    const monthlyKm = dailyKm * 30;
-    const yearlyKm = dailyKm * 365;
-
-    const monthlyPetrolCost = monthlyKm * petrolRatePerKm;
-    const monthlyEvCost = monthlyKm * evRatePerKm;
-    const monthlySavings = monthlyPetrolCost - monthlyEvCost;
-
-    const yearlySavings = yearlyKm * (petrolRatePerKm - evRatePerKm);
-    const co2PreventedKg = (yearlyKm * 0.12).toFixed(0);
-
-    return {
-      monthlySavings: Math.round(monthlySavings).toLocaleString('en-IN'),
-      yearlySavings: Math.round(yearlySavings).toLocaleString('en-IN'),
-      co2Prevented: Number(co2PreventedKg).toLocaleString('en-IN'),
-    };
-  };
-
-  const { monthlySavings, yearlySavings, co2Prevented } = calculateSavings();
   const annualKm = dailyKm * daysPerWeek * 52;
+  const co2Prevented = (annualKm * 0.12).toFixed(0); 
+  const moneySaved = (annualKm * 8).toLocaleString("en-IN"); 
+  const treesAbsorbed = Math.round(Number(co2Prevented) / 21);
 
   return (
     <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
       
       {/* FIXED BACKGROUND VIDEO & DARK OVERLAY */}
       <div className="fixed inset-0 z-0">
-        <AutoPlayVideo 
-          sources={["https://files.catbox.moe/hbruau.mp4", "/videos/hero-bg.mp4"]}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
           className="w-full h-full object-cover opacity-85"
-        />
+        >
+          <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
+          <source src="/ev-charging-2.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/60 z-0" />
       </div>
 

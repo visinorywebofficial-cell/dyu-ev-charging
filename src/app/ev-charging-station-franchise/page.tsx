@@ -140,9 +140,11 @@ export default function FranchisePage() {
           loop 
           muted 
           playsInline 
+          preload="auto"
           className="w-full h-full object-cover opacity-85"
         >
-          <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
+          <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
+          <source src="/ev-charging-2.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/60 z-0" />
       </div>

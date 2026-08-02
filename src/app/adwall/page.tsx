@@ -209,9 +209,11 @@ export default function AdWallPage() {
             loop 
             muted 
             playsInline 
+            preload="auto"
             className="hidden md:block w-full h-full object-cover opacity-85"
           >
-            <source src="https://files.catbox.moe/hbruau.mp4" type="video/mp4" />
+            <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
+            <source src="/ev-charging-2.mp4" type="video/mp4" />
           </video>
 
           {/* Mobile Video */}
@@ -220,9 +222,11 @@ export default function AdWallPage() {
             loop 
             muted 
             playsInline 
+            preload="auto"
             className="block md:hidden w-full h-full object-cover opacity-85"
           >
-            <source src="https://files.catbox.moe/gsenhe.mp4" type="video/mp4" />
+            <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
+            <source src="/ev-charging-2.mp4" type="video/mp4" />
           </video>
 
           {/* Light Overlay Gradient */}
