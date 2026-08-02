@@ -77,7 +77,7 @@ export default function EVLinqPage() {
   const introWords = introText.split(" ");
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
+    <div className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
       {/* Dark background only - no video */}
 
       <main className="pt-32 pb-20 relative z-10">
