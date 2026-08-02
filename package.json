@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node -e \"const fs=require('fs'); fs.mkdirSync('nodejs', {recursive:true}); fs.copyFileSync('server.js', 'nodejs/server.js');\"",
-    "start": "node server.js",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
