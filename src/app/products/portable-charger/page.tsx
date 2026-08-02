@@ -73,7 +73,7 @@ export default function PortableChargerPage() {
 
   return (
     <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
-      {/* FIXED BACKGROUND VIDEO & DARK CINEMATIC OVERLAY */}
+      {/* FIXED BACKGROUND VIDEO & WHITE FROSTED OVERLAY */}
       <div className="fixed inset-0 z-0">
         <video 
           autoPlay 
@@ -81,12 +81,13 @@ export default function PortableChargerPage() {
           muted 
           playsInline 
           preload="auto"
-          className="w-full h-full object-cover opacity-85"
+          className="w-full h-full object-cover"
         >
           <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
           <source src="/ev-charging-2.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        {/* White semi-transparent parda overlay */}
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-0" />
       </div>
 
       <main className="pt-24 pb-20 relative z-10">

@@ -133,21 +133,7 @@ export default function FranchisePage() {
 
   return (
     <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen relative font-['Inter'] bg-[#001E2B] text-white">
-      {/* FIXED BACKGROUND VIDEO & DARK OVERLAY */}
-      <div className="fixed inset-0 z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          preload="auto"
-          className="w-full h-full object-cover opacity-85"
-        >
-          <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
-          <source src="/ev-charging-2.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/60 z-0" />
-      </div>
+      {/* Dark background only - no video */}
 
       <main className="pt-24 pb-20 relative z-10">
         

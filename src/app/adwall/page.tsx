@@ -203,33 +203,7 @@ export default function AdWallPage() {
       <section className="relative min-h-[88vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#001E2B] text-white">
         {/* Responsive Background Video Overlay */}
         <div className="absolute inset-0 z-0">
-          {/* Desktop Video */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            preload="auto"
-            className="hidden md:block w-full h-full object-cover opacity-85"
-          >
-            <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
-            <source src="/ev-charging-2.mp4" type="video/mp4" />
-          </video>
-
-          {/* Mobile Video */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            preload="auto"
-            className="block md:hidden w-full h-full object-cover opacity-85"
-          >
-            <source src="https://cdn.jsdelivr.net/gh/visinorywebofficial-cell/dyu-ev-charging@main/public/ev-charging-2.mp4" type="video/mp4" />
-            <source src="/ev-charging-2.mp4" type="video/mp4" />
-          </video>
-
-          {/* Light Overlay Gradient */}
+          {/* Dark background only - no video */}
           <div className="absolute inset-0 bg-black/30 z-0 pointer-events-none" />
         </div>
 
