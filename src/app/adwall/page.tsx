@@ -999,7 +999,7 @@ export default function AdWallPage() {
           SECTION 9: READY TO TAKE THE NEXT STEP? (FORM)
           (DEEP PETROL BLUE CONTAINER + WHITE TEXT)
       ─────────────────────────────────────────────────────────────── */}
-      <section id="adwall-form" className="py-24 bg-[#222222] text-white relative border-t border-[#F1EFE1]/20">
+      <section id="adwall-form" className="py-24 bg-[#F1EFE1] text-[#222222] relative border-t border-[#222222]/20">
         <div className="container mx-auto px-4 max-w-4xl">
           
           <div className="text-center mb-16">
@@ -1007,7 +1007,7 @@ export default function AdWallPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              className="text-xs font-extrabold uppercase tracking-widest text-[#F1EFE1] block mb-3"
+              className="text-xs font-extrabold uppercase tracking-widest text-[#005F73] block mb-3"
             >
               Get In Touch
             </motion.span>
@@ -1016,7 +1016,7 @@ export default function AdWallPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-extrabold text-white font-['Gilroy'] tracking-tight"
+              className="text-4xl md:text-6xl font-extrabold text-[#222222] font-['Gilroy'] tracking-tight"
             >
               Ready to take the next step?
             </motion.h2>
@@ -1025,7 +1025,7 @@ export default function AdWallPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-[#F1EFE1]/90 font-medium mt-4 max-w-2xl mx-auto"
+              className="text-xl text-[#222222]/80 font-medium mt-4 max-w-2xl mx-auto"
             >
               We would be delighted to discuss our offering in more detail and answer any questions you might have.
             </motion.p>

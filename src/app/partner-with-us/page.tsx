@@ -397,40 +397,7 @@ export default function PartnerWithUsPage() {
           </motion.div>
         </section>
 
-        {/* SECTION 5: Brand Partners (Infinite Auto-Scrolling Marquee Ticker) */}
-        <section className="max-w-7xl mx-auto mb-32 overflow-hidden">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#222222] mb-3" style={{ fontFamily: "'Gilroy', sans-serif" }}>
-              Trusted By <span className="text-gray-400">Leading Brands</span>
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 font-medium" style={{ fontFamily: "var(--font-figtree)" }}>
-              Collaborating with top property owners, commercial hubs, and hospitality chains across India.
-            </p>
-          </motion.div>
 
-          {/* Continuous Infinite Auto-Scrolling Logo Marquee Reel */}
-          <div className="relative w-full overflow-hidden bg-white/60 border border-gray-200/80 py-6 rounded-3xl shadow-sm">
-            <div className="marquee-track flex gap-8">
-              {[...brandPartners, ...brandPartners, ...brandPartners].map((label, idx) => (
-                <div 
-                  key={idx} 
-                  className="bg-white border border-gray-200/80 px-8 py-4 rounded-2xl flex items-center gap-3 shrink-0 shadow-sm"
-                >
-                  <Building2 size={20} className="text-[#005F73]" />
-                  <span className="text-sm font-bold text-gray-800 tracking-wide whitespace-nowrap" style={{ fontFamily: "var(--font-figtree)" }}>
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* SECTION 6: "Curious, but have questions?" CTA (WordReveal Typography Animation) */}
         <section className="max-w-7xl mx-auto mb-32">
