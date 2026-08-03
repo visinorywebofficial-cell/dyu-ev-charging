@@ -24,7 +24,7 @@ export function FrameScrubSection({
   const currentFrameRef = useRef(0);
   const targetFrameRef = useRef(0);
   const renderedFrameRef = useRef(0);
-  const [shouldLoadFrames, setShouldLoadFrames] = useState(false);
+  const [shouldLoadFrames, setShouldLoadFrames] = useState(true);
 
   const getFrameSrc = (index: number): string => {
     const padded = String(index).padStart(3, "0");
@@ -145,7 +145,7 @@ export function FrameScrubSection({
         img.src = getFrameSrc(idx + 1);
         img.onload = () => {
           framesRef.current[idx] = img;
-          if (idx === 0) drawFrame(0);
+          if (idx === 0 || idx === Math.round(targetFrameRef.current)) drawFrame(idx);
         };
       }
       if (batchIndex < totalFrames) {
