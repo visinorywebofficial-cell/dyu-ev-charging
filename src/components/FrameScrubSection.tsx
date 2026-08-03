@@ -14,8 +14,8 @@ interface FrameScrubSectionProps {
 }
 
 export function FrameScrubSection({
-  totalFrames = 280,
-  framePathPrefix = "/dyu-frames-280",
+  totalFrames = 269,
+  framePathPrefix = "/dyu-frames-269",
   maxMobileCropRatio = 0.05
 }: FrameScrubSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
