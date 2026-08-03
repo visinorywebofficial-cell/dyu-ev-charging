@@ -79,9 +79,9 @@ const faqs = [
 ];
 
 const testimonials = [
-  { name: "Rohit M", location: "Delhi", date: "26 Oct 2025", rating: 5, text: "Build quality is excellent and charging has been smooth. The DYU app makes it super easy to manage everything remotely." },
-  { name: "Sneha S", location: "Mumbai", date: "16 Feb 2026", rating: 4, text: "Installation was done quickly after the site visit. The charger looks modern and it's very convenient to manage from the app." },
-  { name: "Sanjay B", location: "Delhi", date: "02 Mar 2026", rating: 5, text: "Great backup charger and especially useful for people who travel frequently. Highly recommended for peace of mind while traveling." },
+  { name: "Rohit M", location: "Hyderabad", date: "26 Oct 2025", rating: 5, text: "Build quality is excellent and charging has been smooth. The DYU app makes it super easy to manage everything remotely." },
+  { name: "Ananya R", location: "Vijayawada", date: "14 Jan 2026", rating: 5, text: "Extremely reliable charger! Fast delivery and great customer support. Highly recommended for EV owners." },
+  { name: "Sanjay B", location: "Secunderabad", date: "02 Mar 2026", rating: 5, text: "Great backup charger and especially useful for people who travel frequently. Highly recommended for peace of mind while traveling." },
   { name: "Sudarshan", location: "Bangalore", date: "26 Mar 2026", rating: 5, text: "Excellent portable charger with adjustable amperage from 6A to 16A. This helps in balancing the battery pack perfectly." },
 ];
 

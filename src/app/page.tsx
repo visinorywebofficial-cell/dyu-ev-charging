@@ -318,34 +318,15 @@ export default function HomePage() {
           </div>
         </div>
 
-          {/* Stats row with white borders and permanent crisp white text */}
-          <div
-            style={{
-              borderTop: '1px solid rgba(255,255,255,0.3)',
-              borderBottom: '1px solid rgba(255,255,255,0.3)',
-              marginTop: '80px',
-              backgroundColor: 'rgba(0,0,0,0.25)',
-              backdropFilter: 'blur(8px)',
-            }}
-            className="grid grid-cols-2 md:grid-cols-4 relative z-20"
-          >
+          {/* Stats row without box shapes or borders - crisp white numbers and text */}
+          <div className="grid grid-cols-2 md:grid-cols-4 relative z-20 mt-16 max-w-6xl mx-auto px-4 gap-8">
             {[
               { value: 10000, suffix: '+', label: 'EV Chargers' },
               { value: 1014, suffix: '+', label: 'Cities Across India' },
               { value: 99, suffix: '%', label: 'Uptime Reliability' },
               { value: 100, suffix: ' Cr+', label: 'KM Powered' },
             ].map((stat, i) => (
-              <div key={i} 
-                className={`p-6 md:p-10 text-center border-white/30 transition-colors duration-300 ${
-                  i % 2 === 0 ? 'border-r' : ''
-                } ${
-                  i < 3 ? 'md:border-r' : ''
-                } ${
-                  i < 2 ? 'border-b md:border-b-0' : ''
-                }`}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'none')}
-              >
+              <div key={i} className="text-center py-4">
                 <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 800, color: '#ffffff', lineHeight: 1, textShadow: '0 4px 12px rgba(0,0,0,0.9)' }}>
                   <CountUp value={stat.value} suffix={stat.suffix} />
                 </div>
@@ -397,14 +378,14 @@ export default function HomePage() {
               description: "Nectar home EV chargers 7.4kW, 11kW, 22kW. Portable 3.3kW & 7.4kW. Safe overnight charging at home or office.",
               bgColor: "#002B36",
               textColor: "#FFFFFF",
-              image: "/images/ev-vs-ice.jpg"
+              image: "/images/home-charging-split-1.jpg"
             },
             {
               title: "DC Fast Charging",
               description: "Configurable DC Fast Chargers 60kW to 360kW. Built for highways, commercial hubs, and fleets across India.",
               bgColor: "#002B36",
               textColor: "#FFFFFF",
-              image: "/images/dyu_charger_cluster.png"
+              image: "/images/home-charging-split-2.jpg"
             },
             {
               title: "Public Network",

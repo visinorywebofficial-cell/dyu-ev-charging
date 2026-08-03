@@ -264,9 +264,6 @@ export function Navbar() {
               <ShoppingBag size={14} />
               Shop
             </Link>
-            <Link href="/ev-charging-station-franchise" className="hidden md:inline-flex btn-primary" style={{ padding: '8px 16px', fontSize: '13px' }}>
-              Get Franchise →
-            </Link>
             <button 
               className="md:hidden flex items-center justify-center p-2 rounded-lg" 
               onClick={() => setIsOpen(!isOpen)}

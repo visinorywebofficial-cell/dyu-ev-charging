@@ -103,19 +103,6 @@ export default function ContactUsPage() {
             {/* Info Blocks */}
             <div className="space-y-6">
               
-              {/* Address */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 shrink-0 bg-[var(--color-stone-mist)] rounded-full flex items-center justify-center border border-[var(--color-midnight-ink)]">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold uppercase tracking-widest text-sm text-[var(--color-smoke)] mb-1">Reg. Address</h3>
-                  <p className="font-medium text-lg leading-snug">
-                    h: no: 19-83, Dilsukhnagar,<br/>
-                    Hyderabad 500069
-                  </p>
-                </div>
-              </div>
 
               {/* Contact Us */}
               <div className="flex items-start gap-4">

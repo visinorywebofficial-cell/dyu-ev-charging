@@ -143,18 +143,9 @@ export default function RootLayout({
                   </div>
                 </div>
 
-                {/* Registered HQ Address Card Box */}
+                {/* Contact Card Box */}
                 <div className="bg-[#001F27] border border-white/10 rounded-2xl p-5 mt-2 flex flex-col gap-2.5 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#005F73]" />
-                    <h4 className="text-white font-extrabold text-base font-['Gilroy'] tracking-wide">
-                      Registered HQ Address
-                    </h4>
-                  </div>
-                  <p className="text-gray-300 text-sm leading-relaxed font-medium">
-                    h: no: 19-83, Dilsukhnagar, Hyderabad 500069
-                  </p>
-                  <div className="flex flex-col gap-1 pt-2 border-t border-white/10 text-xs text-gray-400 font-medium">
+                  <div className="flex flex-col gap-1 text-xs text-gray-400 font-medium">
                     <p><strong className="text-gray-200">Phone:</strong> +91 99490 55516</p>
                     <p><strong className="text-gray-200">Email:</strong> sayhi@dyu.co.in</p>
                     <p><strong className="text-gray-200">Working Hours:</strong> 10am to 6pm</p>

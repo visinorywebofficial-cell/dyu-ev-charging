@@ -358,7 +358,7 @@ export default function EvChargingAppPage() {
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-[#222222] font-bold text-xl">R</div>
                   <div>
                     <h4 className="font-extrabold text-[#222222]">Rajeshbabu Dodda</h4>
-                    <p className="text-sm text-[#888888] font-medium">Gurugram</p>
+                    <p className="text-sm text-[#888888] font-medium">Hyderabad</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-4 text-yellow-500">
@@ -371,7 +371,7 @@ export default function EvChargingAppPage() {
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-[#222222] font-bold text-xl">S</div>
                   <div>
                     <h4 className="font-extrabold text-[#222222]">Sohan Patel</h4>
-                    <p className="text-sm text-[#888888] font-medium">Jaipur</p>
+                    <p className="text-sm text-[#888888] font-medium">Secunderabad</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-4 text-yellow-500">
@@ -384,7 +384,7 @@ export default function EvChargingAppPage() {
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-[#222222] font-bold text-xl">M</div>
                   <div>
                     <h4 className="font-extrabold text-[#222222]">Manish Saran</h4>
-                    <p className="text-sm text-[#888888] font-medium">Delhi</p>
+                    <p className="text-sm text-[#888888] font-medium">Cyberabad, Hyderabad</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-4 text-yellow-500">

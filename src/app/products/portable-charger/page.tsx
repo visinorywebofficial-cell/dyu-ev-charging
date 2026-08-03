@@ -279,7 +279,7 @@ export default function PortableChargerPage() {
               {[
                 {
                   name: "Aarav Sharma",
-                  location: "Delhi",
+                  location: "Hyderabad",
                   quote: "This is a great backup charger and especially useful for people who travel frequently or don't always have access to a dedicated charging point."
                 },
                 {
