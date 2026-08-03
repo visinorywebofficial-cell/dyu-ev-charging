@@ -228,8 +228,8 @@ export default function AdWallPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="flex flex-col gap-2 mb-8 text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1]"
           >
-            <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">Reach Millions of High-Intent</span>
-            <span className="text-white font-extrabold drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">EV Drivers Across India</span>
+            <span className="text-white">Reach Millions of High-Intent</span>
+            <span className="text-white font-extrabold">EV Drivers Across India</span>
           </motion.h1>
 
           <motion.p 
@@ -237,7 +237,7 @@ export default function AdWallPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl font-bold text-white max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            className="text-xl md:text-2xl font-bold text-white max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Position your brand directly in front of affluent EV owners during 30-45 minute captive charging sessions across highways, retail hubs, and urban centers.
           </motion.p>
@@ -630,7 +630,7 @@ export default function AdWallPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-gray-300 font-medium mt-4"
+              className="text-lg text-white font-medium mt-4"
             >
               Hover or touch any card below to reveal the live charger campaign image.
             </motion.p>
