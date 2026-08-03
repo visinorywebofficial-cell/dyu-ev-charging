@@ -163,8 +163,8 @@ export default function PartnerWithUsPage() {
   return (
     <main className="min-h-screen bg-[#F1EFE1] text-[#222222]">
       
-      {/* SECTION 1: Hero Section (Frame Scrub) */}
-      <FrameScrubSection totalFrames={269} framePathPrefix="/dyu-frames-269" />
+      {/* SECTION 1: Black Blank Hero Section */}
+      <section className="w-full h-[50vh] md:h-[65vh] bg-black relative" />
 
       {/* Main Content Container */}
       <div className="pt-16 pb-20 px-4 md:px-8">
