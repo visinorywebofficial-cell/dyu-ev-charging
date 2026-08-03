@@ -132,7 +132,7 @@ export default function FranchisePage() {
   const currentCalcData = calculatorData[selectedCharger];
 
   return (
-    <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen relative font-['Inter'] bg-[#001E2B] text-white">
+    <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen relative font-['Inter'] bg-[#F1EFE1] text-[#222222]">
       {/* Dark background only - no video */}
 
       <main className="pt-24 pb-20 relative z-10">

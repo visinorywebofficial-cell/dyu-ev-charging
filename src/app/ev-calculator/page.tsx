@@ -27,7 +27,7 @@ export default function EVCalculatorPage() {
   const treesAbsorbed = Math.round(Number(co2Prevented) / 21);
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-[#001E2B] text-white">
+    <div className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
       
       
       {/* Dark background only - no video */}
