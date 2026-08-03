@@ -60,7 +60,7 @@ export default function FAQPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F1EFE1] text-[#222222] pt-32 pb-24 px-4 md:px-8">
+    <main className="min-h-screen bg-white text-[#222222] pt-32 pb-24 px-4 md:px-8">
       
       {/* Header Section */}
       <section className="max-w-4xl mx-auto mb-16 text-center">
@@ -139,7 +139,7 @@ export default function FAQPage() {
 
       {/* Still Have Questions CTA */}
       <section className="max-w-4xl mx-auto mt-24 text-center">
-        <div className="dark-card bg-[#002B36] text-[#F1EFE1] p-12 rounded-[2rem] flex flex-col items-center border border-[#005F73]/20">
+        <div className="dark-card bg-[#002B36] text-[#FFFFFF] p-12 rounded-[2rem] flex flex-col items-center border border-[#005F73]/20">
           <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
             <span className="text-white">Still have</span>
             <span className="text-white italic">questions?</span>

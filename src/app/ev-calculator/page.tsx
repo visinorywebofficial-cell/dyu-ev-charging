@@ -27,7 +27,7 @@ export default function EVCalculatorPage() {
   const treesAbsorbed = Math.round(Number(co2Prevented) / 21);
 
   return (
-    <div className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
+    <div className="min-h-screen relative font-['Figtree'] bg-white text-[#222222]">
       
       
       {/* Dark background only - no video */}
@@ -226,7 +226,7 @@ export default function EVCalculatorPage() {
               {/* Results */}
               <div className="space-y-6 flex flex-col justify-center">
                 <div className="bg-white shadow-xl backdrop-blur-lg rounded-3xl p-8 md:p-10 flex items-center gap-8 border border-gray-200">
-                  <div className="w-20 h-20 bg-[#F1EFE1] rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
+                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
                     <Wind size={40} />
                   </div>
                   <div>
@@ -236,7 +236,7 @@ export default function EVCalculatorPage() {
                 </div>
                 
                 <div className="bg-white shadow-xl backdrop-blur-lg rounded-3xl p-8 md:p-10 flex items-center gap-8 border border-gray-200">
-                  <div className="w-20 h-20 bg-[#F1EFE1] rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
+                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
                     <CircleDollarSign size={40} />
                   </div>
                   <div>
@@ -246,7 +246,7 @@ export default function EVCalculatorPage() {
                 </div>
                 
                 <div className="bg-white shadow-xl backdrop-blur-lg rounded-3xl p-8 md:p-10 flex items-center gap-8 border border-gray-200">
-                  <div className="w-20 h-20 bg-[#F1EFE1] rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
+                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-[#222222] shrink-0">
                     <TreePine size={40} />
                   </div>
                   <div>

@@ -161,7 +161,7 @@ export default function PartnerWithUsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1EFE1] text-[#222222]">
+    <main className="min-h-screen bg-white text-[#222222]">
       
       {/* SECTION 1: Black Blank Hero Section */}
       <section className="w-full h-[50vh] md:h-[65vh] bg-black relative" />
@@ -224,7 +224,7 @@ export default function PartnerWithUsPage() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.75, delay: idx * 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#002B36] text-[#F1EFE1] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px] overflow-hidden"
+                className="bg-[#002B36] text-[#FFFFFF] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px] overflow-hidden"
               >
                 {/* 3D Icon (80px - 104px) */}
                 <div className="mb-3 h-20 md:h-26 w-full flex items-center justify-start">
@@ -297,7 +297,7 @@ export default function PartnerWithUsPage() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.75, delay: idx * 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#002B36] text-[#F1EFE1] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px]"
+                className="bg-[#002B36] text-[#FFFFFF] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px]"
               >
                 <div className="flex justify-between items-start mb-3">
                   <div className="h-20 md:h-26 w-3/4 flex items-center justify-start">
@@ -345,10 +345,10 @@ export default function PartnerWithUsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#002B36] text-[#F1EFE1] p-8 md:p-14 rounded-[2.5rem] border border-[#005F73]/30 shadow-2xl overflow-hidden"
+            className="bg-[#002B36] text-[#FFFFFF] p-8 md:p-14 rounded-[2.5rem] border border-[#005F73]/30 shadow-2xl overflow-hidden"
           >
             <div className="max-w-3xl mb-12">
-              <span className="text-xs font-bold tracking-widest text-[#F1EFE1] uppercase bg-white/10 px-4 py-1.5 rounded-full inline-block mb-4" style={{ fontFamily: "var(--font-figtree)" }}>
+              <span className="text-xs font-bold tracking-widest text-[#FFFFFF] uppercase bg-white/10 px-4 py-1.5 rounded-full inline-block mb-4" style={{ fontFamily: "var(--font-figtree)" }}>
                 Financing Support
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight" style={{ fontFamily: "'Gilroy', sans-serif" }}>
@@ -406,7 +406,7 @@ export default function PartnerWithUsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#222222] text-[#F1EFE1] p-8 md:p-14 rounded-[2.5rem] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl"
+            className="bg-[#222222] text-[#FFFFFF] p-8 md:p-14 rounded-[2.5rem] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl"
           >
             <div className="lg:col-span-7 flex flex-col gap-6">
               <span className="text-xs font-bold tracking-widest text-gray-400 uppercase border-b-2 border-gray-500 pb-2 w-max" style={{ fontFamily: "var(--font-figtree)" }}>
@@ -570,7 +570,7 @@ export default function PartnerWithUsPage() {
                 <label className="font-bold text-sm tracking-widest text-gray-400" style={{ fontFamily: "var(--font-figtree)" }}>First Name *</label>
                 <input 
                   type="text" 
-                  className="bg-transparent border-2 border-[#444] text-[#F1EFE1] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
+                  className="bg-transparent border-2 border-[#444] text-[#FFFFFF] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
                   required
                 />
               </motion.div>
@@ -584,7 +584,7 @@ export default function PartnerWithUsPage() {
                 <label className="font-bold text-sm tracking-widest text-gray-400" style={{ fontFamily: "var(--font-figtree)" }}>Last Name *</label>
                 <input 
                   type="text" 
-                  className="bg-transparent border-2 border-[#444] text-[#F1EFE1] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
+                  className="bg-transparent border-2 border-[#444] text-[#FFFFFF] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
                   required
                 />
               </motion.div>
@@ -600,7 +600,7 @@ export default function PartnerWithUsPage() {
               <label className="font-bold text-sm tracking-widest text-gray-400" style={{ fontFamily: "var(--font-figtree)" }}>Email Address *</label>
               <input 
                 type="email" 
-                className="bg-transparent border-2 border-[#444] text-[#F1EFE1] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
+                className="bg-transparent border-2 border-[#444] text-[#FFFFFF] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
                 required
               />
             </motion.div>
@@ -615,7 +615,7 @@ export default function PartnerWithUsPage() {
               <label className="font-bold text-sm tracking-widest text-gray-400" style={{ fontFamily: "var(--font-figtree)" }}>Phone Number *</label>
               <input 
                 type="tel" 
-                className="bg-transparent border-2 border-[#444] text-[#F1EFE1] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
+                className="bg-transparent border-2 border-[#444] text-[#FFFFFF] p-4 focus:outline-none focus:border-gray-400 font-medium rounded-xl"
                 required
               />
             </motion.div>
@@ -630,7 +630,7 @@ export default function PartnerWithUsPage() {
               <label className="font-bold text-sm tracking-widest text-gray-400" style={{ fontFamily: "var(--font-figtree)" }}>Message / Inquiry Details</label>
               <textarea 
                 rows={4}
-                className="bg-transparent border-2 border-[#444] text-[#F1EFE1] p-4 focus:outline-none focus:border-gray-400 font-medium resize-none rounded-xl"
+                className="bg-transparent border-2 border-[#444] text-[#FFFFFF] p-4 focus:outline-none focus:border-gray-400 font-medium resize-none rounded-xl"
               ></textarea>
             </motion.div>
 

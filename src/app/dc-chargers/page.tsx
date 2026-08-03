@@ -148,7 +148,7 @@ export default function DCChargersPage() {
       </div>
 
       {/* Why Choose Section */}
-      <section className="py-24 bg-[#F1EFE1]">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
@@ -209,7 +209,7 @@ export default function DCChargersPage() {
       </section>
 
       {/* Business Models Section */}
-      <section className="py-24 bg-[#F1EFE1] text-[#222222] relative overflow-hidden">
+      <section className="py-24 bg-white text-[#222222] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">

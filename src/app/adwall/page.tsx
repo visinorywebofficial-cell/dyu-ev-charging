@@ -999,7 +999,7 @@ export default function AdWallPage() {
           SECTION 9: READY TO TAKE THE NEXT STEP? (FORM)
           (DEEP PETROL BLUE CONTAINER + WHITE TEXT)
       ─────────────────────────────────────────────────────────────── */}
-      <section id="adwall-form" className="py-24 bg-[#F1EFE1] text-[#222222] relative border-t border-[#222222]/20">
+      <section id="adwall-form" className="py-24 bg-white text-[#222222] relative border-t border-[#222222]/20">
         <div className="container mx-auto px-4 max-w-4xl">
           
           <div className="text-center mb-16">
@@ -1035,20 +1035,20 @@ export default function AdWallPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="bg-[#1A1A1A] border-2 border-[#F1EFE1]/40 rounded-3xl p-8 md:p-12 shadow-2xl"
+            className="bg-[#1A1A1A] border-2 border-[#FFFFFF]/40 rounded-3xl p-8 md:p-12 shadow-2xl"
           >
             {formSubmitted ? (
               <div className="text-center py-12 space-y-6">
-                <div className="w-20 h-20 bg-[#F1EFE1]/20 rounded-full flex items-center justify-center mx-auto text-[#F1EFE1]">
+                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto text-[#FFFFFF]">
                   <CheckCircle2 size={48} />
                 </div>
                 <h3 className="text-3xl font-extrabold text-white">Thank You for Getting in Touch!</h3>
-                <p className="text-[#F1EFE1] text-lg max-w-md mx-auto">
+                <p className="text-[#FFFFFF] text-lg max-w-md mx-auto">
                   Our advertising strategy team has received your message and will get back to you within 24 hours.
                 </p>
                 <button 
                   onClick={() => setFormSubmitted(false)}
-                  className="px-8 py-3 bg-[#F1EFE1] hover:bg-white text-[#222222] font-bold rounded-xl transition-all shadow-md"
+                  className="px-8 py-3 bg-white hover:bg-white text-[#222222] font-bold rounded-xl transition-all shadow-md"
                 >
                   Submit Another Inquiry
                 </button>
@@ -1058,50 +1058,50 @@ export default function AdWallPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">First Name *</label>
+                    <label className="block text-sm font-bold text-[#FFFFFF] mb-2">First Name *</label>
                     <input 
                       type="text" 
                       required
                       placeholder="Rajesh"
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="w-full px-5 py-4 bg-[#F1EFE1]/10 border border-[#F1EFE1]/40 rounded-xl text-white placeholder-[#F1EFE1]/50 focus:outline-none focus:border-[#F1EFE1] focus:bg-[#F1EFE1]/20 transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#FFFFFF]/40 rounded-xl text-white placeholder-[#FFFFFF]/50 focus:outline-none focus:border-[#FFFFFF] focus:bg-white/20 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Last Name *</label>
+                    <label className="block text-sm font-bold text-[#FFFFFF] mb-2">Last Name *</label>
                     <input 
                       type="text" 
                       required
                       placeholder="Sharma"
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="w-full px-5 py-4 bg-[#F1EFE1]/10 border border-[#F1EFE1]/40 rounded-xl text-white placeholder-[#F1EFE1]/50 focus:outline-none focus:border-[#F1EFE1] focus:bg-[#F1EFE1]/20 transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#FFFFFF]/40 rounded-xl text-white placeholder-[#FFFFFF]/50 focus:outline-none focus:border-[#FFFFFF] focus:bg-white/20 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Work Email *</label>
+                    <label className="block text-sm font-bold text-[#FFFFFF] mb-2">Work Email *</label>
                     <input 
                       type="email" 
                       required
                       placeholder="rajesh@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-5 py-4 bg-[#F1EFE1]/10 border border-[#F1EFE1]/40 rounded-xl text-white placeholder-[#F1EFE1]/50 focus:outline-none focus:border-[#F1EFE1] focus:bg-[#F1EFE1]/20 transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#FFFFFF]/40 rounded-xl text-white placeholder-[#FFFFFF]/50 focus:outline-none focus:border-[#FFFFFF] focus:bg-white/20 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-[#F1EFE1] mb-2">Phone Number *</label>
+                    <label className="block text-sm font-bold text-[#FFFFFF] mb-2">Phone Number *</label>
                     <input 
                       type="tel" 
                       required
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-5 py-4 bg-[#F1EFE1]/10 border border-[#F1EFE1]/40 rounded-xl text-white placeholder-[#F1EFE1]/50 focus:outline-none focus:border-[#F1EFE1] focus:bg-[#F1EFE1]/20 transition-colors"
+                      className="w-full px-5 py-4 bg-white/10 border border-[#FFFFFF]/40 rounded-xl text-white placeholder-[#FFFFFF]/50 focus:outline-none focus:border-[#FFFFFF] focus:bg-white/20 transition-colors"
                     />
                   </div>
                 </div>

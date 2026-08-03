@@ -59,7 +59,7 @@ export default function EvChargingAppPage() {
   });
 
   return (
-    <div ref={containerRef} className="min-h-screen relative font-['Figtree'] bg-[#F1EFE1] text-[#222222]">
+    <div ref={containerRef} className="min-h-screen relative font-['Figtree'] bg-white text-[#222222]">
       {/* Dark background only - no video */}
 
       <main className="pt-24 pb-20 relative z-10">

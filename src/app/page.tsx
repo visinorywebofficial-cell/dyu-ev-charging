@@ -458,7 +458,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#F1EFE1] font-semibold text-base tracking-tight">Cleaner Air</p>
+                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Cleaner Air</p>
                 </div>
               </div>
 
@@ -471,7 +471,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#F1EFE1] font-semibold text-base tracking-tight">Green Jobs</p>
+                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Green Jobs</p>
                 </div>
               </div>
 
@@ -484,7 +484,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#F1EFE1] font-semibold text-base tracking-tight">Secure Network</p>
+                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Secure Network</p>
                 </div>
               </div>
 
@@ -497,7 +497,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#F1EFE1] font-semibold text-base tracking-tight">Smart Ops</p>
+                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Smart Ops</p>
                 </div>
               </div>
 
