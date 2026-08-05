@@ -126,7 +126,7 @@ export default function EvChargingAppPage() {
                 <p className="text-[#666666] font-medium">EVs Charged Daily</p>
               </div>
               <div className="bg-white/70 backdrop-blur-sm border border-[#222222]/10 p-6 rounded-2xl shadow-md flex flex-col justify-center transition-all hover:shadow-xl hover:-translate-y-1">
-                <h3 className="text-4xl font-black text-[#222222] mb-2 font-['Gilroy'] flex items-center justify-center gap-2">4.8 <Star className="w-8 h-8 text-yellow-500 fill-yellow-500" /></h3>
+                <h3 className="text-4xl font-black text-[#222222] mb-2 font-['Gilroy'] flex items-center justify-center gap-2">4.8 <Star className="w-8 h-8 text-[#FFB800] fill-[#FFB800]" /></h3>
                 <p className="text-[#666666] font-medium">Rated By EV Drivers</p>
               </div>
             </motion.div>
@@ -361,8 +361,8 @@ export default function EvChargingAppPage() {
                     <p className="text-sm text-[#888888] font-medium">Hyderabad</p>
                   </div>
                 </div>
-                <div className="flex gap-1 mb-4 text-yellow-500">
-                  <Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" />
+                <div className="flex gap-1 mb-4 text-[#FFD700]">
+                  <Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" />
                 </div>
                 <p className="text-[#666666]">Best charging network in India. The app is easy to use, and the interface is good. The prices are low, and the machines are reliable.</p>
               </div>
@@ -374,8 +374,8 @@ export default function EvChargingAppPage() {
                     <p className="text-sm text-[#888888] font-medium">Secunderabad</p>
                   </div>
                 </div>
-                <div className="flex gap-1 mb-4 text-yellow-500">
-                  <Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" />
+                <div className="flex gap-1 mb-4 text-[#FFD700]">
+                  <Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" />
                 </div>
                 <p className="text-[#666666]">DYU is the best charging company... The best thing about their charger is that it immediately starts charging without any hassle.</p>
               </div>
@@ -387,8 +387,8 @@ export default function EvChargingAppPage() {
                     <p className="text-sm text-[#888888] font-medium">Cyberabad, Hyderabad</p>
                   </div>
                 </div>
-                <div className="flex gap-1 mb-4 text-yellow-500">
-                  <Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" /><Star className="w-4 h-4 fill-yellow-500" />
+                <div className="flex gap-1 mb-4 text-[#FFD700]">
+                  <Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" /><Star className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" />
                 </div>
                 <p className="text-[#666666]">One of the most trusted charging apps and station networks I've used! Reliable, user-friendly interface with accurate station availability and real-time updates.</p>
               </div>

@@ -114,15 +114,15 @@ export default function PortableChargerPage() {
               className="flex flex-col gap-1 mb-6 tracking-tighter"
               style={{ fontFamily: '"Gilroy", sans-serif', fontSize: 'clamp(36px, 4vw, 56px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em' }}
             >
-              <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">3.3 kW Portable</span>
-              <span className="text-white italic font-extrabold drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">EV Charger</span>
+              <span className="text-[#222222]">3.3 kW Portable</span>
+              <span className="text-[#222222] italic font-extrabold">EV Charger</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-bold text-white max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+              className="text-2xl md:text-3xl font-bold text-[#222222] max-w-2xl mx-auto mb-10 leading-relaxed"
             >
               Simple charging, wherever you need it. Just plug into any standard 3-pin socket and power up your electric vehicle safely.
             </motion.p>
@@ -149,10 +149,10 @@ export default function PortableChargerPage() {
             <div className="container mx-auto px-4 max-w-5xl h-full flex flex-col justify-center">
               <div className="text-center max-w-3xl mx-auto mb-4 md:mb-8 shrink-0">
                 <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                  <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Key</span>
-                  <span className="text-white italic font-extrabold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Features</span>
+                  <span className="text-[#222222]">Key</span>
+                  <span className="text-[#222222] italic font-extrabold">Features</span>
                 </h2>
-                <p className="text-sm md:text-xl font-bold text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                <p className="text-sm md:text-xl font-bold text-[#444444]">
                   Scroll down slowly to reveal. Designed for reliability and ultimate convenience.
                 </p>
               </div>
@@ -270,8 +270,8 @@ export default function PortableChargerPage() {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">What Our Users</span>
-                <span className="text-white italic font-extrabold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Say</span>
+                <span className="text-[#222222]">What Our Users</span>
+                <span className="text-[#222222] italic font-extrabold">Say</span>
               </h2>
             </div>
 
@@ -303,7 +303,7 @@ export default function PortableChargerPage() {
                 >
                   <Quote className="absolute top-6 right-6 w-10 h-10 text-white/10" />
                   <div className="flex gap-1 mb-5">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-white text-white" />)}
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-[#FFD700] text-[#FFD700]" />)}
                   </div>
                   <p className="text-base font-medium text-gray-300 mb-8 italic relative z-10 leading-relaxed grow">
                     "{testimonial.quote}"
@@ -328,10 +328,10 @@ export default function PortableChargerPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="bg-[#111111]/95 border border-white/20 backdrop-blur-2xl rounded-3xl p-12 text-center shadow-2xl">
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Ready to Charge</span>
-                <span className="text-[#F97316] italic font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Anywhere?</span>
+                <span className="text-white">Ready to Charge</span>
+                <span className="text-[#F97316] italic font-bold">Anywhere?</span>
               </h2>
-              <p className="text-lg md:text-xl font-medium text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <p className="text-lg md:text-xl font-medium text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Carry it with you or keep it at home - just plug in and charge whenever you need it. No setup, no extra steps required.
               </p>
               <button className="px-9 py-4 bg-white text-black rounded-xl font-extrabold text-lg hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg">

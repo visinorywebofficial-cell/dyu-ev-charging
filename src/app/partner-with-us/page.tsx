@@ -226,12 +226,12 @@ export default function PartnerWithUsPage() {
                 transition={{ duration: 0.75, delay: idx * 0.18, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-[#002B36] text-[#FFFFFF] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px] overflow-hidden"
               >
-                {/* 3D Icon (80px - 104px) */}
-                <div className="mb-3 h-20 md:h-26 w-full flex items-center justify-start">
+                {/* 3D Icon (resized to small-medium) */}
+                <div className="mb-3 h-12 md:h-14 w-full flex items-center justify-start">
                   <img 
                     src={stat.imgSrc} 
                     alt={stat.title} 
-                    className="w-20 h-20 md:w-26 md:h-26 object-contain border-0 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" 
+                    className="w-12 h-12 md:w-14 md:h-14 object-contain border-0 filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" 
                   />
                 </div>
 
@@ -300,11 +300,11 @@ export default function PartnerWithUsPage() {
                 className="bg-[#002B36] text-[#FFFFFF] p-5 md:p-6 rounded-[1.75rem] border border-[#005F73]/30 shadow-2xl flex flex-col justify-between min-h-[210px] md:min-h-[220px]"
               >
                 <div className="flex justify-between items-start mb-3">
-                  <div className="h-20 md:h-26 w-3/4 flex items-center justify-start">
+                  <div className="h-12 md:h-14 w-3/4 flex items-center justify-start">
                     <img 
                       src={panel.imgSrc} 
                       alt={panel.title} 
-                      className="w-20 h-20 md:w-26 md:h-26 object-contain border-0 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" 
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain border-0 filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" 
                     />
                   </div>
                   <span className="text-lg font-bold font-mono text-white/40">{panel.num}</span>
@@ -376,11 +376,11 @@ export default function PartnerWithUsPage() {
                   transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="bg-[#002B36] border border-[#005F73]/40 p-5 md:p-6 rounded-[1.75rem] shadow-xl flex flex-col justify-between min-h-[210px] md:min-h-[220px]"
                 >
-                  <div className="mb-3 h-20 md:h-26 w-full flex items-center justify-start">
+                  <div className="mb-3 h-12 md:h-14 w-full flex items-center justify-start">
                     <img 
                       src={item.imgSrc} 
                       alt={item.title} 
-                      className="w-20 h-20 md:w-26 md:h-26 object-contain border-0 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" 
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain border-0 filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" 
                     />
                   </div>
                   <div>

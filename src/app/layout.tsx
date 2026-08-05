@@ -70,8 +70,8 @@ export default function RootLayout({
                 {[
                   { heading: 'Solutions', links: [{ name: 'Mobile App', href: '/ev-charging-app' }, { name: 'CSMS', href: '/ev-charging-software/csms' }, { name: 'EVlinq', href: '/ev-charging-software/evlinq' }] },
                   { heading: 'Products', links: [{ name: 'Level 3 (DC Chargers)', href: '/dc-chargers' }, { name: 'Level 2 (AC Chargers)', href: '/ac-chargers' }, { name: 'Advertise With Us', href: '/adwall' }, { name: 'Portable Charger', href: '/products/portable-charger' }] },
-                  { heading: 'Discover', links: [{ name: 'EV Calculator', href: '/ev-calculator' }, { name: 'Savings Calculator', href: '/ev-calculator' }] },
-                  { heading: 'Company', links: [{ name: 'About Us', href: '/about-us' }, { name: 'Contact Us', href: '/contact-us' }, { name: 'Partner With Us', href: '/partner-with-us' }, { name: 'Franchise', href: '/ev-charging-station-franchise' }] },
+                  { heading: 'Discover', links: [{ name: 'EV Calculator', href: '/ev-calculator' }, { name: 'Franchise', href: '/ev-charging-station-franchise' }, { name: 'Partner With Us', href: '/partner-with-us' }] },
+                  { heading: 'Company', links: [{ name: 'About Us', href: '/about-us' }, { name: 'Contact Us', href: '/contact-us' }] },
                 ].map((col) => (
                   <div key={col.heading}>
                     <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '12px', fontWeight: 700, color: '#737373', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>

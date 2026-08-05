@@ -321,16 +321,16 @@ export default function HomePage() {
           {/* Stats row without box shapes or borders - crisp white numbers and text */}
           <div className="grid grid-cols-2 md:grid-cols-4 relative z-20 mt-16 max-w-6xl mx-auto px-4 gap-8">
             {[
-              { value: 10000, suffix: '+', label: 'EV Chargers' },
-              { value: 1014, suffix: '+', label: 'Cities Across India' },
+              { value: 834, suffix: '+', label: 'EV Chargers' },
+              { value: 833, suffix: '+', label: 'Cities Across India' },
               { value: 99, suffix: '%', label: 'Uptime Reliability' },
               { value: 100, suffix: ' Cr+', label: 'KM Powered' },
             ].map((stat, i) => (
               <div key={i} className="text-center py-4">
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 800, color: '#ffffff', lineHeight: 1, textShadow: '0 4px 12px rgba(0,0,0,0.9)' }}>
+                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 800, color: '#ffffff', lineHeight: 1, textShadow: '0 4px 12px rgba(0,0,0,0.9)' }} className="!text-white text-white">
                   <CountUp value={stat.value} suffix={stat.suffix} />
                 </div>
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: '#ffffff', marginTop: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: '#ffffff', marginTop: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }} className="!text-white text-white">
                   {stat.label}
                 </div>
               </div>

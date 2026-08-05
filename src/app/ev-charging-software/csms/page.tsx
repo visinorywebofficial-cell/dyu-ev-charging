@@ -154,76 +154,58 @@ export default function CSMSPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <Activity className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Real-time monitoring</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Track charger status, performance, and availability across your network.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <Activity className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Real-time monitoring</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Track charger status, performance, and availability across your network.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <IndianRupee className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Revenue Management</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Monitor earnings, pricing, and transactions across all charging stations.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <IndianRupee className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Revenue Management</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Monitor earnings, pricing, and transactions across all charging stations.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <AlertTriangle className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Error & Complaint Management</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Identify issues quickly and resolve user complaints with built-in tools.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <AlertTriangle className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Error & Complaint Management</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Identify issues quickly and resolve user complaints with built-in tools.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <Users className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">User & Admin Management</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Manage user access, roles, and permissions across the platform.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <Users className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">User & Admin Management</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Manage user access, roles, and permissions across the platform.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <BarChart3 className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Reports & Notifications</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Access detailed reports and receive alerts for key activities and issues.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <BarChart3 className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Reports & Notifications</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Access detailed reports and receive alerts for key activities and issues.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <CreditCard className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">T+1 Payment Settlement</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Ensure faster payouts with next-day settlement of transactions.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <CreditCard className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">T+1 Payment Settlement</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Ensure faster payouts with next-day settlement of transactions.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <MonitorPlay className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Dynamic Dashboards</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Visualize network performance and key metrics through customizable dashboards.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <MonitorPlay className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Dynamic Dashboards</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Visualize network performance and key metrics through customizable dashboards.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <Settings className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">OCPI & OCPP Compliant</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Enable standardized communication and interoperability across charging networks.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <Settings className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">OCPI & OCPP Compliant</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Enable standardized communication and interoperability across charging networks.</p>
               </div>
 
-              <div className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <CreditCard className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Payments, Coupons & Invoicing</h3>
-                <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Support multiple payment options, discounts, and automated invoicing.</p>
+              <div className="group bg-[#002B36] hover:bg-white active:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white active:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
+                <CreditCard className="w-8 h-8 text-white group-hover:!text-black group-active:!text-black mb-6 transition-colors duration-300" />
+                <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] group-active:!text-[#222222] transition-colors duration-300">Payments, Coupons & Invoicing</h3>
+                <p className="text-white/90 group-hover:!text-[#444444] group-active:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Support multiple payment options, discounts, and automated invoicing.</p>
               </div>
             </div>
           </div>

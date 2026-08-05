@@ -92,8 +92,8 @@ function StarRating({ count }: { count: number }) {
         <Star
           key={i}
           size={12}
-          fill={i < count ? "#F59E0B" : "none"}
-          color={i < count ? "#F59E0B" : "#D1D5DB"}
+          fill={i < count ? "#FFB800" : "none"}
+          color={i < count ? "#FFB800" : "#D1D5DB"}
         />
       ))}
     </span>

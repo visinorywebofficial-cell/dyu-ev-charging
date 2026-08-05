@@ -190,9 +190,7 @@ export default function EVLinqPage() {
                   transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
                   className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                    <feature.icon className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                  </div>
+                  <feature.icon className="w-8 h-8 text-white group-hover:!text-black mb-6 transition-colors duration-300" />
                   <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">{feature.title}</h3>
                   <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">{feature.desc}</p>
                 </motion.div>
@@ -203,9 +201,7 @@ export default function EVLinqPage() {
                 transition={{ duration: 0.4, delay: 0.6, ease: "easeOut" }}
                 className="group bg-[#002B36] hover:bg-white p-8 rounded-3xl text-white shadow-xl border border-[#005F73]/20 hover:border-white hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer lg:col-span-3 lg:max-w-md lg:mx-auto"
               >
-                <div className="w-14 h-14 bg-white/10 group-hover:bg-[#002B36] rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <Lock className="w-7 h-7 text-white group-hover:text-[#00F0FF] transition-colors duration-300" />
-                </div>
+                <Lock className="w-8 h-8 text-white group-hover:!text-black mb-6 transition-colors duration-300" />
                 <h3 className="text-xl font-bold mb-4 font-['Gilroy'] text-white group-hover:!text-[#222222] transition-colors duration-300">Encrypted data exchange</h3>
                 <p className="text-white/90 group-hover:!text-[#444444] leading-relaxed font-medium transition-colors duration-300">Protect sensitive transactions and user information with enterprise-grade security.</p>
               </motion.div>
