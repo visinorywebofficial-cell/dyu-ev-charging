@@ -40,12 +40,24 @@ export default function RootLayout({
       <body
         suppressHydrationWarning
         style={{
-          backgroundColor: 'var(--color-cream-paper)',
+          backgroundColor: '#ffffff',
           color: 'var(--color-midnight-ink)',
           fontFamily: 'var(--font-body)',
         }}
-        className="min-h-full flex flex-col"
+        className="min-h-full flex flex-col relative"
       >
+        {/* SITE MAINTENANCE OVERLAY (Website Off) */}
+        <div className="fixed inset-0 z-[999999] bg-[#001E2B] text-white flex flex-col items-center justify-center p-6 text-center select-none">
+          <div className="max-w-md mx-auto space-y-6">
+            <div className="text-5xl font-black font-['Gilroy'] tracking-tight text-white">DYU</div>
+            <div className="w-16 h-1 bg-[#00F0FF] mx-auto rounded-full" />
+            <h1 className="text-2xl md:text-3xl font-bold font-['Gilroy'] text-white">Website Temporarily Offline</h1>
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+              DYU EV Charging network website is currently undergo maintenance. We will be back online shortly.
+            </p>
+          </div>
+        </div>
+
         {/* Announcement Banner — Petrol Blue / Deep Ocean */}
         <div className="announcement-banner">
           ⚡ DYU is expanding across India — Secure your EV charging franchise location today →
