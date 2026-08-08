@@ -6,6 +6,8 @@ import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 
+import { MaintenanceGuard } from "@/components/MaintenanceGuard";
+
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-heading',
@@ -23,20 +25,21 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  themeColor: "#001E2B",
 };
 
 export const metadata: Metadata = {
-  title: "DYU — Power, Delivered.",
-  description: "Building the largest network of EV chargers in India. Reliable, fast and accessible charging — anywhere you go.",
+  title: "DYU | Power, Delivered. — EV Charging Network India",
+  description: "Building India's most reliable EV charging network — one station at a time. High-speed DC fast chargers, AC chargers & CSMS software.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={cn("h-full antialiased", "font-sans", plusJakarta.variable, inter.variable)} suppressHydrationWarning>
+    <html lang="en" className={cn(plusJakarta.variable, inter.variable, "antialiased")}>
       <body
         suppressHydrationWarning
         style={{
@@ -46,17 +49,8 @@ export default function RootLayout({
         }}
         className="min-h-full flex flex-col relative"
       >
-        {/* SITE MAINTENANCE OVERLAY (Website Off) */}
-        <div className="fixed inset-0 z-[999999] bg-[#001E2B] text-white flex flex-col items-center justify-center p-6 text-center select-none">
-          <div className="max-w-md mx-auto space-y-6">
-            <div className="text-5xl font-black font-['Gilroy'] tracking-tight text-white">DYU</div>
-            <div className="w-16 h-1 bg-[#00F0FF] mx-auto rounded-full" />
-            <h1 className="text-2xl md:text-3xl font-bold font-['Gilroy'] text-white">Website Temporarily Offline</h1>
-            <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-              DYU EV Charging network website is currently undergo maintenance. We will be back online shortly.
-            </p>
-          </div>
-        </div>
+        {/* PRIVATE MAINTENANCE GUARD (unlocked on laptop/secret key, offline for everyone else) */}
+        <MaintenanceGuard />
 
         {/* Announcement Banner — Petrol Blue / Deep Ocean */}
         <div className="announcement-banner">
