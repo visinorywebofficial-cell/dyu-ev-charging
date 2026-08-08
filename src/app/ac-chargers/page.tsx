@@ -74,7 +74,7 @@ export default function ACChargersPage() {
       {/* Scroll Reveal Sections */}
       <div className="space-y-0 bg-[#F8FBFC]">
           <ScrollRevealSection
-            imageSrc="/images/dyu_ac_charger.jpg"
+            imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1200&auto=format&fit=crop"
             imageAlt="DYU 7.4 kW Home AC Charger"
             title={
               <div className="flex flex-col">

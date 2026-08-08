@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
-import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, Home } from "lucide-react";
+import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, Home, Star } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
@@ -531,6 +531,13 @@ export default function HomePage() {
               >
                 <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', color: 'var(--color-stone-mist)', lineHeight: 1, marginBottom: '16px' }}>"</div>
                 <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', color: 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '24px' }}>{t.text}</p>
+                <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
+                  <Star size={16} fill="#FFB800" color="#FFB800" />
+                  <Star size={16} fill="#FFB800" color="#FFB800" />
+                  <Star size={16} fill="#FFB800" color="#FFB800" />
+                  <Star size={16} fill="#FFB800" color="#FFB800" />
+                  <Star size={16} fill="#FFB800" color="#FFB800" />
+                </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid var(--color-stone-mist)', paddingTop: '20px' }}>
                   <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#222222', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontFamily: 'var(--font-figtree)', fontWeight: 700, fontSize: '14px' }}>
                     {t.name.split(" ").map(n => n[0]).join("")}
