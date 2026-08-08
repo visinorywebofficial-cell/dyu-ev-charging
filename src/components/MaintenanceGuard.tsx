@@ -1,5 +1,5 @@
 "use client";
 
-export function MaintenanceGuard({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export function MaintenanceGuard() {
+  return null;
 }
