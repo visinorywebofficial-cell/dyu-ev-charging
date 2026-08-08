@@ -456,7 +456,7 @@ export default function FranchisePage() {
                   transition={{ delay: idx * 0.1 }}
                   className="dark-card bg-[#002B36] shadow-xl backdrop-blur-md border border-[#005F73]/20 rounded-3xl p-8 relative overflow-hidden group hover:border-white/30 transition-all"
                 >
-                  <div className="text-6xl font-black text-white/5 absolute top-4 right-4 group-hover:scale-110 transition-transform">
+                  <div className="text-6xl font-black text-white/10 absolute top-2 right-4 group-hover:scale-105 transition-transform pointer-events-none select-none">
                     {item.step}
                   </div>
                   <h3 className="text-xl font-extrabold mb-4 text-white relative z-10">{item.title}</h3>
@@ -505,43 +505,58 @@ export default function FranchisePage() {
         {/* MODELS & RANGE */}
         <section className="py-20 relative z-20">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="text-center mb-16">
+              <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+                <span className="text-[#222222]">Choose Your EV Charging</span>
+                <span className="text-[#222222] italic">Business Model & Setup</span>
+              </h2>
+              <p className="text-xl text-[#1F2933] max-w-3xl mx-auto font-medium">
+                Flexible configurations and investment models tailored for commercial spaces, land owners, and fleet operators.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
               
+              {/* Card 1: Investment Range */}
               <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-8"
+                className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-10 flex flex-col justify-between"
               >
-                <div className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-10">
+                <div>
                   <h3 className="text-white font-extrabold mb-2 uppercase tracking-wider text-sm">Investment Range</h3>
                   <p className="text-4xl md:text-5xl font-extrabold text-white mb-4">₹30 Lakhs - ₹3 Crores+</p>
-                  <p className="text-gray-200">Scalable investment starting from ₹30 lakhs</p>
                 </div>
-                
-                <div className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-10">
-                  <h3 className="text-xl font-extrabold text-white mb-6">Station Configurations</h3>
+                <p className="text-gray-200 mt-4">Scalable investment options starting from ₹30 lakhs depending on site capacity and grid requirements.</p>
+              </motion.div>
+              
+              {/* Card 2: Station Configurations */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-10 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="text-white font-extrabold mb-6 uppercase tracking-wider text-sm">Station Configurations</h3>
                   <div className="flex flex-wrap gap-3 mb-6">
                     {["60 kW", "120 kW", "240 kW", "360 kW"].map(kw => (
                       <span key={kw} className="bg-white/10 text-white px-4 py-2 rounded-lg font-extrabold border border-white/20">{kw}</span>
                     ))}
                   </div>
-                  <p className="text-gray-200">Multiple configurations based on your location & usage. Supports 2-20 Parking Bays.</p>
                 </div>
+                <p className="text-gray-200">Multiple fast-charging configurations based on your location & traffic potential. Supports 2-20 parking bays.</p>
               </motion.div>
 
+              {/* Card 3: FOCO */}
               <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-6"
+                className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-8 hover:border-white/30 transition-colors flex flex-col justify-between"
               >
-                <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                  <span className="text-[#222222]">Choose Your EV Charging</span>
-                  <span className="text-[#222222] italic">Business Model</span>
-                </h2>
-                
-                <div className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-2xl p-8 hover:border-white/30 transition-colors">
+                <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-2xl font-extrabold text-white mb-1">FOCO</h3>
@@ -555,10 +570,18 @@ export default function FranchisePage() {
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> DC Fast Charging Stations (60kW - 360kW)</li>
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> Charger deployment & technology by DYU</li>
                   </ul>
-                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
                 </div>
+                <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
+              </motion.div>
 
-                <div className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-2xl p-8 hover:border-white/30 transition-colors">
+              {/* Card 4: Direct */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-8 hover:border-white/30 transition-colors flex flex-col justify-between"
+              >
+                <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-2xl font-extrabold text-white mb-1">Direct</h3>
@@ -572,9 +595,8 @@ export default function FranchisePage() {
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> No recurring AMC or SaaS (optional)</li>
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> Flexible pricing, operations, and billing</li>
                   </ul>
-                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
-                </div>      
-
+                </div>
+                <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
               </motion.div>
 
             </div>

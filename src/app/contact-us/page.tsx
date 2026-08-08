@@ -169,65 +169,63 @@ export default function ContactUsPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="bg-[var(--color-white)] p-8 md:p-12 rounded-3xl border-2 border-[var(--color-midnight-ink)] shadow-[8px_8px_0px_0px_var(--color-midnight-ink)]">
-            <h2 className="text-4xl font-black tracking-tight mb-8 lowercase">
-              let's get in touch.
+          <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-xl">
+            <h2 className="text-3xl font-extrabold tracking-tight mb-8" style={{ fontFamily: "'Gilroy', sans-serif" }}>
+              Let's Get in Touch
             </h2>
             
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-[var(--color-smoke)]">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="text" 
                   placeholder="Enter Name"
-                  className="w-full bg-[var(--color-cream-paper)] border-2 border-[var(--color-midnight-ink)] rounded-xl px-4 py-4 text-lg font-medium focus:outline-none focus:ring-4 focus:ring-[var(--color-charcoal-mist)]/20 transition-all placeholder:text-[var(--color-graphite-veil)]"
+                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-[var(--color-smoke)]">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="email" 
                   placeholder="Enter Email"
-                  className="w-full bg-[var(--color-cream-paper)] border-2 border-[var(--color-midnight-ink)] rounded-xl px-4 py-4 text-lg font-medium focus:outline-none focus:ring-4 focus:ring-[var(--color-charcoal-mist)]/20 transition-all placeholder:text-[var(--color-graphite-veil)]"
+                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-[var(--color-smoke)]">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
                   Mobile <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="tel" 
                   placeholder="Enter Number"
                   maxLength={10}
-                  className="w-full bg-[var(--color-cream-paper)] border-2 border-[var(--color-midnight-ink)] rounded-xl px-4 py-4 text-lg font-medium focus:outline-none focus:ring-4 focus:ring-[var(--color-charcoal-mist)]/20 transition-all placeholder:text-[var(--color-graphite-veil)]"
+                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-[var(--color-smoke)]">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
                   Anything else you'd like us to know?
                 </label>
                 <textarea 
                   placeholder="Type your message here"
                   rows={4}
-                  className="w-full bg-[var(--color-cream-paper)] border-2 border-[var(--color-midnight-ink)] rounded-xl px-4 py-4 text-lg font-medium focus:outline-none focus:ring-4 focus:ring-[var(--color-charcoal-mist)]/20 transition-all placeholder:text-[var(--color-graphite-veil)] resize-none"
+                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400 resize-none"
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                className="w-full group bg-[var(--color-midnight-ink)] text-[var(--color-cream-paper)] rounded-xl px-8 py-5 font-bold text-lg flex items-center justify-between hover:bg-[var(--color-charcoal-mist)] transition-colors mt-4"
+                className="w-full bg-[#005F73] hover:bg-[#002B36] text-white rounded-full py-4 text-base font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4"
               >
-                <span>Submit</span>
-                <span className="w-8 h-8 rounded-full bg-[var(--color-cream-paper)]/10 flex items-center justify-center group-hover:bg-[var(--color-cream-paper)]/20 transition-colors">
-                  <ArrowRight className="w-5 h-5" />
-                </span>
+                Submit Request
+                <ArrowRight className="w-5 h-5" />
               </button>
             </form>
           </div>

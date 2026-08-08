@@ -56,15 +56,15 @@ export default function EVCalculatorPage() {
               className="flex flex-col gap-1 mb-6 tracking-tighter"
               style={{ fontSize: 'clamp(36px, 4vw, 56px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em' }}
             >
-              <span className="!text-white">Your Charge.</span>
-              <span className="!text-white font-bold">Your Climate Impact.</span>
+              <span className="text-[#005F73]">Your Charge.</span>
+              <span className="text-[#005F73] font-bold">Your Climate Impact.</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-bold !text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="text-2xl md:text-3xl font-bold text-[#005F73]/90 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
               You didn't just power your EV - you powered a cleaner planet. Join the revolution that's transforming India's roads.
             </motion.p>

@@ -139,8 +139,7 @@ export function Navbar() {
   const companyItems = [
     { label: "About DYU", desc: "Building the largest green energy network in India.", href: "/about-us", icon: Info },
     { label: "Partner With Us", desc: "Start an EV charging network with us.", href: "/partner-with-us", icon: Briefcase },
-    { label: "Contact Us", desc: "Get in touch with our support and sales teams.", href: "/contact-us", icon: PhoneCall },
-    { label: "FAQ", desc: "Frequently asked questions about our services.", href: "/faq", icon: HelpCircle }
+    { label: "Contact Us", desc: "Get in touch with our support and sales teams.", href: "/contact-us", icon: PhoneCall }
   ];
 
   const resourceItems = [
@@ -186,12 +185,7 @@ export function Navbar() {
             >
               DYU
             </span>
-            <span 
-              className="w-2 h-2 rounded-full inline-block transition-colors duration-300"
-              style={{
-                backgroundColor: scrolled ? '#FFFFFF' : '#005F73'
-              }}
-            />
+
           </Link>
 
           {/* Center Links — Products/Discover/Franchise/FAQ */}
