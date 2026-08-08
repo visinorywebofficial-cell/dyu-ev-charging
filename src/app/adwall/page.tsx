@@ -251,7 +251,7 @@ export default function AdWallPage() {
           >
             <a 
               href="#adwall-form" 
-              className="px-9 py-4 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_10px_30px_rgba(0,95,115,0.4)] flex items-center gap-3"
+              className="px-9 py-4 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-full font-extrabold text-lg transition-all shadow-[0_10px_30px_rgba(0,95,115,0.4)] flex items-center gap-3"
             >
               Enquire Now <ArrowRight className="w-5 h-5" />
             </a>
@@ -1048,7 +1048,7 @@ export default function AdWallPage() {
                 </p>
                 <button 
                   onClick={() => setFormSubmitted(false)}
-                  className="px-8 py-3 bg-white hover:bg-white text-[#222222] font-bold rounded-xl transition-all shadow-md"
+                  className="px-8 py-3 bg-white hover:bg-white text-[#222222] font-bold rounded-full transition-all shadow-md"
                 >
                   Submit Another Inquiry
                 </button>
@@ -1148,7 +1148,7 @@ export default function AdWallPage() {
 
                 <button 
                   type="submit"
-                  className="w-full py-5 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white font-extrabold text-lg rounded-xl transition-all shadow-[0_10px_30px_rgba(0,95,115,0.4)] flex items-center justify-center gap-3"
+                  className="w-full py-5 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white font-extrabold text-lg rounded-full transition-all shadow-[0_10px_30px_rgba(0,95,115,0.4)] flex items-center justify-center gap-3"
                 >
                   Submit Inquiry <Send className="w-5 h-5" />
                 </button>

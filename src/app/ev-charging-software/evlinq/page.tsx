@@ -109,7 +109,7 @@ export default function EVLinqPage() {
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
             className="flex justify-center flex-wrap gap-4 mb-4"
           >
-            <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
+            <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-full font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
               Enquire Now <ArrowRight className="w-5 h-5" />
             </button>
           </motion.div>
@@ -316,7 +316,7 @@ export default function EVLinqPage() {
               <p className="text-xl text-gray-300 max-w-2xl mx-auto font-medium mb-10">
                 Connect to multiple EV charging networks, without multiple integrations!
               </p>
-              <button className="btn-primary px-10 py-5 bg-[#005F73] hover:bg-[#002B36] text-white rounded-xl font-extrabold text-lg transition-all flex items-center gap-2 mx-auto">
+              <button className="btn-primary px-10 py-5 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold text-lg transition-all flex items-center gap-2 mx-auto">
                 Talk to an Expert <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
@@ -361,7 +361,7 @@ export default function EVLinqPage() {
             </div>
             
             <motion.div {...fadeUpProps} className="flex justify-center">
-              <button className="btn-primary px-8 py-4 bg-[#005F73] hover:bg-[#002B36] text-white rounded-xl font-extrabold text-lg transition-all shadow-xl flex items-center gap-2">
+              <button className="btn-primary px-8 py-4 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold text-lg transition-all shadow-xl flex items-center gap-2">
                 Got More Questions? <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>

@@ -92,7 +92,7 @@ export default function CSMSPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center flex-wrap gap-4 mb-16"
             >
-              <button className="btn-primary px-8 py-4 bg-[#005F73] hover:bg-[#002B36] text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(0,95,115,0.4)] flex items-center gap-2">
+              <button className="btn-primary px-8 py-4 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(0,95,115,0.4)] flex items-center gap-2">
                 Enquire Now <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>

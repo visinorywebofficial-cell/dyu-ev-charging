@@ -680,7 +680,7 @@ footer,
   background-color: #005F73 !important;
   color: #FFFFFF !important;
   border: 1px solid #005F73 !important;
-  border-radius: 12px !important;
+  border-radius: 999px !important;
   padding: 10px 18px;
   font-family: var(--font-body) !important;
   font-size: 14px;
@@ -709,7 +709,7 @@ footer,
   background-color: #FFFFFF !important;
   color: #005F73 !important;
   border: 1px solid #005F73 !important;
-  border-radius: 12px !important;
+  border-radius: 999px !important;
   padding: 10px 18px;
   font-family: var(--font-body) !important;
   font-size: 14px;

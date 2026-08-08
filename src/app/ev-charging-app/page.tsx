@@ -105,7 +105,7 @@ export default function EvChargingAppPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center flex-wrap gap-4 mb-16"
             >
-              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
+              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-full font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
                 Download App <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
@@ -322,10 +322,10 @@ export default function EvChargingAppPage() {
                 </div>
 
                 <div className="flex gap-4 mt-12 flex-wrap">
-                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-bold transition-all flex items-center gap-3">
+                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all flex items-center gap-3">
                     <Download className="w-5 h-5" /> App Store
                   </button>
-                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-bold transition-all flex items-center gap-3">
+                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all flex items-center gap-3">
                     <Download className="w-5 h-5" /> Google Play
                   </button>
                 </div>
@@ -404,10 +404,10 @@ export default function EvChargingAppPage() {
               <span className="text-[#888888] italic">Drive Smart?</span>
             </h2>
             <div className="flex justify-center flex-wrap gap-4">
-              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
+              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-full font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
                 Download on App Store
               </button>
-              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
+              <button className="px-8 py-4 bg-[#222222] hover:bg-black text-white rounded-full font-extrabold text-lg transition-all shadow-[0_0_20px_rgba(34,34,34,0.4)] flex items-center gap-2">
                 Get it on Google Play
               </button>
             </div>

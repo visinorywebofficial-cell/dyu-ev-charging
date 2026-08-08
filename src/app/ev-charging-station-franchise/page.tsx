@@ -178,7 +178,7 @@ export default function FranchisePage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center"
             >
-              <button className="px-8 py-4 bg-[#005F73] hover:bg-[#0A7890] text-white rounded-xl font-extrabold text-lg transition-all shadow-[0_10px_30px_rgba(0,95,115,0.25)] flex items-center gap-2">
+              <button className="px-8 py-4 bg-[#005F73] hover:bg-[#0A7890] text-white rounded-full font-extrabold text-lg transition-all shadow-[0_10px_30px_rgba(0,95,115,0.25)] flex items-center gap-2">
                 Enquire Now <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
@@ -459,9 +459,6 @@ export default function FranchisePage() {
                   <div className="text-6xl font-black text-white/5 absolute top-4 right-4 group-hover:scale-110 transition-transform">
                     {item.step}
                   </div>
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6 border border-white/20">
-                    <span className="text-white font-extrabold text-xl">{item.step}</span>
-                  </div>
                   <h3 className="text-xl font-extrabold mb-4 text-white relative z-10">{item.title}</h3>
                   <p className="text-gray-200 text-base leading-relaxed relative z-10">
                     {item.desc}
@@ -558,7 +555,7 @@ export default function FranchisePage() {
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> DC Fast Charging Stations (60kW - 360kW)</li>
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> Charger deployment & technology by DYU</li>
                   </ul>
-                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-xl font-extrabold transition-colors">Enquire Now</button>
+                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
                 </div>
 
                 <div className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-2xl p-8 hover:border-white/30 transition-colors">
@@ -575,7 +572,7 @@ export default function FranchisePage() {
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> No recurring AMC or SaaS (optional)</li>
                     <li className="flex gap-2 text-base text-gray-200"><CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" /> Flexible pricing, operations, and billing</li>
                   </ul>
-                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-xl font-extrabold transition-colors">Enquire Now</button>
+                  <button className="btn-primary w-full py-3 bg-[#005F73] hover:bg-[#002B36] text-white rounded-full font-extrabold transition-colors">Enquire Now</button>
                 </div>      
 
               </motion.div>

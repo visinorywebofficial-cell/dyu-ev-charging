@@ -134,7 +134,7 @@ function SplitText({ text, startIndex = 0, color = 'inherit' }: { text: string, 
 const HERO_IMAGES = [
   "/images/ev-vs-ice.jpg",
   "/images/hero-new-2.jpg",
-  "/images/hero-new-3.jpg"
+  "/images/hero-new-3.png"
 ];
 
 export default function HomePage() {
@@ -175,7 +175,7 @@ export default function HomePage() {
       {/* Eager Preload for All 3 Hero Background Images */}
       <link rel="preload" as="image" href="/images/ev-vs-ice.jpg" />
       <link rel="preload" as="image" href="/images/hero-new-2.jpg" />
-      <link rel="preload" as="image" href="/images/hero-new-3.jpg" />
+      <link rel="preload" as="image" href="/images/hero-new-3.png" />
 
       {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {/* SECTION 1 — HERO (with background slideshow) */}

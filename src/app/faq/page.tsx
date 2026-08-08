@@ -149,7 +149,7 @@ export default function FAQPage() {
           </p>
           <Link 
             href="/contact-us"
-            className="btn-primary inline-flex items-center justify-center gap-3 bg-[#005F73] text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-[#002B36] transition-colors rounded-xl border border-white/20"
+            className="btn-primary inline-flex items-center justify-center gap-3 bg-[#005F73] text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-[#002B36] transition-colors rounded-full border border-white/20"
             style={{ fontFamily: "'Gilroy', sans-serif" }}
           >
             Contact Support

@@ -94,7 +94,7 @@ export default function DCChargersPage() {
         />
 
         <ScrollRevealSection
-          imageSrc="/images/ev-6.jpg"
+          imageSrc="/images/dc_60kw.jpg"
           imageAlt="DC Charger 60kW to 120kW"
           title={
             <>
@@ -121,7 +121,7 @@ export default function DCChargersPage() {
         />
 
         <ScrollRevealSection
-          imageSrc="/images/ev-8.jpg"
+          imageSrc="/images/dc_240kw.jpg"
           imageAlt="DC Charger 180kW to 360kW"
           title={
             <>

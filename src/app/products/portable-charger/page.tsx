@@ -133,10 +133,10 @@ export default function PortableChargerPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-xl font-extrabold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-full font-extrabold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
                 Buy Now <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-extrabold text-lg hover:bg-white hover:text-black transition-all shadow-sm">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-full font-extrabold text-lg hover:bg-white hover:text-black transition-all shadow-sm">
                 Talk to an Expert
               </button>
             </motion.div>
@@ -334,7 +334,7 @@ export default function PortableChargerPage() {
               <p className="text-lg md:text-xl font-medium text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Carry it with you or keep it at home - just plug in and charge whenever you need it. No setup, no extra steps required.
               </p>
-              <button className="px-9 py-4 bg-white text-black rounded-xl font-extrabold text-lg hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg">
+              <button className="px-9 py-4 bg-white text-black rounded-full font-extrabold text-lg hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg">
                 Enquire Now <ArrowRight className="w-5 h-5" />
               </button>
             </div>

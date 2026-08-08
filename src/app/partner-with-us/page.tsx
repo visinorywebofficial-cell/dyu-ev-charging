@@ -440,7 +440,7 @@ export default function PartnerWithUsPage() {
               <div className="mt-4">
                 <a 
                   href="#request-form" 
-                  className="btn-primary inline-flex items-center gap-3 bg-[#005F73] text-white px-8 py-4 text-base font-bold tracking-wider hover:bg-[#002B36] transition-colors rounded-xl border border-white/20"
+                  className="btn-primary inline-flex items-center gap-3 bg-[#005F73] text-white px-8 py-4 text-base font-bold tracking-wider hover:bg-[#002B36] transition-colors rounded-full border border-white/20"
                   style={{ fontFamily: "'Gilroy', sans-serif" }}
                 >
                   Talk to an Expert
@@ -475,7 +475,7 @@ export default function PartnerWithUsPage() {
             <p className="text-lg text-[#1F2933] font-medium mb-6" style={{ fontFamily: "var(--font-figtree)" }}>Contact us if you still have any questions to make your experience smoother.</p>
             <a 
               href="/contact-us"
-              className="btn-primary inline-flex items-center justify-center gap-3 bg-[#005F73] text-white px-6 py-3 font-bold tracking-wider hover:bg-[#002B36] transition-colors w-max rounded-xl"
+              className="btn-primary inline-flex items-center justify-center gap-3 bg-[#005F73] text-white px-6 py-3 font-bold tracking-wider hover:bg-[#002B36] transition-colors w-max rounded-full"
               style={{ fontFamily: "'Gilroy', sans-serif" }}
             >
               Got More Questions?
@@ -640,7 +640,7 @@ export default function PartnerWithUsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.58, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full bg-gray-300 text-[#222222] py-5 text-xl font-black tracking-widest hover:bg-white transition-colors flex items-center justify-center gap-3 mt-4 rounded-xl"
+              className="w-full bg-gray-300 text-[#222222] py-5 text-xl font-black tracking-widest hover:bg-white transition-colors flex items-center justify-center gap-3 mt-4 rounded-full"
               style={{ fontFamily: "'Gilroy', sans-serif" }}
             >
               Submit Request
