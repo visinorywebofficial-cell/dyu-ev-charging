@@ -216,7 +216,7 @@ export default function AdWallPage() {
             className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-black/60 border border-white/30 mb-8 backdrop-blur-md"
           >
             <Tv className="w-4 h-4 text-[#00F0FF]" />
-            <span className="text-xs md:text-sm font-extrabold text-white uppercase tracking-widest">
+            <span className="text-xs md:text-sm font-extrabold !text-white uppercase tracking-widest">
               Advertise With Us • High-Impact DOOH Network
             </span>
           </motion.div>
@@ -228,8 +228,8 @@ export default function AdWallPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="flex flex-col gap-2 mb-8 text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1]"
           >
-            <span className="text-white">Reach Millions of High-Intent</span>
-            <span className="text-white font-extrabold">EV Drivers Across India</span>
+            <span className="!text-white">Reach Millions of High-Intent</span>
+            <span className="!text-white font-extrabold">EV Drivers Across India</span>
           </motion.h1>
 
           <motion.p 
@@ -237,7 +237,7 @@ export default function AdWallPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl font-bold text-white max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl md:text-2xl font-bold !text-white max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Position your brand directly in front of affluent EV owners during 30-45 minute captive charging sessions across highways, retail hubs, and urban centers.
           </motion.p>
@@ -612,7 +612,7 @@ export default function AdWallPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              className="text-xs font-extrabold uppercase tracking-widest text-[#00F0FF] block mb-3"
+              className="text-xs font-extrabold uppercase tracking-widest !text-[#00F0FF] block mb-3"
             >
               Multi-Touchpoint Channels
             </motion.span>
@@ -621,7 +621,7 @@ export default function AdWallPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-extrabold text-white font-['Gilroy'] tracking-tight"
+              className="text-4xl md:text-6xl font-extrabold !text-white font-['Gilroy'] tracking-tight"
             >
               4 Core Media Channels
             </motion.h2>
@@ -630,7 +630,7 @@ export default function AdWallPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-white font-medium mt-4"
+              className="text-lg !text-white font-medium mt-4"
             >
               Hover or touch any card below to reveal the live charger campaign image.
             </motion.p>

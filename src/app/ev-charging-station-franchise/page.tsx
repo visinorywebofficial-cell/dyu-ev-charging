@@ -454,15 +454,19 @@ export default function FranchisePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="dark-card bg-[#002B36] shadow-xl backdrop-blur-md border border-[#005F73]/20 rounded-3xl p-8 relative overflow-hidden group hover:border-white/30 transition-all"
+                  className="dark-card bg-[#002B36] shadow-xl border border-[#005F73]/20 rounded-3xl p-8 relative overflow-hidden group hover:border-white/30 transition-all flex flex-col justify-between"
                 >
-                  <div className="text-6xl font-black text-white/10 absolute top-2 right-4 group-hover:scale-105 transition-transform pointer-events-none select-none">
-                    {item.step}
+                  <div>
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-extrabold text-white pr-16 relative z-10">{item.title}</h3>
+                      <span className="text-4xl font-black text-white/20 absolute top-4 right-6 group-hover:scale-105 transition-transform pointer-events-none select-none">
+                        {item.step}
+                      </span>
+                    </div>
+                    <p className="text-gray-200 text-base leading-relaxed pr-12 relative z-10">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-extrabold mb-4 text-white relative z-10">{item.title}</h3>
-                  <p className="text-gray-200 text-base leading-relaxed relative z-10">
-                    {item.desc}
-                  </p>
                 </motion.div>
               ))}
             </div>

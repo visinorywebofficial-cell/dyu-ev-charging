@@ -169,60 +169,60 @@ export default function ContactUsPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-xl">
-            <h2 className="text-3xl font-extrabold tracking-tight mb-8" style={{ fontFamily: "'Gilroy', sans-serif" }}>
+          <div className="bg-[#002B36] p-8 md:p-12 rounded-3xl border border-[#005F73]/30 shadow-2xl">
+            <h2 className="text-3xl font-extrabold tracking-tight mb-8 !text-white" style={{ fontFamily: "'Gilroy', sans-serif" }}>
               Let's Get in Touch
             </h2>
             
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-300">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="text" 
                   placeholder="Enter Name"
-                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
+                  className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3.5 text-base font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-300">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="email" 
                   placeholder="Enter Email"
-                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
+                  className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3.5 text-base font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-300">
                   Mobile <span className="text-red-500">*</span>
                 </label>
                 <input 
                   type="tel" 
                   placeholder="Enter Number"
                   maxLength={10}
-                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400"
+                  className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3.5 text-base font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm uppercase tracking-wider text-gray-500">
+                <label className="font-bold text-sm uppercase tracking-wider text-gray-300">
                   Anything else you'd like us to know?
                 </label>
                 <textarea 
                   placeholder="Type your message here"
                   rows={4}
-                  className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-base font-medium focus:outline-none focus:border-[#005F73] focus:ring-1 focus:ring-[#005F73] transition-all placeholder:text-gray-400 resize-none"
+                  className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3.5 text-base font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500 resize-none"
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                className="w-full bg-[#005F73] hover:bg-[#002B36] text-white rounded-full py-4 text-base font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4"
+                className="w-full bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-full py-4 text-base font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4 cursor-pointer"
               >
                 Submit Request
                 <ArrowRight className="w-5 h-5" />
