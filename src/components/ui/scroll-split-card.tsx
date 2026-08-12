@@ -32,8 +32,17 @@ export function ScrollSplitCard({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); // Check initially
+    let prevWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width !== prevWidth) {
+        prevWidth = width;
+        setIsMobile(width < 768);
+      }
+    };
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 768);
+    }
     window.addEventListener("resize", handleResize);
     
     if (externalContainerRef?.current) {
@@ -105,9 +114,9 @@ export function ScrollSplitCard({
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-[500dvh] w-full", className)}
+      className={cn("relative h-[500vh] w-full", className)}
     >
-      <div className="sticky top-0 flex h-[100dvh] w-full items-center justify-center overflow-hidden [perspective:1200px]">
+      <div className="sticky top-0 flex h-[100vh] w-full items-center justify-center overflow-hidden [perspective:1200px]">
         {/* Starting Text indicator */}
         <motion.div
           className="absolute top-[15%] md:top-[20%] left-0 right-0 text-center pointer-events-none z-30"

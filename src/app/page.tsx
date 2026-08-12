@@ -184,7 +184,7 @@ export default function HomePage() {
         className="relative overflow-hidden pt-32 pb-16 md:pt-[160px] md:pb-[80px]" 
         style={{ 
           textAlign: 'center',
-          minHeight: '100dvh',
+          minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',

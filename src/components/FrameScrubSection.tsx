@@ -158,9 +158,14 @@ export function FrameScrubSection({
     loadNextBatch();
 
     // Resize listener for full-bleed canvas scaling
+    let prevWidth = typeof window !== "undefined" ? window.innerWidth : 0;
     let resizeTimer: NodeJS.Timeout;
     const handleResize = () => {
       if (!canvas) return;
+      const width = window.innerWidth;
+      if (width === prevWidth) return;
+      prevWidth = width;
+
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       drawFrame(currentFrameRef.current);
@@ -222,7 +227,7 @@ export function FrameScrubSection({
   return (
     <div
       ref={sectionRef}
-      className="w-full h-[100dvh] relative overflow-hidden bg-black flex items-center justify-center"
+      className="w-full h-[100vh] relative overflow-hidden bg-black flex items-center justify-center"
     >
       <canvas
         ref={canvasRef}

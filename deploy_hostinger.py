@@ -14,6 +14,12 @@ client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 try:
     client.connect(HOST, port=PORT, username=USER, password=PASS, timeout=30)
     print("SUCCESS: Connected to Hostinger SSH!")
+    # Optimize transport parameters to prevent EOFError on large uploads
+    transport = client.get_transport()
+    if transport:
+        transport.set_keepalive(10)
+        transport.default_window_size = 4294967294
+        transport.default_max_packet_size = 1048576
 except Exception as e:
     print(f"ERROR connecting to SSH: {e}")
     sys.exit(1)
