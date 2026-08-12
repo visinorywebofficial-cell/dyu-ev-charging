@@ -76,6 +76,10 @@ export function ScrollSplitCard({
   const rotateZLeft = useTransform(gatedProgress, [0.4, 0.8], [0, isMobile ? 3 : 6]);
   const rotateZRight = useTransform(gatedProgress, [0.4, 0.8], [0, isMobile ? -3 : -6]);
 
+  // Opacities for Front and Back faces during rotation to bypass Webkit backface-visibility bugs
+  const frontFaceOpacity = useTransform(rotateY, [0, 89, 90, 180], [1, 1, 0, 0]);
+  const backFaceOpacity = useTransform(rotateY, [0, 90, 91, 180], [0, 0, 1, 1]);
+
   // Dynamic borders/radii so it looks like ONE flat image initially
   const borderRadiusLeft = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
   const borderRadiusMiddle = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
@@ -163,6 +167,7 @@ export function ScrollSplitCard({
                   WebkitBackfaceVisibility: "hidden",
                   backfaceVisibility: "hidden",
                   transform: "translateZ(1px)",
+                  opacity: frontFaceOpacity,
                 }}
               >
                 <div
@@ -208,6 +213,7 @@ export function ScrollSplitCard({
                       : borderRadiusMiddle,
                   WebkitBackfaceVisibility: "hidden",
                   backfaceVisibility: "hidden",
+                  opacity: backFaceOpacity,
                 }}
               >
                 {/* Grainy Noise Overlay */}
