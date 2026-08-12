@@ -77,9 +77,9 @@ export function ScrollSplitCard({
   const rotateZRight = useTransform(gatedProgress, [0.4, 0.8], [0, isMobile ? -3 : -6]);
 
   // Dynamic borders/radii so it looks like ONE flat image initially
-  const borderRadiusLeft = useTransform(gatedProgress, [0, 0.2], ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
-  const borderRadiusMiddle = useTransform(gatedProgress, [0, 0.2], ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
-  const borderRadiusRight = useTransform(gatedProgress, [0, 0.2], ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
+  const borderRadiusLeft = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
+  const borderRadiusMiddle = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
+  const borderRadiusRight = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
   const borderOpacity = useTransform(gatedProgress, [0, 0.2], [0, 0.2]);
   const shadowOpacity = useTransform(gatedProgress, [0, 0.2], [0, 0.4]);
 
@@ -93,6 +93,10 @@ export function ScrollSplitCard({
   // Indicator text appearance at the start
   const startTextOpacity = useTransform(gatedProgress, [0, 0.1], [1, 0]);
   const startTextY = useTransform(gatedProgress, [0, 0.1], [0, 20]);
+
+  const optimizedImageSrc = imageSrc.includes("unsplash.com")
+    ? imageSrc.replace(/w=\d+/, isMobile ? "w=800" : "w=1600")
+    : imageSrc;
 
   return (
     <div
@@ -114,8 +118,13 @@ export function ScrollSplitCard({
         </motion.div>
 
         <motion.div
-          style={{ scale, y: cardsY, transformStyle: "preserve-3d" }}
-          className="flex flex-row h-[320px] md:h-[400px] w-full max-w-[360px] md:max-w-4xl px-2 md:px-4 relative"
+          style={{ 
+            scale, 
+            y: cardsY, 
+            transformStyle: "preserve-3d", 
+            WebkitTransformStyle: "preserve-3d" 
+          }}
+          className="flex flex-row h-[320px] md:h-[400px] w-full max-w-[360px] md:max-w-4xl px-2 md:px-4 relative will-change-transform"
         >
           {cards.slice(0, 3).map((card, i) => (
             <motion.div
@@ -127,6 +136,7 @@ export function ScrollSplitCard({
                 rotateZ: i === 0 ? rotateZLeft : i === 2 ? rotateZRight : 0,
                 zIndex: i, // Ensures Left is under Middle, and Right is above Middle
                 transformStyle: "preserve-3d",
+                WebkitTransformStyle: "preserve-3d",
               }}
             >
               {/* GPU-Accelerated Sibling Shadow Layer (sitting behind both Front and Back sides) */}
@@ -150,13 +160,16 @@ export function ScrollSplitCard({
                       : i === 2
                       ? borderRadiusRight
                       : borderRadiusMiddle,
+                  WebkitBackfaceVisibility: "hidden",
+                  backfaceVisibility: "hidden",
+                  transform: "translateZ(1px)",
                 }}
               >
                 <div
                   className="absolute inset-0 h-full w-[300%]"
                   style={{
                     left: `${-100 * i}%`,
-                    backgroundImage: `url(${imageSrc})`,
+                    backgroundImage: `url(${optimizedImageSrc})`,
                     backgroundSize: "100% 100%",
                     backgroundPosition: "center",
                   }}
@@ -185,7 +198,7 @@ export function ScrollSplitCard({
                 style={{
                   backgroundColor: card.bgColor,
                   color: card.textColor,
-                  transform: "rotateY(180deg)",
+                  transform: "rotateY(180deg) translateZ(1px)",
                   zIndex: 1, // Ensure back is behind before flip
                   borderRadius:
                     i === 0
@@ -193,6 +206,8 @@ export function ScrollSplitCard({
                       : i === 2
                       ? borderRadiusRight
                       : borderRadiusMiddle,
+                  WebkitBackfaceVisibility: "hidden",
+                  backfaceVisibility: "hidden",
                 }}
               >
                 {/* Grainy Noise Overlay */}
@@ -210,6 +225,7 @@ export function ScrollSplitCard({
                       src={card.image} 
                       alt={card.title} 
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                   </div>

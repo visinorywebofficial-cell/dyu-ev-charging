@@ -102,8 +102,9 @@ export const LayeredStack = ({ children, className, ...props }: LayeredStackProp
         });
 
         if (isMobile) {
-            // On mobile, keep cards spread out / unstacked by default
-            resetCards();
+            // On mobile, set positions instantly without animation
+            const cards = Array.from(container.children) as HTMLElement[];
+            gsap.set(cards, { x: 0, y: 0, rotate: 0, clearProps: "transform" });
             return;
         }
 

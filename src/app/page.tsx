@@ -433,9 +433,10 @@ export default function HomePage() {
               {/* Card 1 — Cleaner Air */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=500&auto=format&fit=crop"
                   alt="Cleaner Air — EV charging reduces emissions"
                   className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
@@ -446,9 +447,10 @@ export default function HomePage() {
               {/* Card 2 — Green Jobs */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group mt-12">
                 <img
-                  src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=500&auto=format&fit=crop"
                   alt="Green Jobs — Clean energy workforce"
                   className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
@@ -459,9 +461,10 @@ export default function HomePage() {
               {/* Card 3 — Secure Network */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=500&auto=format&fit=crop"
                   alt="Secure Network — Reliable EV charging infrastructure"
                   className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
@@ -472,9 +475,10 @@ export default function HomePage() {
               {/* Card 4 — Smart Ops */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group mt-12">
                 <img
-                  src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=500&auto=format&fit=crop"
                   alt="Smart Operations — EV charging station technology"
                   className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5 z-10">
