@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -39,7 +39,22 @@ export function ScrollTimeline({
     offset: ["start 70%", "end 50%"],
   });
 
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const inView = useInView(containerRef, { margin: "200px 0px" });
+  const gatedProgress = useMotionValue(0);
+
+  useEffect(() => {
+    if (inView) {
+      gatedProgress.set(scrollYProgress.get());
+    }
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      if (inView) {
+        gatedProgress.set(latest);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, inView, gatedProgress]);
+
+  const progressHeight = useTransform(gatedProgress, [0, 1], ["0%", "100%"]);
 
   const getAnimationVariants = (index: number, isRight: boolean) => {
     const delay = index * 0.1;

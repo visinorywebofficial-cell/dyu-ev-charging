@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useInView } from "framer-motion";
 import Image from "next/image";
 
 interface ScrollRevealSectionProps {
@@ -28,10 +28,25 @@ export function ScrollRevealSection({
     offset: ["start end", "end start"]
   });
 
+  const inView = useInView(containerRef, { margin: "200px 0px" });
+  const gatedProgress = useMotionValue(0);
+
+  useEffect(() => {
+    if (inView) {
+      gatedProgress.set(scrollYProgress.get());
+    }
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      if (inView) {
+        gatedProgress.set(latest);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, inView, gatedProgress]);
+
   // Parallax and 3D effects
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1.05, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const imageY = useTransform(gatedProgress, [0, 1], ["-15%", "15%"]);
+  const imageScale = useTransform(gatedProgress, [0, 0.5, 1], [0.95, 1.05, 0.95]);
+  const opacity = useTransform(gatedProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
     <section 

@@ -24,31 +24,34 @@ export function FrameScrubSection({
   const currentFrameRef = useRef(0);
   const targetFrameRef = useRef(0);
   const renderedFrameRef = useRef(0);
-  const [shouldLoadFrames, setShouldLoadFrames] = useState(true);
+  const [shouldLoadFrames, setShouldLoadFrames] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const drawFrameRef = useRef<(index: number) => void>(() => {});
 
   const getFrameSrc = (index: number): string => {
     const padded = String(index).padStart(3, "0");
     return `${framePathPrefix}/ezgif-frame-${padded}.png`;
   };
 
-  // 1. IntersectionObserver: Trigger frame loading ONLY when within 300px of viewport
+  // 1. IntersectionObserver: Trigger frame loading and active viewport gating
   useEffect(() => {
     const el = sectionRef.current;
     if (!el || typeof window === "undefined") return;
 
     if (!("IntersectionObserver" in window)) {
       setShouldLoadFrames(true);
+      setIsInView(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        setIsInView(entry.isIntersecting);
         if (entry.isIntersecting) {
           setShouldLoadFrames(true);
-          observer.disconnect();
         }
       },
-      { rootMargin: "300px 0px 300px 0px" }
+      { rootMargin: "600px 0px 600px 0px" }
     );
 
     observer.observe(el);
@@ -170,22 +173,7 @@ export function FrameScrubSection({
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleResize);
 
-    // 60fps Smooth Lerp Video Loop
-    let animFrameId: number;
-    const updateVideoLoop = () => {
-      const diff = targetFrameRef.current - renderedFrameRef.current;
-      if (Math.abs(diff) > 0.001) {
-        // Smoothly interpolate towards target scroll frame
-        renderedFrameRef.current += diff * 0.25;
-        const frameIdx = Math.min(Math.max(Math.round(renderedFrameRef.current), 0), totalFrames - 1);
-        if (frameIdx !== currentFrameRef.current) {
-          currentFrameRef.current = frameIdx;
-          drawFrame(frameIdx);
-        }
-      }
-      animFrameId = requestAnimationFrame(updateVideoLoop);
-    };
-    animFrameId = requestAnimationFrame(updateVideoLoop);
+    drawFrameRef.current = drawFrame;
 
     // GSAP ScrollTrigger — pin section, update target frame
     const trigger = ScrollTrigger.create({
@@ -202,13 +190,34 @@ export function FrameScrubSection({
 
     return () => {
       isCancelled = true;
-      cancelAnimationFrame(animFrameId);
       clearTimeout(resizeTimer);
       trigger.kill();
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", handleResize);
     };
   }, [shouldLoadFrames, totalFrames, framePathPrefix, maxMobileCropRatio]);
+
+  // 3. 60fps Smooth Lerp Video Loop (Runs ONLY when section is in viewport)
+  useEffect(() => {
+    if (!shouldLoadFrames || !isInView) return;
+
+    let animFrameId: number;
+    const updateVideoLoop = () => {
+      const diff = targetFrameRef.current - renderedFrameRef.current;
+      if (Math.abs(diff) > 0.001) {
+        renderedFrameRef.current += diff * 0.25;
+        const frameIdx = Math.min(Math.max(Math.round(renderedFrameRef.current), 0), totalFrames - 1);
+        if (frameIdx !== currentFrameRef.current) {
+          currentFrameRef.current = frameIdx;
+          drawFrameRef.current(frameIdx);
+        }
+      }
+      animFrameId = requestAnimationFrame(updateVideoLoop);
+    };
+
+    animFrameId = requestAnimationFrame(updateVideoLoop);
+    return () => cancelAnimationFrame(animFrameId);
+  }, [isInView, shouldLoadFrames, totalFrames]);
 
   return (
     <div
