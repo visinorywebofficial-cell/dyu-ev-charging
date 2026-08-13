@@ -108,7 +108,7 @@ export function ScrollSplitCard({
   const startTextY = useTransform(gatedProgress, [0, 0.1], [0, 20]);
 
   const optimizedImageSrc = imageSrc.includes("unsplash.com")
-    ? imageSrc.replace(/w=\d+/, isMobile ? "w=800" : "w=1600")
+    ? imageSrc.replace(/w=\d+/, isMobile ? "w=1200" : "w=1800")
     : imageSrc;
 
   return (
