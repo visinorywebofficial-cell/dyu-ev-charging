@@ -177,6 +177,8 @@ export function ScrollSplitCard({
                   backfaceVisibility: "hidden",
                   transform: "translateZ(1px)",
                   opacity: frontFaceOpacity,
+                  WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+                  maskImage: "-webkit-radial-gradient(white, black)",
                 }}
               >
                 <div
@@ -223,6 +225,8 @@ export function ScrollSplitCard({
                   WebkitBackfaceVisibility: "hidden",
                   backfaceVisibility: "hidden",
                   opacity: backFaceOpacity,
+                  WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+                  maskImage: "-webkit-radial-gradient(white, black)",
                 }}
               >
                 {/* Grainy Noise Overlay */}
