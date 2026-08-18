@@ -108,36 +108,28 @@ export function ScrollSplitCard({
     };
   }, [progress]);
 
-  // Stage 1: Separation (0 to 0.25), Stage 2: Flip (0.25 to 0.65), Stage 3: Rest & Visible (0.65 to 1.0)
-  const leftX = useTransform(progress, [0, 0.25, 0.65], isMobile ? [0, -14, -8] : [0, -48, -24]);
-  const rightX = useTransform(progress, [0, 0.25, 0.65], isMobile ? [0, 14, 8] : [0, 48, 24]);
-  
+  // Phase 1: Separation (0 to 0.25)
+  const leftX = useTransform(progress, [0, 0.25, 0.60], isMobile ? [0, -12, -6] : [0, -48, -24]);
+  const rightX = useTransform(progress, [0, 0.25, 0.60], isMobile ? [0, 12, 6] : [0, 48, 24]);
   const scale = useTransform(progress, [0, 0.25], [1, 0.95]);
 
-  // Flip rotation from 0 to 180 degrees
-  const rotateY = useTransform(progress, [0.25, 0.65], [0, 180]);
-  const rotateZLeft = useTransform(progress, [0.25, 0.65], [0, isMobile ? 3 : 6]);
-  const rotateZRight = useTransform(progress, [0.25, 0.65], [0, isMobile ? -3 : -6]);
+  // Phase 2: Flip 180 degrees (0.25 to 0.60)
+  const rotateY = useTransform(progress, [0.25, 0.60], [0, 180]);
+  const rotateZLeft = useTransform(progress, [0.25, 0.60], [0, isMobile ? 3 : 5]);
+  const rotateZRight = useTransform(progress, [0.25, 0.60], [0, isMobile ? -3 : -5]);
 
-  // Opacities for Front and Back faces during rotation to bypass Webkit backface-visibility bugs
-  const frontFaceOpacity = useTransform(rotateY, [0, 89, 90, 180], [1, 1, 0, 0]);
-  const backFaceOpacity = useTransform(rotateY, [0, 90, 91, 180], [0, 0, 1, 1]);
+  // Face swaps at the 90deg mark (progress 0.425)
+  const frontFaceOpacity = useTransform(progress, [0.41, 0.44], [1, 0]);
+  const backFaceOpacity = useTransform(progress, [0.41, 0.44], [0, 1]);
+  const frontZIndex = useTransform(progress, [0.41, 0.44], [2, 0]);
+  const backZIndex = useTransform(progress, [0.41, 0.44], [0, 2]);
 
-  // Dynamic borders/radii so it looks like ONE flat image initially
-  const borderRadiusLeft = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
-  const borderRadiusMiddle = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
-  const borderRadiusRight = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
-  const borderOpacity = useTransform(progress, [0, 0.15], [0, 0.2]);
-  const shadowOpacity = useTransform(progress, [0, 0.15], [0, 0.4]);
+  // Border radius separation
+  const borderRadiusLeft = useTransform(progress, [0, 0.15], isMobile ? ["16px", "16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
+  const borderRadiusMiddle = useTransform(progress, [0, 0.15], isMobile ? ["16px", "16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
+  const borderRadiusRight = useTransform(progress, [0, 0.15], isMobile ? ["16px", "16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
 
-  // Keep cards centered and fully visible on screen
-  const cardsY = useTransform(progress, [0.85, 1], [0, isMobile ? -15 : -30]);
-
-  // Ending text appearance after flip is complete
-  const textOpacity = useTransform(progress, [0.65, 0.85], [0, 1]);
-  const textY = useTransform(progress, [0.65, 0.85], [20, 0]);
-
-  // Indicator text appearance at the start
+  // Start scroll indicator
   const startTextOpacity = useTransform(progress, [0, 0.1], [1, 0]);
   const startTextY = useTransform(progress, [0, 0.1], [0, 20]);
 
@@ -148,12 +140,12 @@ export function ScrollSplitCard({
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-[400vh] w-full bg-white", className)}
+      className={cn("relative h-[350vh] w-full bg-white", className)}
     >
       <div className="sticky top-0 flex h-[100vh] w-full items-center justify-center overflow-hidden [perspective:1200px] bg-white">
         {/* Starting Text indicator */}
         <motion.div
-          className="absolute top-[15%] md:top-[20%] left-0 right-0 text-center pointer-events-none z-30"
+          className="absolute top-[12%] md:top-[16%] left-0 right-0 text-center pointer-events-none z-30"
           style={{
             opacity: startTextOpacity,
             y: startTextY,
@@ -166,12 +158,11 @@ export function ScrollSplitCard({
 
         <motion.div
           style={{ 
-            scale, 
-            y: cardsY, 
+            scale,
             transformStyle: "preserve-3d", 
             WebkitTransformStyle: "preserve-3d" 
           }}
-          className="flex flex-row h-[320px] md:h-[400px] w-full max-w-[360px] md:max-w-4xl px-2 md:px-4 relative will-change-transform"
+          className="flex flex-row h-[340px] md:h-[420px] w-full max-w-[360px] md:max-w-4xl px-2 md:px-4 relative will-change-transform"
         >
           {cards.slice(0, 3).map((card, i) => (
             <motion.div
@@ -181,55 +172,19 @@ export function ScrollSplitCard({
                 x: i === 0 ? leftX : i === 2 ? rightX : 0,
                 rotateY,
                 rotateZ: i === 0 ? rotateZLeft : i === 2 ? rotateZRight : 0,
-                zIndex: i, // Ensures Left is under Middle, and Right is above Middle
                 transformStyle: "preserve-3d",
                 WebkitTransformStyle: "preserve-3d",
               }}
             >
-              {/* GPU-Accelerated Sibling Front Shadow Layer (sitting behind Front Side, disappears when flipped) */}
-              <motion.div 
-                className="absolute inset-0 pointer-events-none z-0 will-change-transform" 
-                style={{ 
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", 
-                  opacity: shadowOpacity,
-                  borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
-                  transform: "translateZ(-10px)",
-                  WebkitBackfaceVisibility: "hidden",
-                  backfaceVisibility: "hidden",
-                }} 
-              />
-
-              {/* GPU-Accelerated Sibling Back Shadow Layer (sitting behind Back Side, appears when flipped) */}
-              <motion.div 
-                className="absolute inset-0 pointer-events-none z-0 will-change-transform" 
-                style={{ 
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", 
-                  opacity: shadowOpacity,
-                  borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
-                  transform: "rotateY(180deg) translateZ(-10px)",
-                  WebkitBackfaceVisibility: "hidden",
-                  backfaceVisibility: "hidden",
-                }} 
-              />
-
               {/* Front Side: Original Image Split */}
               <motion.div
-                className="absolute inset-0 overflow-hidden [backface-visibility:hidden] will-change-transform"
+                className="absolute inset-0 overflow-hidden will-change-transform shadow-xl"
                 style={{
-                  zIndex: 2, // Ensure front stays above initially
-                  borderRadius:
-                    i === 0
-                      ? borderRadiusLeft
-                      : i === 2
-                      ? borderRadiusRight
-                      : borderRadiusMiddle,
-                  WebkitBackfaceVisibility: "hidden",
-                  backfaceVisibility: "hidden",
-                  transform: "translateZ(1px)",
+                  zIndex: frontZIndex,
                   opacity: frontFaceOpacity,
-                  WebkitMaskImage: "-webkit-radial-gradient(white, black)",
-                  maskImage: "-webkit-radial-gradient(white, black)",
-                  outline: "1px solid transparent",
+                  borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <div
@@ -241,92 +196,49 @@ export function ScrollSplitCard({
                     backgroundPosition: "center",
                   }}
                 />
-
-                {/* GPU Inner Highlight Border */}
-                <motion.div 
-                  className="absolute inset-x-0 top-0 h-[1px] bg-white pointer-events-none z-30" 
-                  style={{ opacity: borderOpacity }} 
-                />
-
-                {/* GPU Inner Bottom Dark Shadow Gradient */}
-                <motion.div 
-                  className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-20" 
-                  style={{ opacity: shadowOpacity }} 
-                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
               </motion.div>
 
-              {/* Back Side: New Content Card */}
+              {/* Back Side: Flipped Content Card */}
               <motion.div
                 className={cn(
-                  "absolute inset-0 overflow-hidden flex flex-col justify-end p-2.5 sm:p-4 md:p-8 [backface-visibility:hidden] will-change-transform",
-                  "border border-white/5 bg-gradient-to-br from-white/10 to-transparent",
-                  "shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),inset_0_-24px_48px_rgba(0,0,0,0.2)]"
+                  "absolute inset-0 overflow-hidden flex flex-col justify-end p-3 sm:p-4 md:p-6 will-change-transform rounded-2xl",
+                  "border border-white/10 shadow-2xl"
                 )}
                 style={{
-                  backgroundColor: card.bgColor,
-                  color: card.textColor,
-                  transform: "rotateY(180deg) translateZ(1px)",
-                  zIndex: 1, // Ensure back is behind before flip
-                  borderRadius:
-                    i === 0
-                      ? borderRadiusLeft
-                      : i === 2
-                      ? borderRadiusRight
-                      : borderRadiusMiddle,
-                  WebkitBackfaceVisibility: "hidden",
-                  backfaceVisibility: "hidden",
+                  backgroundColor: card.bgColor || "#002B36",
+                  color: card.textColor || "#FFFFFF",
+                  transform: "rotateY(180deg)",
+                  zIndex: backZIndex,
                   opacity: backFaceOpacity,
-                  WebkitMaskImage: "-webkit-radial-gradient(white, black)",
-                  maskImage: "-webkit-radial-gradient(white, black)",
-                  outline: "1px solid transparent",
+                  borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
-                {/* Grainy Noise Overlay */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay"
-                  style={{
-                    backgroundImage: `url("https://framerusercontent.com/images/6mcf62RlDfRfU61Yg5vb2pefpi4.png?width=256&height=256")`,
-                    backgroundRepeat: "repeat",
-                  }}
-                />
-
                 {card.image && (
-                  <div className="absolute top-0 left-0 right-0 h-[45%] md:h-[60%] overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-[48%] md:h-[56%] overflow-hidden">
                     <img 
                       src={card.image} 
                       alt={card.title} 
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
                   </div>
                 )}
 
                 <div className="relative z-10 mt-auto text-white">
-                  {card.icon && <div className="mb-1 md:mb-3 text-white">{card.icon}</div>}
-                  <h3 className="mb-1 md:mb-3 text-[11px] leading-[1.15] sm:text-[14px] md:text-2xl font-bold md:leading-tight drop-shadow-md text-white !text-white" style={{ color: '#FFFFFF' }}>
+                  <h3 className="mb-1 md:mb-2 text-[12px] sm:text-[14px] md:text-xl font-bold leading-tight drop-shadow text-white !text-white" style={{ color: '#FFFFFF' }}>
                     {card.title}
                   </h3>
-                  <p className="text-[9px] leading-[1.25] sm:text-[11px] md:text-sm font-medium drop-shadow-md line-clamp-4 md:line-clamp-none text-white !text-white opacity-100" style={{ color: '#FFFFFF' }}>
+                  <p className="text-[10px] sm:text-[11px] md:text-sm font-normal leading-relaxed drop-shadow text-white/90 !text-white/90 line-clamp-4 md:line-clamp-none" style={{ color: '#FFFFFF' }}>
                     {card.description}
                   </p>
                 </div>
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Ending Text fixed in the sticky viewport */}
-        <motion.div
-          className="absolute bottom-[15%] md:bottom-[20%] left-0 right-0 text-center pointer-events-none z-30"
-          style={{
-            opacity: textOpacity,
-            y: textY,
-          }}
-        >
-          <p className="text-xl md:text-3xl font-medium tracking-tight text-foreground/80 font-serif italic">
-            So cool, right?
-          </p>
         </motion.div>
       </div>
     </div>
