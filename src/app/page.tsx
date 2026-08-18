@@ -369,90 +369,95 @@ export default function HomePage() {
       </div>
 
       {/* ———————————————————————————————————————————————— */}
-      {/* SECTION 4 — IMPACT (cream) */}
+      {/* SECTION 4 — RESOURCES (cream) */}
       {/* ———————————————————————————————————————————————— */}
       <section className="section-light">
         <div className="container-wispr">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <span className="badge badge-outline" style={{ marginBottom: '24px' }}>Our Impact</span>
+              <span className="badge badge-outline" style={{ marginBottom: '24px' }}>Resources</span>
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-[#222222]">Every charge</span>
-                <span className="text-[#222222] italic">makes a difference</span>
+                <span className="text-[#222222]">EV Charging</span>
+                <span className="text-[#222222] italic">Resources</span>
               </h2>
               <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '40px' }}>
-                What if every charge made a difference? We exist to make cities greener and more connected through accessible EV charging — creating impact both environmentally and socially.
+                Everything you need to evaluate, install, operate, and maintain DYU EV charging infrastructure.
               </p>
-              {[
-                { Icon: Leaf, title: 'Environmental Impact', desc: 'Reduced emissions, cleaner air. Renewable integration reduces carbon footprint. EV adoption lowers urban noise.' },
-                { Icon: Globe, title: 'Social Impact', desc: 'Higher EV adoption through an accessible network. Job creation in green economy. Economic boost for local businesses.' },
-              ].map(({ Icon, title, desc }) => (
-                <div key={title} style={{ display: 'flex', gap: '16px', marginBottom: '28px' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--color-stone-mist)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon size={18} color="var(--color-midnight-ink)" />
-                  </div>
-                  <div>
-                    <h5 style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', fontWeight: 700, color: 'var(--color-midnight-ink)', marginBottom: '4px' }}>{title}</h5>
-                    <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: 'var(--color-smoke)', lineHeight: 1.6 }}>{desc}</p>
-                  </div>
-                </div>
-              ))}
             </div>
             <LayeredStack className="w-full max-w-[920px] grid grid-cols-2 gap-3 p-0 md:gap-4 md:p-8">
 
-              {/* Card 1 — Cleaner Air */}
+              {/* Card 1 — EV Charger Datasheets */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=500&auto=format&fit=crop"
-                  alt="Cleaner Air — EV charging reduces emissions"
-                  className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=500&auto=format&fit=crop"
+                  alt="EV Charger Datasheets"
+                  className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Cleaner Air</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">EV Charger Datasheets</p>
+                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Technical specifications for DYU AC and DC EV chargers, including power output, connectors, dimensions, and operations.</p>
                 </div>
               </div>
 
-              {/* Card 2 — Green Jobs */}
+              {/* Card 2 — Installation Guides */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group mt-12">
                 <img
-                  src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=500&auto=format&fit=crop"
-                  alt="Green Jobs — Clean energy workforce"
-                  className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=500&auto=format&fit=crop"
+                  alt="Installation Guides"
+                  className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Green Jobs</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">Installation Guides</p>
+                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Electrical, civil, mounting, cabling, earthing, protection, and commissioning requirements for DYU EV chargers.</p>
                 </div>
               </div>
 
-              {/* Card 3 — Secure Network */}
+              {/* Card 3 — EV Charging Guides */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=500&auto=format&fit=crop"
-                  alt="Secure Network — Reliable EV charging infrastructure"
-                  className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=500&auto=format&fit=crop"
+                  alt="EV Charging Guides"
+                  className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Secure Network</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">EV Charging Guides</p>
+                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Practical guides covering AC vs. DC charging, CCS2, charging speeds, charger selection, and electrical requirements.</p>
                 </div>
               </div>
 
-              {/* Card 4 — Smart Ops */}
+              {/* Card 4 — Technical Specifications */}
               <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group mt-12">
                 <img
-                  src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=500&auto=format&fit=crop"
-                  alt="Smart Operations — EV charging station technology"
-                  className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=500&auto=format&fit=crop"
+                  alt="Technical Specifications"
+                  className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-semibold text-base tracking-tight">Smart Ops</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">Technical Specifications</p>
+                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Detailed specifications for DYU's 7.4 kW–360 kW EV charging portfolio, organized by charger type and rating.</p>
+                </div>
+              </div>
+
+              {/* Card 5 — OCPP & CMS Documentation */}
+              <div className="relative overflow-hidden rounded-3xl aspect-[250/120] md:aspect-[500/180] col-span-2 shadow-xl group mt-6">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+                  alt="OCPP & CMS Documentation"
+                  className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight mb-1">OCPP & CMS Documentation</p>
+                  <p className="text-white/80 text-xs sm:text-sm leading-snug max-w-2xl">Connectivity information, OCPP compatibility, remote monitoring dashboards, RFID integration, and software APIs.</p>
                 </div>
               </div>
 
