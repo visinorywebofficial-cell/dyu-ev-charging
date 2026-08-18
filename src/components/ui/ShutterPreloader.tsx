@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function ShutterPreloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,11 +17,13 @@ export function ShutterPreloader() {
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "";
+      ScrollTrigger.refresh();
     }, 2200);
 
     return () => {
       clearTimeout(timer);
       document.body.style.overflow = "";
+      ScrollTrigger.refresh();
     };
   }, []);
 

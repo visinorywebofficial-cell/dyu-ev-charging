@@ -55,8 +55,26 @@ export function ScrollSplitCard({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const el = containerRef.current;
+    if (!el) return;
+
+    // Direct geometric scroll calculator (failsafe against any ScrollTrigger/overflow bugs)
+    const updateProgress = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollable = rect.height - windowHeight;
+      if (totalScrollable <= 0) return;
+      
+      const currentScroll = -rect.top;
+      const raw = currentScroll / totalScrollable;
+      const clamped = Math.max(0, Math.min(1, raw));
+      progress.set(clamped);
+    };
+
+    // GSAP ScrollTrigger integration
     const trigger = ScrollTrigger.create({
-      trigger: containerRef.current,
+      trigger: el,
       start: "top top",
       end: "bottom bottom",
       scrub: true,
@@ -65,7 +83,27 @@ export function ScrollSplitCard({
       },
     });
 
+    // Refresh triggers to account for preloader completion and lazy images
+    const t1 = setTimeout(() => {
+      ScrollTrigger.refresh();
+      updateProgress();
+    }, 500);
+    const t2 = setTimeout(() => {
+      ScrollTrigger.refresh();
+      updateProgress();
+    }, 2400);
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress, { passive: true });
+
+    // Initial update
+    updateProgress();
+
     return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
       trigger.kill();
     };
   }, [progress]);
