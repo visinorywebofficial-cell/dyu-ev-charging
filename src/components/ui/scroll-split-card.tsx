@@ -152,13 +152,29 @@ export function ScrollSplitCard({
                 WebkitTransformStyle: "preserve-3d",
               }}
             >
-              {/* GPU-Accelerated Sibling Shadow Layer (sitting behind both Front and Back sides) */}
+              {/* GPU-Accelerated Sibling Front Shadow Layer (sitting behind Front Side, disappears when flipped) */}
               <motion.div 
                 className="absolute inset-0 pointer-events-none z-0 will-change-transform" 
                 style={{ 
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", 
                   opacity: shadowOpacity,
                   borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
+                  transform: "translateZ(-10px)",
+                  WebkitBackfaceVisibility: "hidden",
+                  backfaceVisibility: "hidden",
+                }} 
+              />
+
+              {/* GPU-Accelerated Sibling Back Shadow Layer (sitting behind Back Side, appears when flipped) */}
+              <motion.div 
+                className="absolute inset-0 pointer-events-none z-0 will-change-transform" 
+                style={{ 
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", 
+                  opacity: shadowOpacity,
+                  borderRadius: i === 0 ? borderRadiusLeft : i === 2 ? borderRadiusRight : borderRadiusMiddle,
+                  transform: "rotateY(180deg) translateZ(-10px)",
+                  WebkitBackfaceVisibility: "hidden",
+                  backfaceVisibility: "hidden",
                 }} 
               />
 
@@ -179,6 +195,7 @@ export function ScrollSplitCard({
                   opacity: frontFaceOpacity,
                   WebkitMaskImage: "-webkit-radial-gradient(white, black)",
                   maskImage: "-webkit-radial-gradient(white, black)",
+                  outline: "1px solid transparent",
                 }}
               >
                 <div
@@ -227,6 +244,7 @@ export function ScrollSplitCard({
                   opacity: backFaceOpacity,
                   WebkitMaskImage: "-webkit-radial-gradient(white, black)",
                   maskImage: "-webkit-radial-gradient(white, black)",
+                  outline: "1px solid transparent",
                 }}
               >
                 {/* Grainy Noise Overlay */}

@@ -237,41 +237,38 @@ export default function HomePage() {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
               <span className="badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(255,255,255,0.4)', color: '#ffffff' }}>
                 <span className="pulse-dot" style={{ background: '#888888' }} />
-                Empowering India's EV Network
+                DYU — EV Charging Infrastructure & EV Chargers in India
               </span>
             </div>
 
             {/* H1 — Gilroy */}
             <h1 style={{
               fontFamily: 'Gilroy, sans-serif',
-              fontSize: 'clamp(36px, 4vw, 56px)',
+              fontSize: 'clamp(28px, 3.5vw, 44px)',
               fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
+              lineHeight: 1.2,
+              letterSpacing: '-0.02em',
               marginBottom: '32px',
-              maxWidth: '900px',
+              maxWidth: '960px',
               margin: '0 auto 32px',
               color: '#ffffff',
             }}>
-              <span style={{ color: 'rgba(255,255,255,0.7)', display: 'block', marginBottom: '4px' }}>
-                Building the largest
-              </span>
-              <span style={{ color: '#ffffff', display: 'block' }}>
-                EV charging network in India
-              </span>
+              DYU provides EV charging infrastructure and charging solutions for businesses, fleets, workplaces, destinations and highway networks across India.
             </h1>
 
             {/* Tagline */}
-            <div style={{ marginBottom: '24px' }}>
+            <div style={{ marginBottom: '24px', maxWidth: '850px', margin: '0 auto 24px' }}>
               <span style={{
                 fontFamily: 'var(--font-figtree)',
-                fontSize: '20px',
+                fontSize: 'clamp(11px, 1.4vw, 14px)',
                 fontWeight: 700,
-                letterSpacing: '0.15em',
+                letterSpacing: '0.1em',
                 color: 'rgba(255,255,255,0.9)',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                lineHeight: 1.5,
+                display: 'block'
               }}>
-                POWER, DELIVERED.
+                AC EV Chargers | DC Fast Chargers | EV Charging Stations | EV Charging Network | Charging Software | Fleet Charging | Highway Charging.
               </span>
             </div>
 
@@ -284,7 +281,7 @@ export default function HomePage() {
               margin: '0 auto 40px',
               lineHeight: 1.6,
             }}>
-              Reliable, fast and accessible charging — anywhere you go.
+              AC & DC EV Chargers from 7.4 kW to 360 kW
             </p>
 
             {/* CTAs */}
@@ -317,30 +314,11 @@ export default function HomePage() {
 
           </div>
         </div>
-
-          {/* Stats row without box shapes or borders - crisp white numbers and text */}
-          <div className="grid grid-cols-2 md:grid-cols-4 relative z-20 mt-16 max-w-6xl mx-auto px-4 gap-8">
-            {[
-              { value: 834, suffix: '+', label: 'EV Chargers' },
-              { value: 833, suffix: '+', label: 'Cities Across India' },
-              { value: 99, suffix: '%', label: 'Uptime Reliability' },
-              { value: 100, suffix: ' Cr+', label: 'KM Powered' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center py-4">
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '48px', fontWeight: 800, color: '#ffffff', lineHeight: 1, textShadow: '0 4px 12px rgba(0,0,0,0.9)' }} className="!text-white text-white">
-                  <CountUp value={stat.value} suffix={stat.suffix} />
-                </div>
-                <div style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: '#ffffff', marginTop: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }} className="!text-white text-white">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
       </section>
 
-      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ———————————————————————————————————————————————— */}
       {/* SECTION 2 — WORD REVEAL (cream) */}
-      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ———————————————————————————————————————————————— */}
       <section className="section-light" style={{ borderTop: '1px solid var(--color-stone-mist)' }}>
         <div className="container-wispr" style={{ maxWidth: '900px' }}>
           <WordReveal
