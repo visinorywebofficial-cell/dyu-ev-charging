@@ -390,7 +390,7 @@ export default function HomePage() {
       {/* ———————————————————————————————————————————————— */}
       {/* SECTION 4 — PRODUCTS (ScrollSplitCard) */}
       {/* ———————————————————————————————————————————————— */}
-      <div className="w-full">
+      <div className="w-full bg-[#001E2B]">
         <ScrollSplitCard
           imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2832&auto=format&fit=crop"
           cards={[
@@ -426,20 +426,20 @@ export default function HomePage() {
         ref={resourcesRef}
         className="section-light"
         style={{
-          backgroundColor: resourcesActive ? 'var(--color-cream-paper)' : '#001E2B',
-          color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff',
+          backgroundColor: resourcesActive ? '#001E2B' : 'var(--color-cream-paper)',
+          color: resourcesActive ? '#ffffff' : 'var(--color-midnight-ink)',
           transition: 'background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
         }}
       >
         <div className="container-wispr">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <span className="badge badge-outline" style={{ marginBottom: '24px', color: resourcesActive ? 'inherit' : '#ffffff', borderColor: resourcesActive ? 'inherit' : 'rgba(255,255,255,0.4)' }}>Resources</span>
+              <span className="badge badge-outline" style={{ marginBottom: '24px', color: resourcesActive ? '#ffffff' : 'inherit', borderColor: resourcesActive ? 'rgba(255,255,255,0.4)' : 'inherit' }}>Resources</span>
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span style={{ color: resourcesActive ? '#222222' : '#ffffff', transition: 'color 0.8s ease' }}>DYU EV Charging</span>
-                <span style={{ color: resourcesActive ? '#222222' : '#ffffff', transition: 'color 0.8s ease' }} className="italic">Resources</span>
+                <span style={{ color: resourcesActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }}>DYU EV Charging</span>
+                <span style={{ color: resourcesActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }} className="italic">Resources</span>
               </h2>
-              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: resourcesActive ? 'var(--color-smoke)' : 'rgba(255, 255, 255, 0.7)', lineHeight: 1.7, marginBottom: '32px', transition: 'color 0.8s ease' }}>
+              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: resourcesActive ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '32px', transition: 'color 0.8s ease' }}>
                 Everything you need to evaluate, install, operate, and maintain DYU EV charging infrastructure.
               </p>
 
@@ -457,7 +457,7 @@ export default function HomePage() {
                       fontFamily: 'var(--font-figtree)', 
                       fontSize: '15px', 
                       fontWeight: 800, 
-                      color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff', 
+                      color: resourcesActive ? '#ffffff' : 'var(--color-midnight-ink)', 
                       flexShrink: 0,
                       transition: 'color 0.8s ease'
                     }}>
@@ -468,7 +468,7 @@ export default function HomePage() {
                         fontFamily: 'var(--font-figtree)', 
                         fontSize: '15px', 
                         fontWeight: 700, 
-                        color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff', 
+                        color: resourcesActive ? '#ffffff' : 'var(--color-midnight-ink)', 
                         display: 'block', 
                         marginBottom: '2px',
                         transition: 'color 0.8s ease'
@@ -478,7 +478,7 @@ export default function HomePage() {
                       <span style={{ 
                         fontFamily: 'var(--font-figtree)', 
                         fontSize: '14px', 
-                        color: resourcesActive ? 'var(--color-smoke)' : 'rgba(255, 255, 255, 0.7)', 
+                        color: resourcesActive ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-smoke)', 
                         lineHeight: 1.5, 
                         display: 'block',
                         transition: 'color 0.8s ease'

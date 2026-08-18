@@ -13,7 +13,7 @@ export function ShutterPreloader() {
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "";
-    }, 2000);
+    }, 2200);
 
     return () => {
       clearTimeout(timer);
@@ -40,7 +40,6 @@ export function ShutterPreloader() {
             width: "100vw",
             height: "100vh",
             backgroundColor: "#001E2B", // Brand Petrol Blue background
-            color: "#FFFFFF",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -48,7 +47,7 @@ export function ShutterPreloader() {
             zIndex: 999999,
           }}
         >
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-2" style={{ color: "#FFFFFF" }}>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{
@@ -65,32 +64,42 @@ export function ShutterPreloader() {
                 fontFamily: '"Plus Jakarta Sans", "Gilroy", sans-serif',
                 fontWeight: 900,
                 fontSize: "4.5rem",
-                letterSpacing: "-0.05em",
-                lineHeight: 1
+                letterSpacing: "0.2em",
+                paddingLeft: "0.2em", // Center offset adjustment for letter spacing
+                lineHeight: 1,
+                color: "#FFFFFF",
+                textAlign: "center"
               }}
             >
               DYU
             </motion.span>
-            
-            {/* Smooth loading indicator line */}
-            <div style={{ width: "80px", height: "1px", backgroundColor: "rgba(255,255,255,0.15)", position: "relative", overflow: "hidden" }}>
-              <motion.div
-                initial={{ left: "-100%" }}
-                animate={{ left: "100%" }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.2,
-                  ease: "easeInOut"
-                }}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  width: "50%",
-                  height: "100%",
-                  backgroundColor: "#005F73"
-                }}
-              />
-            </div>
+
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, delay: 0.2, ease: "easeOut" }
+              }}
+              exit={{
+                opacity: 0,
+                y: -20,
+                transition: { duration: 0.5, ease: "easeIn" }
+              }}
+              style={{
+                fontFamily: '"Plus Jakarta Sans", "Gilroy", sans-serif',
+                fontWeight: 700,
+                fontSize: "0.85rem",
+                letterSpacing: "0.4em",
+                paddingLeft: "0.4em", // Center offset adjustment for letter spacing
+                color: "rgba(255, 255, 255, 0.75)",
+                textTransform: "uppercase",
+                textAlign: "center",
+                marginTop: "8px"
+              }}
+            >
+              POWER, DELIVERED.
+            </motion.span>
           </div>
         </motion.div>
       )}

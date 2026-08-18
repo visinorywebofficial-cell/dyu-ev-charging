@@ -74,38 +74,38 @@ export function ScrollSplitCard({
   }, [scrollYProgress, inView, gatedProgress]);
 
   // Stage 1 to 2: Separation (0 to 0.4), then Stage 2 to 3: Overlap closer (0.4 to 0.8)
-  const leftX = useTransform(gatedProgress, [0, 0.4, 0.8], isMobile ? [0, -12, -6] : [0, -48, -24]);
-  const rightX = useTransform(gatedProgress, [0, 0.4, 0.8], isMobile ? [0, 12, 6] : [0, 48, 24]);
+  const leftX = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [0, -12, -6] : [0, -48, -24]);
+  const rightX = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [0, 12, 6] : [0, 48, 24]);
   
-  const scale = useTransform(gatedProgress, [0, 0.4], [1, 0.9]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.9]);
 
   // Stage 2 to 3: Flip (0.4 to 0.8)
-  const rotateY = useTransform(gatedProgress, [0.4, 0.8], [0, 180]);
+  const rotateY = useTransform(scrollYProgress, [0.4, 0.8], [0, 180]);
   // Due to 180deg Y flip, positive Z becomes visual counter-clockwise, negative Z becomes visual clockwise
-  const rotateZLeft = useTransform(gatedProgress, [0.4, 0.8], [0, isMobile ? 3 : 6]);
-  const rotateZRight = useTransform(gatedProgress, [0.4, 0.8], [0, isMobile ? -3 : -6]);
+  const rotateZLeft = useTransform(scrollYProgress, [0.4, 0.8], [0, isMobile ? 3 : 6]);
+  const rotateZRight = useTransform(scrollYProgress, [0.4, 0.8], [0, isMobile ? -3 : -6]);
 
   // Opacities for Front and Back faces during rotation to bypass Webkit backface-visibility bugs
   const frontFaceOpacity = useTransform(rotateY, [0, 89, 90, 180], [1, 1, 0, 0]);
   const backFaceOpacity = useTransform(rotateY, [0, 90, 91, 180], [0, 0, 1, 1]);
 
   // Dynamic borders/radii so it looks like ONE flat image initially
-  const borderRadiusLeft = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
-  const borderRadiusMiddle = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
-  const borderRadiusRight = useTransform(gatedProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
-  const borderOpacity = useTransform(gatedProgress, [0, 0.2], [0, 0.2]);
-  const shadowOpacity = useTransform(gatedProgress, [0, 0.2], [0, 0.4]);
+  const borderRadiusLeft = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
+  const borderRadiusMiddle = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
+  const borderRadiusRight = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
+  const borderOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 0.2]);
+  const shadowOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 0.4]);
 
   // Cards move up in the last viewport
-  const cardsY = useTransform(gatedProgress, [0.8, 1], [0, isMobile ? -80 : -200]);
+  const cardsY = useTransform(scrollYProgress, [0.8, 1], [0, isMobile ? -80 : -200]);
 
   // Text appearance at the end in the sticky viewport
-  const textOpacity = useTransform(gatedProgress, [0.8, 1], [0, 1]);
-  const textY = useTransform(gatedProgress, [0.8, 1], [40, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
+  const textY = useTransform(scrollYProgress, [0.8, 1], [40, 0]);
 
   // Indicator text appearance at the start
-  const startTextOpacity = useTransform(gatedProgress, [0, 0.1], [1, 0]);
-  const startTextY = useTransform(gatedProgress, [0, 0.1], [0, 20]);
+  const startTextOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const startTextY = useTransform(scrollYProgress, [0, 0.1], [0, 20]);
 
   const optimizedImageSrc = imageSrc.includes("unsplash.com")
     ? imageSrc.replace(/w=\d+/, isMobile ? "w=1200" : "w=1800")
