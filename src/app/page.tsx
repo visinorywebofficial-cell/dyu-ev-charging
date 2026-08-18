@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSplitCard } from "@/components/ui/scroll-split-card";
 import { LayeredStack } from "@/components/ui/layered-stack";
+import { ShutterPreloader } from "@/components/ui/ShutterPreloader";
 
 
 /* â”€â”€ COUNT UP â”€â”€ */
@@ -138,6 +139,13 @@ export default function HomePage() {
   const chargingSectionRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
+  // States and refs for dynamic background scroll transitions
+  const [wordRevealActive, setWordRevealActive] = useState(false);
+  const wordRevealRef = useRef<HTMLDivElement>(null);
+
+  const [resourcesActive, setResourcesActive] = useState(false);
+  const resourcesRef = useRef<HTMLDivElement>(null);
+
   // Dedicated 3-second slideshow timer loop (never reset by resize/re-render)
   useEffect(() => {
     const timer = setInterval(() => {
@@ -166,8 +174,39 @@ export default function HomePage() {
     };
   }, []);
 
+  // Intersection Observer for Word Reveal Section
+  useEffect(() => {
+    const el = wordRevealRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setWordRevealActive(entry.isIntersecting);
+    }, {
+      threshold: 0.25,
+      rootMargin: "-10% 0px -10% 0px"
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Intersection Observer for Resources Section
+  useEffect(() => {
+    const el = resourcesRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setResourcesActive(entry.isIntersecting);
+    }, {
+      threshold: 0.15,
+      rootMargin: "-10% 0px -10% 0px"
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div style={{ backgroundColor: 'var(--color-cream-paper)' }}>
+    <div>
+      {/* Shutter Preloader splash entrance */}
+      <ShutterPreloader />
+
       {/* Eager Preload for All 3 Hero Background Images */}
       <link rel="preload" as="image" href="/images/ev-vs-ice.jpg" />
       <link rel="preload" as="image" href="/images/hero-new-2.jpg" />
@@ -315,7 +354,16 @@ export default function HomePage() {
       {/* ———————————————————————————————————————————————— */}
       {/* SECTION 2 — WORD REVEAL (cream) */}
       {/* ———————————————————————————————————————————————— */}
-      <section className="section-light" style={{ borderTop: '1px solid var(--color-stone-mist)' }}>
+      <section 
+        ref={wordRevealRef}
+        className="section-light" 
+        style={{ 
+          borderTop: '1px solid var(--color-stone-mist)',
+          backgroundColor: wordRevealActive ? '#001E2B' : 'var(--color-cream-paper)',
+          color: wordRevealActive ? '#ffffff' : 'var(--color-midnight-ink)',
+          transition: 'background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
+        }}
+      >
         <div className="container-wispr" style={{ maxWidth: '900px' }}>
           <WordReveal
             text="DYU is an Indian EV charging solutions company providing AC chargers, DC fast chargers, charging software, installation and EV charging infrastructure for businesses, fleets and public charging networks..."
@@ -328,8 +376,11 @@ export default function HomePage() {
               font-weight: 400;
               line-height: 1.2;
               letter-spacing: -0.03em;
-              color: var(--color-midnight-ink);
+              color: inherit;
               text-align: justify;
+            }
+            .word-reveal-container .word.active {
+              color: inherit !important;
             }
           `}</style>
         </div>
@@ -371,16 +422,24 @@ export default function HomePage() {
       {/* ———————————————————————————————————————————————— */}
       {/* SECTION 4 — RESOURCES (cream) */}
       {/* ———————————————————————————————————————————————— */}
-      <section className="section-light">
+      <section 
+        ref={resourcesRef}
+        className="section-light"
+        style={{
+          backgroundColor: resourcesActive ? 'var(--color-cream-paper)' : '#001E2B',
+          color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff',
+          transition: 'background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
+        }}
+      >
         <div className="container-wispr">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <span className="badge badge-outline" style={{ marginBottom: '24px' }}>Resources</span>
+              <span className="badge badge-outline" style={{ marginBottom: '24px', color: resourcesActive ? 'inherit' : '#ffffff', borderColor: resourcesActive ? 'inherit' : 'rgba(255,255,255,0.4)' }}>Resources</span>
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-[#222222]">DYU EV Charging</span>
-                <span className="text-[#222222] italic">Resources</span>
+                <span style={{ color: resourcesActive ? '#222222' : '#ffffff', transition: 'color 0.8s ease' }}>DYU EV Charging</span>
+                <span style={{ color: resourcesActive ? '#222222' : '#ffffff', transition: 'color 0.8s ease' }} className="italic">Resources</span>
               </h2>
-              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '32px' }}>
+              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: resourcesActive ? 'var(--color-smoke)' : 'rgba(255, 255, 255, 0.7)', lineHeight: 1.7, marginBottom: '32px', transition: 'color 0.8s ease' }}>
                 Everything you need to evaluate, install, operate, and maintain DYU EV charging infrastructure.
               </p>
 
@@ -394,14 +453,36 @@ export default function HomePage() {
                   { num: 5, title: "OCPP & CMS Documentation", desc: "Information about connectivity, OCPP compatibility, charger management, remote monitoring, RFID, and software integration." }
                 ].map((item) => (
                   <div key={item.num} className="flex gap-3 text-left">
-                    <span style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', fontWeight: 800, color: 'var(--color-midnight-ink)', flexShrink: 0 }}>
+                    <span style={{ 
+                      fontFamily: 'var(--font-figtree)', 
+                      fontSize: '15px', 
+                      fontWeight: 800, 
+                      color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff', 
+                      flexShrink: 0,
+                      transition: 'color 0.8s ease'
+                    }}>
                       {item.num}.
                     </span>
                     <div>
-                      <strong style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', fontWeight: 700, color: 'var(--color-midnight-ink)', display: 'block', marginBottom: '2px' }}>
+                      <strong style={{ 
+                        fontFamily: 'var(--font-figtree)', 
+                        fontSize: '15px', 
+                        fontWeight: 700, 
+                        color: resourcesActive ? 'var(--color-midnight-ink)' : '#ffffff', 
+                        display: 'block', 
+                        marginBottom: '2px',
+                        transition: 'color 0.8s ease'
+                      }}>
                         {item.title}
                       </strong>
-                      <span style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: 'var(--color-smoke)', lineHeight: 1.5, display: 'block' }}>
+                      <span style={{ 
+                        fontFamily: 'var(--font-figtree)', 
+                        fontSize: '14px', 
+                        color: resourcesActive ? 'var(--color-smoke)' : 'rgba(255, 255, 255, 0.7)', 
+                        lineHeight: 1.5, 
+                        display: 'block',
+                        transition: 'color 0.8s ease'
+                      }}>
                         {item.desc}
                       </span>
                     </div>
