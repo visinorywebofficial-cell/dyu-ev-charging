@@ -377,12 +377,37 @@ export default function HomePage() {
             <div>
               <span className="badge badge-outline" style={{ marginBottom: '24px' }}>Resources</span>
               <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                <span className="text-[#222222]">EV Charging</span>
+                <span className="text-[#222222]">DYU EV Charging</span>
                 <span className="text-[#222222] italic">Resources</span>
               </h2>
-              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '40px' }}>
+              <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '16px', color: 'var(--color-smoke)', lineHeight: 1.7, marginBottom: '32px' }}>
                 Everything you need to evaluate, install, operate, and maintain DYU EV charging infrastructure.
               </p>
+
+              {/* Numbered List */}
+              <div className="flex flex-col gap-5 mb-8">
+                {[
+                  { num: 1, title: "EV Charger Datasheets", desc: "Technical specifications for DYU AC and DC EV chargers, including power output, connectors, input/output ratings, efficiency, protection, communication, dimensions, and operating conditions." },
+                  { num: 2, title: "Installation Guides", desc: "Electrical, civil, mounting, cabling, earthing, protection, and commissioning requirements for DYU EV chargers." },
+                  { num: 3, title: "EV Charging Guides", desc: "Practical guides covering AC vs. DC charging, CCS2, charging speeds, charger selection, electrical requirements, and EV charging infrastructure." },
+                  { num: 4, title: "Technical Specifications", desc: "Detailed specifications for DYU's 7.4 kW–360 kW EV charging portfolio, organized by charger type and power rating." },
+                  { num: 5, title: "OCPP & CMS Documentation", desc: "Information about connectivity, OCPP compatibility, charger management, remote monitoring, RFID, and software integration." }
+                ].map((item) => (
+                  <div key={item.num} className="flex gap-3 text-left">
+                    <span style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', fontWeight: 800, color: 'var(--color-midnight-ink)', flexShrink: 0 }}>
+                      {item.num}.
+                    </span>
+                    <div>
+                      <strong style={{ fontFamily: 'var(--font-figtree)', fontSize: '15px', fontWeight: 700, color: 'var(--color-midnight-ink)', display: 'block', marginBottom: '2px' }}>
+                        {item.title}
+                      </strong>
+                      <span style={{ fontFamily: 'var(--font-figtree)', fontSize: '14px', color: 'var(--color-smoke)', lineHeight: 1.5, display: 'block' }}>
+                        {item.desc}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
             <LayeredStack className="w-full max-w-[920px] grid grid-cols-2 gap-3 p-0 md:gap-4 md:p-8">
 
@@ -395,9 +420,8 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">EV Charger Datasheets</p>
-                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Technical specifications for DYU AC and DC EV chargers, including power output, connectors, dimensions, and operations.</p>
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charger Datasheets</p>
                 </div>
               </div>
 
@@ -410,9 +434,8 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">Installation Guides</p>
-                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Electrical, civil, mounting, cabling, earthing, protection, and commissioning requirements for DYU EV chargers.</p>
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">Installation Guides</p>
                 </div>
               </div>
 
@@ -425,9 +448,8 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">EV Charging Guides</p>
-                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Practical guides covering AC vs. DC charging, CCS2, charging speeds, charger selection, and electrical requirements.</p>
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charging Guides</p>
                 </div>
               </div>
 
@@ -440,9 +462,8 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg tracking-tight mb-1">Technical Specifications</p>
-                  <p className="text-white/80 text-xs sm:text-sm leading-snug">Detailed specifications for DYU's 7.4 kW–360 kW EV charging portfolio, organized by charger type and rating.</p>
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">Technical Specifications</p>
                 </div>
               </div>
 
@@ -456,8 +477,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight mb-1">OCPP & CMS Documentation</p>
-                  <p className="text-white/80 text-xs sm:text-sm leading-snug max-w-2xl">Connectivity information, OCPP compatibility, remote monitoring dashboards, RFID integration, and software APIs.</p>
+                  <p className="text-[#FFFFFF] font-bold text-lg md:text-2xl tracking-tight leading-tight">OCPP & CMS Documentation</p>
                 </div>
               </div>
 
