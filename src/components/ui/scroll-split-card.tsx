@@ -2,8 +2,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useScroll, useTransform, useMotionValue, useInView } from "framer-motion";
+import { motion, useTransform, useMotionValue } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollSplitCardItem {
   title: string;
@@ -28,7 +32,6 @@ export function ScrollSplitCard({
   containerRef: externalContainerRef,
 }: ScrollSplitCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollContainer, setScrollContainer] = useState<React.RefObject<HTMLElement | null> | undefined>();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -44,68 +47,61 @@ export function ScrollSplitCard({
       setIsMobile(window.innerWidth < 768);
     }
     window.addEventListener("resize", handleResize);
-    
-    if (externalContainerRef?.current) {
-      setScrollContainer(externalContainerRef);
-    }
     return () => window.removeEventListener("resize", handleResize);
-  }, [externalContainerRef]);
+  }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    ...(scrollContainer ? { container: scrollContainer } : {}),
-    offset: ["start start", "end end"],
-  });
-
-  // Gated scroll progress only updates when the component is inside/near the viewport
-  const inView = useInView(containerRef, { margin: "400px 0px" });
-  const gatedProgress = useMotionValue(0);
+  const progress = useMotionValue(0);
 
   useEffect(() => {
-    if (inView) {
-      gatedProgress.set(scrollYProgress.get());
-    }
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      if (inView) {
-        gatedProgress.set(latest);
-      }
+    if (typeof window === "undefined") return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+      onUpdate: (self) => {
+        progress.set(self.progress);
+      },
     });
-    return () => unsubscribe();
-  }, [scrollYProgress, inView, gatedProgress]);
 
-  // Stage 1 to 2: Separation (0 to 0.4), then Stage 2 to 3: Overlap closer (0.4 to 0.8)
-  const leftX = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [0, -12, -6] : [0, -48, -24]);
-  const rightX = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [0, 12, 6] : [0, 48, 24]);
+    return () => {
+      trigger.kill();
+    };
+  }, [progress]);
+
+  // Stage 1: Separation (0 to 0.25), Stage 2: Flip (0.25 to 0.65), Stage 3: Rest & Visible (0.65 to 1.0)
+  const leftX = useTransform(progress, [0, 0.25, 0.65], isMobile ? [0, -14, -8] : [0, -48, -24]);
+  const rightX = useTransform(progress, [0, 0.25, 0.65], isMobile ? [0, 14, 8] : [0, 48, 24]);
   
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.9]);
+  const scale = useTransform(progress, [0, 0.25], [1, 0.95]);
 
-  // Stage 2 to 3: Flip (0.4 to 0.8)
-  const rotateY = useTransform(scrollYProgress, [0.4, 0.8], [0, 180]);
-  // Due to 180deg Y flip, positive Z becomes visual counter-clockwise, negative Z becomes visual clockwise
-  const rotateZLeft = useTransform(scrollYProgress, [0.4, 0.8], [0, isMobile ? 3 : 6]);
-  const rotateZRight = useTransform(scrollYProgress, [0.4, 0.8], [0, isMobile ? -3 : -6]);
+  // Flip rotation from 0 to 180 degrees
+  const rotateY = useTransform(progress, [0.25, 0.65], [0, 180]);
+  const rotateZLeft = useTransform(progress, [0.25, 0.65], [0, isMobile ? 3 : 6]);
+  const rotateZRight = useTransform(progress, [0.25, 0.65], [0, isMobile ? -3 : -6]);
 
   // Opacities for Front and Back faces during rotation to bypass Webkit backface-visibility bugs
   const frontFaceOpacity = useTransform(rotateY, [0, 89, 90, 180], [1, 1, 0, 0]);
   const backFaceOpacity = useTransform(rotateY, [0, 90, 91, 180], [0, 0, 1, 1]);
 
   // Dynamic borders/radii so it looks like ONE flat image initially
-  const borderRadiusLeft = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
-  const borderRadiusMiddle = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
-  const borderRadiusRight = useTransform(scrollYProgress, [0, 0.2], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
-  const borderOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 0.2]);
-  const shadowOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 0.4]);
+  const borderRadiusLeft = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["16px 0px 0px 16px", "16px 16px 16px 16px"]);
+  const borderRadiusMiddle = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 0px 0px 0px", "16px 16px 16px 16px"]);
+  const borderRadiusRight = useTransform(progress, [0, 0.15], isMobile ? ["16px 16px 16px 16px", "16px 16px 16px 16px"] : ["0px 16px 16px 0px", "16px 16px 16px 16px"]);
+  const borderOpacity = useTransform(progress, [0, 0.15], [0, 0.2]);
+  const shadowOpacity = useTransform(progress, [0, 0.15], [0, 0.4]);
 
-  // Cards move up in the last viewport
-  const cardsY = useTransform(scrollYProgress, [0.8, 1], [0, isMobile ? -80 : -200]);
+  // Keep cards centered and fully visible on screen
+  const cardsY = useTransform(progress, [0.85, 1], [0, isMobile ? -15 : -30]);
 
-  // Text appearance at the end in the sticky viewport
-  const textOpacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
-  const textY = useTransform(scrollYProgress, [0.8, 1], [40, 0]);
+  // Ending text appearance after flip is complete
+  const textOpacity = useTransform(progress, [0.65, 0.85], [0, 1]);
+  const textY = useTransform(progress, [0.65, 0.85], [20, 0]);
 
   // Indicator text appearance at the start
-  const startTextOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const startTextY = useTransform(scrollYProgress, [0, 0.1], [0, 20]);
+  const startTextOpacity = useTransform(progress, [0, 0.1], [1, 0]);
+  const startTextY = useTransform(progress, [0, 0.1], [0, 20]);
 
   const optimizedImageSrc = imageSrc.includes("unsplash.com")
     ? imageSrc.replace(/w=\d+/, isMobile ? "w=1200" : "w=1800")
@@ -114,9 +110,9 @@ export function ScrollSplitCard({
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-[250vh] w-full", className)}
+      className={cn("relative h-[400vh] w-full bg-white", className)}
     >
-      <div className="sticky top-0 flex h-[100vh] w-full items-center justify-center overflow-hidden [perspective:1200px]">
+      <div className="sticky top-0 flex h-[100vh] w-full items-center justify-center overflow-hidden [perspective:1200px] bg-white">
         {/* Starting Text indicator */}
         <motion.div
           className="absolute top-[15%] md:top-[20%] left-0 right-0 text-center pointer-events-none z-30"

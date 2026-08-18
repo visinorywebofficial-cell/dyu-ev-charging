@@ -390,7 +390,7 @@ export default function HomePage() {
       {/* ———————————————————————————————————————————————— */}
       {/* SECTION 4 — PRODUCTS (ScrollSplitCard) */}
       {/* ———————————————————————————————————————————————— */}
-      <div className="w-full bg-[#001E2B]">
+      <div className="w-full bg-white">
         <ScrollSplitCard
           imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2832&auto=format&fit=crop"
           cards={[
@@ -570,26 +570,7 @@ export default function HomePage() {
       {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {/* SECTION 5 — PARTNER CTA (teal) */}
       {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <section className="section-teal">
-        <div className="container-wispr" style={{ textAlign: 'center' }}>
-          <span className="badge" style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', marginBottom: '32px' }}>B2B & Franchise</span>
-          <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-            <span className="text-[#ffffff]">Turn your space into a</span>
-            <span className="text-[#888888] italic">revenue stream</span>
-          </h2>
-          <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '18px', color: 'rgba(255,255,255,0.75)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.6 }}>
-            Join India's fastest-growing EV charging network. Full-ownership or FOCO model — DYU provides end-to-end support.
-          </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/ev-charging-station-franchise" className="btn-primary">
-              Explore Franchise →
-            </Link>
-            <a href="https://wa.me/919949055516" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>
-              WhatsApp Us
-            </a>
-          </div>
-        </div>
-      </section>
+
 
       {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {/* SECTION 6 — TESTIMONIALS (cream) */}
