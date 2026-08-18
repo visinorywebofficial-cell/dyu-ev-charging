@@ -322,7 +322,7 @@ export default function HomePage() {
       <section className="section-light" style={{ borderTop: '1px solid var(--color-stone-mist)' }}>
         <div className="container-wispr" style={{ maxWidth: '900px' }}>
           <WordReveal
-            text="Building the infrastructure that powers India's electric future — one charging station at a time. From highways to high streets, DYU puts clean energy exactly where India drives."
+            text="DYU is an Indian EV charging solutions company providing AC chargers, DC fast chargers, charging software, installation and EV charging infrastructure for businesses, fleets and public charging networks..."
             className=""
           />
           <style>{`
