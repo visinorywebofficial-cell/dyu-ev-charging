@@ -11,7 +11,7 @@ export default function FAQPage() {
   const faqs = [
     {
       question: "What types of EV chargers does DYU offer?",
-      answer: "We offer a wide range of charging solutions including AC Destination Chargers for commercial spaces, DC Ultra-Fast Highway Chargers for quick top-ups, and the Nectar Home Charger for smart residential use."
+      answer: "We offer a wide range of charging solutions including AC Destination Chargers for commercial spaces, DC Ultra-Fast Highway Chargers for quick top-ups, and the DYU Home Charger for smart residential use."
     },
     {
       question: "How to setup a EV charging station?",

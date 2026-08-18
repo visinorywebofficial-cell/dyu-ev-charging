@@ -353,21 +353,21 @@ export default function HomePage() {
           cards={[
             {
               title: "Home Charging",
-              description: "Nectar home EV chargers 7.4kW, 11kW, 22kW. Portable 3.3kW & 7.4kW. Safe overnight charging at home or office.",
+              description: "DYU smart home EV chargers from 7.4kW to 22kW and portable chargers from 3.3kW to 7.4kW. Safe and efficient charging at home or office.",
               bgColor: "#002B36",
               textColor: "#FFFFFF",
               image: "/images/home-charging-split-1.jpg"
             },
             {
               title: "DC Fast Charging",
-              description: "Configurable DC Fast Chargers 60kW to 360kW. Built for highways, commercial hubs, and fleets across India.",
+              description: "DYU DC Fast Chargers from 30kW to 360kW. Built for high-speed highway charging, commercial hubs, and fleets across India.",
               bgColor: "#002B36",
               textColor: "#FFFFFF",
               image: "/images/home-charging-split-2.jpg"
             },
             {
               title: "Public Network",
-              description: "Find chargers instantly via app. Live status, one-tap start, seamless payment. 1,014+ cities and growing.",
+              description: "Find DYU chargers instantly via app. Real-time status, one-tap start, and seamless payment. Rapidly expanding network across India.",
               bgColor: "#002B36",
               textColor: "#FFFFFF",
               image: "/images/hero-new-2.jpg"
