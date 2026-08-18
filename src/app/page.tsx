@@ -11,10 +11,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSplitCard } from "@/components/ui/scroll-split-card";
 import { LayeredStack } from "@/components/ui/layered-stack";
 
-const FrameScrubSection = dynamic(
-  () => import("@/components/FrameScrubSection").then((m) => ({ default: m.FrameScrubSection })),
-  { ssr: false }
-);
 
 /* â”€â”€ COUNT UP â”€â”€ */
 function CountUp({ value, suffix = "", prefix = "", duration = 2 }: { value: number; suffix?: string; prefix?: string; duration?: number }) {
@@ -244,16 +240,16 @@ export default function HomePage() {
             {/* H1 — Gilroy */}
             <h1 style={{
               fontFamily: 'Gilroy, sans-serif',
-              fontSize: 'clamp(28px, 3.5vw, 44px)',
+              fontSize: 'clamp(36px, 4vw, 56px)',
               fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
               marginBottom: '32px',
-              maxWidth: '960px',
+              maxWidth: '900px',
               margin: '0 auto 32px',
               color: '#ffffff',
             }}>
-              DYU provides EV charging infrastructure and charging solutions for businesses, fleets, workplaces, destinations and highway networks across India.
+              DYU provides EV charging infrastructure and charging solutions
             </h1>
 
             {/* Tagline */}
@@ -339,10 +335,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ———————————————————————————————————————————————— */}
-      {/* SECTION 3 — SCROLL SCRUB FRAME ANIMATION     */}
-      {/* ———————————————————————————————————————————————— */}
-      <FrameScrubSection totalFrames={224} framePathPrefix="/dyu-frames" />
 
       {/* ———————————————————————————————————————————————— */}
       {/* SECTION 4 — PRODUCTS (ScrollSplitCard) */}
