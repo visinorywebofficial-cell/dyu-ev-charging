@@ -421,7 +421,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charger Datasheets</p>
+                  <p style={{ color: '#ffffff' }} className="!text-white font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charger Datasheets</p>
                 </div>
               </div>
 
@@ -435,7 +435,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">Installation Guides</p>
+                  <p style={{ color: '#ffffff' }} className="!text-white font-bold text-lg md:text-xl tracking-tight leading-tight">Installation Guides</p>
                 </div>
               </div>
 
@@ -449,7 +449,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charging Guides</p>
+                  <p style={{ color: '#ffffff' }} className="!text-white font-bold text-lg md:text-xl tracking-tight leading-tight">EV Charging Guides</p>
                 </div>
               </div>
 
@@ -463,21 +463,21 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-xl tracking-tight leading-tight">Technical Specifications</p>
+                  <p style={{ color: '#ffffff' }} className="!text-white font-bold text-lg md:text-xl tracking-tight leading-tight">Technical Specifications</p>
                 </div>
               </div>
 
               {/* Card 5 — OCPP & CMS Documentation */}
-              <div className="relative overflow-hidden rounded-3xl aspect-[250/120] md:aspect-[500/180] col-span-2 shadow-xl group mt-6">
+              <div className="relative overflow-hidden rounded-3xl aspect-[250/320] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop"
                   alt="OCPP & CMS Documentation"
                   className="object-cover w-full h-full opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-[#FFFFFF] font-bold text-lg md:text-2xl tracking-tight leading-tight">OCPP & CMS Documentation</p>
+                  <p style={{ color: '#ffffff' }} className="!text-white font-bold text-lg md:text-xl tracking-tight leading-tight">OCPP & CMS Documentation</p>
                 </div>
               </div>
 
