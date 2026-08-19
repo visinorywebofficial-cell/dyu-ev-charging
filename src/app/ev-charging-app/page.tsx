@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { 
   ArrowRight,
@@ -57,6 +57,22 @@ export default function EvChargingAppPage() {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const stepsRef = useRef<HTMLElement>(null);
+  const [stepsActive, setStepsActive] = useState(false);
+
+  useEffect(() => {
+    const el = stepsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setStepsActive(entry.isIntersecting);
+    }, {
+      threshold: 0.2,
+      rootMargin: "-10% 0px -10% 0px"
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div ref={containerRef} className="min-h-screen relative font-['Figtree'] bg-white text-[#222222]">
@@ -284,60 +300,131 @@ export default function EvChargingAppPage() {
         </section>
 
         {/* THREE EASY STEPS */}
-        <section className="py-20 bg-[#222222] text-white relative z-20 overflow-hidden">
+        <section 
+          ref={stepsRef}
+          className="py-20 relative z-20 overflow-hidden"
+          style={{
+            backgroundColor: stepsActive ? '#001E2B' : '#ffffff',
+            color: stepsActive ? '#ffffff' : '#222222',
+            transition: 'background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
+          }}
+        >
           <div className="container mx-auto px-4 max-w-6xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
-                  <span className="text-[#222222]">Charge with the</span>
-                  <span className="text-[#888888] italic">DYU App</span>
+                  <span style={{ color: stepsActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }}>Charge with the</span>
+                  <span style={{ color: stepsActive ? '#ffffff' : '#888888', transition: 'color 0.8s ease' }} className="italic">DYU App</span>
                 </h2>
-                <p className="text-gray-400 text-lg mb-12">
+                <p style={{ color: stepsActive ? 'rgba(255, 255, 255, 0.75)' : '#666666', transition: 'color 0.8s ease' }} className="text-lg mb-12">
                   Real-time availability. Smart routing. Easy payments. Full control.
                 </p>
-                <h3 className="text-2xl font-bold mb-8 font-['Gilroy'] text-white">Three Easy Steps</h3>
+                <h3 style={{ color: stepsActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }} className="text-2xl font-bold mb-8 font-['Gilroy']">
+                  Three Easy Steps
+                </h3>
                 
                 <div className="space-y-8">
                   <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                    <div 
+                      className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0"
+                      style={{
+                        backgroundColor: stepsActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(34, 34, 34, 0.08)',
+                        color: stepsActive ? '#ffffff' : '#222222',
+                        transition: 'background-color 0.8s ease, color 0.8s ease'
+                      }}
+                    >
+                      1
+                    </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">Download & Sign Up</h4>
-                      <p className="text-gray-400">Quick onboarding in minutes</p>
+                      <h4 style={{ color: stepsActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }} className="text-xl font-bold mb-2">Download & Sign Up</h4>
+                      <p style={{ color: stepsActive ? 'rgba(255, 255, 255, 0.7)' : '#666666', transition: 'color 0.8s ease' }}>Quick onboarding in minutes</p>
                     </div>
                   </div>
                   <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                    <div 
+                      className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0"
+                      style={{
+                        backgroundColor: stepsActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(34, 34, 34, 0.08)',
+                        color: stepsActive ? '#ffffff' : '#222222',
+                        transition: 'background-color 0.8s ease, color 0.8s ease'
+                      }}
+                    >
+                      2
+                    </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">Find a Charger Near You</h4>
-                      <p className="text-gray-400">Search, filter & navigate easily</p>
+                      <h4 style={{ color: stepsActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }} className="text-xl font-bold mb-2">Find a Charger Near You</h4>
+                      <p style={{ color: stepsActive ? 'rgba(255, 255, 255, 0.7)' : '#666666', transition: 'color 0.8s ease' }}>Search, filter & navigate easily</p>
                     </div>
                   </div>
                   <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                    <div 
+                      className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0"
+                      style={{
+                        backgroundColor: stepsActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(34, 34, 34, 0.08)',
+                        color: stepsActive ? '#ffffff' : '#222222',
+                        transition: 'background-color 0.8s ease, color 0.8s ease'
+                      }}
+                    >
+                      3
+                    </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">Plug, Play & Go</h4>
-                      <p className="text-gray-400">Charge smoothly and continue your journey</p>
+                      <h4 style={{ color: stepsActive ? '#ffffff' : '#222222', transition: 'color 0.8s ease' }} className="text-xl font-bold mb-2">Plug, Play & Go</h4>
+                      <p style={{ color: stepsActive ? 'rgba(255, 255, 255, 0.7)' : '#666666', transition: 'color 0.8s ease' }}>Charge smoothly and continue your journey</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex gap-4 mt-12 flex-wrap">
-                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all flex items-center gap-3">
+                  <button 
+                    className="px-6 py-3 rounded-full font-bold transition-all flex items-center gap-3"
+                    style={{
+                      backgroundColor: stepsActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(34, 34, 34, 0.08)',
+                      color: stepsActive ? '#ffffff' : '#222222',
+                      border: stepsActive ? '1px solid rgba(255, 255, 255, 0.25)' : '1px solid rgba(34, 34, 34, 0.15)',
+                      transition: 'all 0.8s ease'
+                    }}
+                  >
                     <Download className="w-5 h-5" /> App Store
                   </button>
-                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all flex items-center gap-3">
+                  <button 
+                    className="px-6 py-3 rounded-full font-bold transition-all flex items-center gap-3"
+                    style={{
+                      backgroundColor: stepsActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(34, 34, 34, 0.08)',
+                      color: stepsActive ? '#ffffff' : '#222222',
+                      border: stepsActive ? '1px solid rgba(255, 255, 255, 0.25)' : '1px solid rgba(34, 34, 34, 0.15)',
+                      transition: 'all 0.8s ease'
+                    }}
+                  >
                     <Download className="w-5 h-5" /> Google Play
                   </button>
                 </div>
               </div>
 
               <div className="relative flex justify-center">
-                <div className="w-full max-w-[300px] aspect-[1/2] rounded-[2.5rem] border-[8px] border-white/10 bg-[#111111] shadow-2xl relative overflow-hidden flex items-center justify-center">
+                <div 
+                  className="w-full max-w-[300px] aspect-[1/2] rounded-[2.5rem] shadow-2xl relative overflow-hidden flex items-center justify-center transition-all duration-700"
+                  style={{
+                    backgroundColor: stepsActive ? '#00141d' : '#f0f4f8',
+                    border: stepsActive ? '8px solid rgba(255, 255, 255, 0.15)' : '8px solid rgba(0, 0, 0, 0.08)',
+                    transition: 'all 0.8s ease'
+                  }}
+                >
                   <div className="absolute top-0 inset-x-0 h-6 flex justify-center pt-2">
                     <div className="w-16 h-4 bg-black rounded-full" />
                   </div>
-                  <PlugZap className="w-20 h-20 text-white/20" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00F0FF]/20 to-transparent" />
+                  <PlugZap 
+                    className="w-20 h-20 transition-all duration-700" 
+                    style={{
+                      color: stepsActive ? '#00F0FF' : '#005F73',
+                      opacity: stepsActive ? 0.9 : 0.4
+                    }}
+                  />
+                  <div 
+                    className="absolute inset-0 transition-opacity duration-700" 
+                    style={{
+                      background: stepsActive ? 'radial-gradient(circle at center, rgba(0, 240, 255, 0.25), transparent 70%)' : 'none'
+                    }}
+                  />
                 </div>
               </div>
             </div>
