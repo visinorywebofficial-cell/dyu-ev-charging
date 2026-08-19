@@ -15,7 +15,7 @@ export default function FAQPage() {
     },
     {
       question: "How to setup a EV charging station?",
-      answer: "Navigate to our blog to learn more about how to set up your own EV charging station with our comprehensive guide, or contact our team through the Partner With Us page."
+      answer: "Navigate to our blog to learn more about how to set up your own EV charging station with our comprehensive guide, or contact our team through the Business With Us page."
     },
     {
       question: "How long is the installation process?",

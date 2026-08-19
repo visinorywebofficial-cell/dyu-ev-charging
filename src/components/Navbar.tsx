@@ -84,7 +84,8 @@ function MegaMenuItem({ label, desc, href, icon: Icon, image, onClick, isProduct
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(true);
+  const [mobileSoftwareOpen, setMobileSoftwareOpen] = useState(true);
+  const [mobileChargersOpen, setMobileChargersOpen] = useState(false);
   const [mobileDiscoverOpen, setMobileDiscoverOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -138,7 +139,6 @@ export function Navbar() {
 
   const companyItems = [
     { label: "About DYU", desc: "Building the largest green energy network in India.", href: "/about-us", icon: Info },
-    { label: "Partner With Us", desc: "Start an EV charging network with us.", href: "/partner-with-us", icon: Briefcase },
     { label: "Contact Us", desc: "Get in touch with our support and sales teams.", href: "/contact-us", icon: PhoneCall }
   ];
 
@@ -188,19 +188,32 @@ export function Navbar() {
 
           </Link>
 
-          {/* Center Links — Products/Discover/Franchise/FAQ */}
+          {/* Center Links — Software / EV Chargers / Discover / Business With Us / FAQ */}
           <nav className="hidden md:flex items-center gap-1">
             <button
-              onClick={() => toggleDropdown('products')}
+              onClick={() => toggleDropdown('software')}
               className="flex items-center gap-1 text-[12px] font-medium py-1.5 px-3 rounded-lg cursor-pointer transition-colors duration-200"
               style={{
-                color: activeDropdown === 'products' ? '#005F73' : 'inherit',
-                background: activeDropdown === 'products' ? 'rgba(0, 95, 115, 0.1)' : 'transparent',
-                fontWeight: activeDropdown === 'products' ? 700 : 500
+                color: activeDropdown === 'software' ? '#005F73' : 'inherit',
+                background: activeDropdown === 'software' ? 'rgba(0, 95, 115, 0.1)' : 'transparent',
+                fontWeight: activeDropdown === 'software' ? 700 : 500
               }}
             >
-              Products
-              <ChevronDown size={12} className={`transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-[#005F73]' : ''}`} />
+              Software
+              <ChevronDown size={12} className={`transition-transform duration-200 ${activeDropdown === 'software' ? 'rotate-180 text-[#005F73]' : ''}`} />
+            </button>
+
+            <button
+              onClick={() => toggleDropdown('chargers')}
+              className="flex items-center gap-1 text-[12px] font-medium py-1.5 px-3 rounded-lg cursor-pointer transition-colors duration-200"
+              style={{
+                color: activeDropdown === 'chargers' ? '#005F73' : 'inherit',
+                background: activeDropdown === 'chargers' ? 'rgba(0, 95, 115, 0.1)' : 'transparent',
+                fontWeight: activeDropdown === 'chargers' ? 700 : 500
+              }}
+            >
+              EV Chargers
+              <ChevronDown size={12} className={`transition-transform duration-200 ${activeDropdown === 'chargers' ? 'rotate-180 text-[#005F73]' : ''}`} />
             </button>
 
             <button
@@ -217,19 +230,11 @@ export function Navbar() {
             </button>
 
             <Link
-              href="/partner-with-us"
-              className="text-[12px] font-medium py-1.5 px-3 rounded-lg transition-colors duration-200"
-              style={{ color: 'inherit' }}
-            >
-              Partner With Us
-            </Link>
-
-            <Link
               href="/ev-charging-station-franchise"
               className="text-[12px] font-medium py-1.5 px-3 rounded-lg transition-colors duration-200"
               style={{ color: 'inherit' }}
             >
-              Franchise
+              Business With Us
             </Link>
 
             <Link
@@ -288,35 +293,32 @@ export function Navbar() {
                   variants={containerVariants}
                   initial="hidden"
                   animate="visible"
-                  className="grid grid-cols-12 gap-8"
+                  className="w-full"
                 >
-                  {activeDropdown === 'products' ? (
-                    <>
-                      {/* Software Column */}
-                      <div className="col-span-12 md:col-span-4 md:border-r md:border-[var(--color-stone-mist)] md:pr-8">
-                        <div className="text-[13px] font-bold text-[var(--color-graphite-veil)] uppercase tracking-wider mb-6" style={{ fontFamily: 'var(--font-figtree)' }}>
-                          Software
-                        </div>
-                        <div className="flex flex-col gap-6">
-                          {softwareItems.map((item) => (
-                            <MegaMenuItem key={item.label} {...item} isProduct onClick={() => setActiveDropdown(null)} />
-                          ))}
-                        </div>
+                  {activeDropdown === 'software' ? (
+                    <div>
+                      <div className="text-[13px] font-bold text-[var(--color-graphite-veil)] uppercase tracking-wider mb-6" style={{ fontFamily: 'var(--font-figtree)' }}>
+                        Software
                       </div>
-                      {/* Hardware Column */}
-                      <div className="col-span-12 md:col-span-8 md:pl-4">
-                        <div className="text-[13px] font-bold text-[var(--color-graphite-veil)] uppercase tracking-wider mb-6" style={{ fontFamily: 'var(--font-figtree)' }}>
-                          Hardware
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {hardwareItems.map((item) => (
-                            <MegaMenuItem key={item.label} {...item} isProduct onClick={() => setActiveDropdown(null)} />
-                          ))}
-                        </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {softwareItems.map((item) => (
+                          <MegaMenuItem key={item.label} {...item} isProduct onClick={() => setActiveDropdown(null)} />
+                        ))}
                       </div>
-                    </>
+                    </div>
+                  ) : activeDropdown === 'chargers' ? (
+                    <div>
+                      <div className="text-[13px] font-bold text-[var(--color-graphite-veil)] uppercase tracking-wider mb-6" style={{ fontFamily: 'var(--font-figtree)' }}>
+                        EV Chargers & Hardware
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                        {hardwareItems.map((item) => (
+                          <MegaMenuItem key={item.label} {...item} isProduct onClick={() => setActiveDropdown(null)} />
+                        ))}
+                      </div>
+                    </div>
                   ) : (
-                    <>
+                    <div className="grid grid-cols-12 gap-8">
                       {/* Company Column */}
                       <div className="col-span-12 md:col-span-6 md:border-r md:border-[var(--color-stone-mist)] md:pr-8">
                         <div className="text-[13px] font-bold text-[var(--color-graphite-veil)] uppercase tracking-wider mb-6">
@@ -339,7 +341,7 @@ export function Navbar() {
                           ))}
                         </div>
                       </div>
-                    </>
+                    </div>
                   )}
                 </motion.div>
               </div>
@@ -385,19 +387,18 @@ export function Navbar() {
               <span>Home</span>
             </Link>
 
-            {/* Products Collapsible Accordion */}
+            {/* Software Collapsible Accordion */}
             <div className="border-b border-[#e4e4d0] pb-3">
               <button 
-                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                onClick={() => setMobileSoftwareOpen(!mobileSoftwareOpen)}
                 className="w-full flex items-center justify-between text-base font-bold text-[#111111] py-1 cursor-pointer"
               >
-                <span>Products</span>
-                <ChevronDown size={18} className={`transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180' : ''}`} />
+                <span>Software</span>
+                <ChevronDown size={18} className={`transition-transform duration-200 ${mobileSoftwareOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {mobileProductsOpen && (
+              {mobileSoftwareOpen && (
                 <div className="mt-3 flex flex-col gap-3 pl-2">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-graphite-veil)] mt-1">Software</div>
                   {softwareItems.map((item) => (
                     <Link key={item.label} href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 py-1.5 text-sm font-semibold text-[#111111]">
                       <div className="w-7 h-7 flex items-center justify-center shrink-0">
@@ -406,8 +407,22 @@ export function Navbar() {
                       <span>{item.label}</span>
                     </Link>
                   ))}
+                </div>
+              )}
+            </div>
 
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-graphite-veil)] mt-3">Hardware</div>
+            {/* EV Chargers Collapsible Accordion */}
+            <div className="border-b border-[#e4e4d0] pb-3">
+              <button 
+                onClick={() => setMobileChargersOpen(!mobileChargersOpen)}
+                className="w-full flex items-center justify-between text-base font-bold text-[#111111] py-1 cursor-pointer"
+              >
+                <span>EV Chargers</span>
+                <ChevronDown size={18} className={`transition-transform duration-200 ${mobileChargersOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {mobileChargersOpen && (
+                <div className="mt-3 flex flex-col gap-3 pl-2">
                   {hardwareItems.map((item) => (
                     <Link key={item.label} href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 py-1.5 text-sm font-semibold text-[#111111]">
                       <div className="w-7 h-7 flex items-center justify-center shrink-0">
@@ -432,7 +447,6 @@ export function Navbar() {
 
               {mobileDiscoverOpen && (
                 <div className="mt-3 flex flex-col gap-3 pl-2">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-graphite-veil)] mt-1">Company & Resources</div>
                   {companyItems.concat(resourceItems).map((item) => (
                     <Link key={item.label} href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 py-1 text-sm font-medium text-[#333333]">
                       <item.icon size={16} className="text-[var(--color-deep-forest-teal)]" />
@@ -442,6 +456,16 @@ export function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* FAQ Link */}
+            <Link 
+              href="/faq" 
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-between text-base font-bold pb-3 border-b border-[#e4e4d0] text-[#111111]"
+            >
+              <span>FAQ</span>
+              <ChevronRight size={16} />
+            </Link>
 
             {/* Shop Link */}
             <Link 
@@ -456,14 +480,14 @@ export function Navbar() {
               <ChevronRight size={16} />
             </Link>
 
-            {/* Franchise & Action Buttons */}
+            {/* Business With Us Action Button */}
             <div className="pt-2 flex flex-col gap-3">
               <Link 
                 href="/ev-charging-station-franchise" 
                 onClick={() => setIsOpen(false)}
                 className="btn-primary w-full text-center justify-center py-3.5 text-base font-bold rounded-xl"
               >
-                Get Franchise →
+                Business With Us →
               </Link>
             </div>
           </motion.div>

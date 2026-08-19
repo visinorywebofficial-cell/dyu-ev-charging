@@ -74,9 +74,9 @@ export default function RootLayout({
               {/* Left Side: Navigation Links */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 order-2 md:order-1">
                 {[
-                  { heading: 'Solutions', links: [{ name: 'Mobile App', href: '/ev-charging-app' }, { name: 'CSMS', href: '/ev-charging-software/csms' }, { name: 'EVlinq', href: '/ev-charging-software/evlinq' }] },
-                  { heading: 'Products', links: [{ name: 'Level 3 (DC Chargers)', href: '/dc-chargers' }, { name: 'Level 2 (AC Chargers)', href: '/ac-chargers' }, { name: 'Advertise With Us', href: '/adwall' }, { name: 'Portable Charger', href: '/products/portable-charger' }] },
-                  { heading: 'Discover', links: [{ name: 'EV Calculator', href: '/ev-calculator' }, { name: 'Franchise', href: '/ev-charging-station-franchise' }, { name: 'Partner With Us', href: '/partner-with-us' }] },
+                  { heading: 'Software', links: [{ name: 'EV Charging App', href: '/ev-charging-app' }, { name: 'CSMS Platform', href: '/ev-charging-software/csms' }, { name: 'EV Linq Roaming Hub', href: '/ev-charging-software/evlinq' }] },
+                  { heading: 'EV Chargers', links: [{ name: 'Level 3 (DC Chargers)', href: '/dc-chargers' }, { name: 'Level 2 (AC Chargers)', href: '/ac-chargers' }, { name: 'Advertise With Us', href: '/adwall' }, { name: 'Portable Charger', href: '/products/portable-charger' }] },
+                  { heading: 'Discover', links: [{ name: 'EV Calculator', href: '/ev-calculator' }, { name: 'Business With Us', href: '/ev-charging-station-franchise' }] },
                   { heading: 'Company', links: [{ name: 'About Us', href: '/about-us' }, { name: 'Contact Us', href: '/contact-us' }] },
                 ].map((col) => (
                   <div key={col.heading}>
