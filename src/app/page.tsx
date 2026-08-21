@@ -147,7 +147,12 @@ const carouselVariants = {
   })
 };
 
-function ImageCarousel({ images }: { images: string[] }) {
+interface CarouselImage {
+  src: string;
+  title: string;
+}
+
+function ImageCarousel({ images }: { images: CarouselImage[] }) {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = Math.abs(page % images.length);
 
@@ -165,24 +170,24 @@ function ImageCarousel({ images }: { images: string[] }) {
   }, [page]);
 
   return (
-    <div className="w-full bg-[#0A1A14] flex flex-col items-center justify-center py-12 px-4 rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+    <div className="w-full bg-transparent flex flex-col items-center justify-center py-8 px-4 rounded-3xl overflow-hidden">
       <div className="relative flex items-center justify-center gap-4 md:gap-8 w-full max-w-[680px]">
         {/* Left Arrow */}
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(-1)}
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white transition-all duration-200 cursor-pointer focus:outline-none shrink-0"
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-black/[0.04] hover:bg-black/[0.08] text-[#005F73] transition-all duration-200 cursor-pointer focus:outline-none shrink-0 shadow-sm border border-black/5"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-6 h-6" />
         </motion.button>
 
         {/* Image Container */}
-        <div className="relative w-full max-w-[500px] aspect-[3/2] rounded-[12px] overflow-hidden shadow-xl bg-black border border-white/10 shrink-0">
+        <div className="relative w-full max-w-[500px] aspect-[3/2] rounded-[12px] overflow-hidden shadow-lg bg-white border border-black/5 shrink-0">
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.img
               key={page}
-              src={images[imageIndex]}
+              src={images[imageIndex].src}
               custom={direction}
               variants={carouselVariants}
               initial="enter"
@@ -204,7 +209,7 @@ function ImageCarousel({ images }: { images: string[] }) {
                   paginate(-1);
                 }
               }}
-              className="absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing"
+              className="absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing rounded-[12px]"
             />
           </AnimatePresence>
         </div>
@@ -213,14 +218,14 @@ function ImageCarousel({ images }: { images: string[] }) {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(1)}
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white transition-all duration-200 cursor-pointer focus:outline-none shrink-0"
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-black/[0.04] hover:bg-black/[0.08] text-[#005F73] transition-all duration-200 cursor-pointer focus:outline-none shrink-0 shadow-sm border border-black/5"
           aria-label="Next image"
         >
           <ChevronRight className="w-6 h-6" />
         </motion.button>
       </div>
 
-      {/* Counter */}
+      {/* Title */}
       <AnimatePresence mode="wait">
         <motion.div
           key={imageIndex}
@@ -228,11 +233,16 @@ function ImageCarousel({ images }: { images: string[] }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -5 }}
           transition={{ duration: 0.2 }}
-          className="text-center text-xs font-semibold tracking-wider text-slate-400 mt-6 select-none"
+          className="text-center text-lg md:text-xl font-extrabold text-[#005F73] font-['Gilroy'] mt-6 select-none"
         >
-          {imageIndex + 1} / {images.length}
+          {images[imageIndex].title}
         </motion.div>
       </AnimatePresence>
+
+      {/* Counter */}
+      <div className="text-center text-xs font-semibold tracking-wider text-gray-500 mt-2 select-none">
+        {imageIndex + 1} / {images.length}
+      </div>
     </div>
   );
 }
@@ -553,9 +563,9 @@ export default function HomePage() {
               >
                 <ImageCarousel 
                   images={[
-                    '/images/ac_7_4kw.webp',
-                    '/images/ac_11kw.webp',
-                    '/images/ac_22kw.webp'
+                    { src: '/images/ac_7_4kw.webp', title: 'AC Charger 7.7 kW' },
+                    { src: '/images/ac_11kw.webp', title: 'AC Charger 11 kW' },
+                    { src: '/images/ac_22kw.webp', title: 'AC Charger 22 kW' }
                   ]} 
                 />
               </motion.div>
@@ -570,12 +580,12 @@ export default function HomePage() {
               >
                 <ImageCarousel 
                   images={[
-                    '/images/dc_30kw.webp',
-                    '/images/dc_60kw.webp',
-                    '/images/dc_120kw.webp',
-                    '/images/dc_180kw.webp',
-                    '/images/dc_240kw.webp',
-                    '/images/dc_360kw.webp'
+                    { src: '/images/dc_30kw.webp', title: 'DC Fast Charger 30 kW' },
+                    { src: '/images/dc_60kw.webp', title: 'DC Fast Charger 60 kW' },
+                    { src: '/images/dc_120kw.webp', title: 'DC Fast Charger 120 kW' },
+                    { src: '/images/dc_180kw.webp', title: 'DC Fast Charger 180 kW' },
+                    { src: '/images/dc_240kw.webp', title: 'DC Fast Charger 240 kW' },
+                    { src: '/images/dc_360kw.webp', title: 'DC Fast Charger 360 kW' }
                   ]} 
                 />
               </motion.div>
