@@ -440,52 +440,9 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col gap-8 max-w-5xl mx-auto"
+                className="flex flex-col gap-8 max-w-5xl mx-auto min-h-[500px]"
               >
-                {/* 1. FULL UNCROPPED IMAGE FIRST AT TOP */}
-                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-white">
-                  <img 
-                    src="/images/home-charging-split-1.jpg" 
-                    alt="AC Charger" 
-                    className="w-full h-auto max-h-[520px] object-cover rounded-3xl"
-                  />
-                </div>
-
-                {/* 2. FULL CONTEXTUAL INFORMATIONS BELOW */}
-                <div className="dark-card bg-[#002B36] text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-[#005F73]/20">
-                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                    <h3 className="text-3xl md:text-4xl font-extrabold text-white font-['Gilroy']">
-                      AC Chargers
-                    </h3>
-                    <span className="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white font-extrabold text-xs uppercase tracking-wider">
-                      Home & Commercial
-                    </span>
-                  </div>
-
-                  <p className="text-lg text-gray-200 mb-10 leading-relaxed max-w-4xl">
-                    Safe, reliable, and premium AC charging solutions designed for homes, workplaces, and commercial spaces. Delivers 7.4 kW to 22 kW charging capacity.
-                  </p>
-
-                  {/* Specifications Grid */}
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Power Output</span>
-                      <p className="text-xl font-black text-white">7.4 kW - 22 kW</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Parking Bays</span>
-                      <p className="text-xl font-black text-white">1 to 2 Bays</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Target Use</span>
-                      <p className="text-xl font-black text-white">Homes & Offices</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Charge Speed</span>
-                      <p className="text-xl font-black text-white">3-8 Hours (80%)</p>
-                    </div>
-                  </div>
-                </div>
+                {/* Empty space placeholder */}
               </motion.div>
             ) : (
               <motion.div 
@@ -494,52 +451,9 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col gap-8 max-w-5xl mx-auto"
+                className="flex flex-col gap-8 max-w-5xl mx-auto min-h-[500px]"
               >
-                {/* 1. FULL UNCROPPED IMAGE FIRST AT TOP */}
-                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-white">
-                  <img 
-                    src="/images/home-charging-split-2.jpg" 
-                    alt="DC Fast Charger" 
-                    className="w-full h-auto max-h-[520px] object-cover rounded-3xl"
-                  />
-                </div>
-
-                {/* 2. FULL CONTEXTUAL INFORMATIONS BELOW */}
-                <div className="dark-card bg-[#002B36] text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-[#005F73]/20">
-                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                    <h3 className="text-3xl md:text-4xl font-extrabold text-white font-['Gilroy']">
-                      DC Chargers
-                    </h3>
-                    <span className="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white font-extrabold text-xs uppercase tracking-wider">
-                      Highways & Commercial Hubs
-                    </span>
-                  </div>
-
-                  <p className="text-lg text-gray-200 mb-10 leading-relaxed max-w-4xl">
-                    High-power DC fast charging solutions designed for quick turnaround, highway charging plazas, fleets, and public spaces. Delivers 60 kW to 360 kW charging capacity.
-                  </p>
-
-                  {/* Specifications Grid */}
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Power Output</span>
-                      <p className="text-xl font-black text-white">60 kW - 360 kW</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Parking Bays</span>
-                      <p className="text-xl font-black text-white">2 to 20 Bays</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Target Use</span>
-                      <p className="text-xl font-black text-white">Highways & Fleets</p>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
-                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Charge Speed</span>
-                      <p className="text-xl font-black text-white">15-45 Mins (80%)</p>
-                    </div>
-                  </div>
-                </div>
+                {/* Empty space placeholder */}
               </motion.div>
             )}
           </AnimatePresence>
