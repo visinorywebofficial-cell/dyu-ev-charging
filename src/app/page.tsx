@@ -145,6 +145,7 @@ export default function HomePage() {
 
   const [resourcesActive, setResourcesActive] = useState(false);
   const resourcesRef = useRef<HTMLDivElement>(null);
+  const [activeChargerTab, setActiveChargerTab] = useState<'ac' | 'dc'>('ac');
 
   // Dedicated 3-second slideshow timer loop (never reset by resize/re-render)
   useEffect(() => {
@@ -388,8 +389,162 @@ export default function HomePage() {
 
 
       {/* ———————————————————————————————————————————————— */}
-      {/* SECTION 4 — PRODUCTS (ScrollSplitCard) */}
+      {/* SECTION 3 — AC & DC CHARGERS (TABBED) */}
       {/* ———————————————————————————————————————————————— */}
+      <section className="py-20 bg-[#F8FBFC] relative z-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="badge badge-outline mb-6">Chargers</span>
+            <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+              <span className="text-[#222222]">AC & DC Chargers</span>
+              <span className="text-[#888888] font-bold">EV Chargers</span>
+            </h2>
+            <p className="text-lg md:text-xl text-[#666666] font-bold max-w-3xl mx-auto">
+              Explore our high-performance AC and DC charging solutions.
+            </p>
+          </div>
+
+          {/* TAB SELECTOR BUTTONS */}
+          <div className="flex justify-center items-center gap-6 md:gap-16 mb-12 border-b border-gray-300/80 pb-4 flex-wrap">
+            <button
+              onClick={() => setActiveChargerTab('ac')}
+              className={`text-xl md:text-3xl font-extrabold font-['Gilroy'] tracking-tight pb-3 transition-all relative ${
+                activeChargerTab === 'ac' ? 'text-[#222222]' : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              AC Chargers
+              {activeChargerTab === 'ac' && (
+                <motion.div layoutId="activeChargerTabUnderline" className="absolute bottom-0 left-0 right-0 h-1 bg-[#005F73] rounded-full" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setActiveChargerTab('dc')}
+              className={`text-xl md:text-3xl font-extrabold font-['Gilroy'] tracking-tight pb-3 transition-all relative ${
+                activeChargerTab === 'dc' ? 'text-[#222222]' : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              DC Chargers
+              {activeChargerTab === 'dc' && (
+                <motion.div layoutId="activeChargerTabUnderline" className="absolute bottom-0 left-0 right-0 h-1 bg-[#005F73] rounded-full" />
+              )}
+            </button>
+          </div>
+
+          {/* TAB CONTENT PANEL */}
+          <AnimatePresence mode="wait">
+            {activeChargerTab === 'ac' ? (
+              <motion.div 
+                key="ac"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="flex flex-col gap-8 max-w-5xl mx-auto"
+              >
+                {/* 1. FULL UNCROPPED IMAGE FIRST AT TOP */}
+                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-white">
+                  <img 
+                    src="/images/home-charging-split-1.jpg" 
+                    alt="AC Charger" 
+                    className="w-full h-auto max-h-[520px] object-cover rounded-3xl"
+                  />
+                </div>
+
+                {/* 2. FULL CONTEXTUAL INFORMATIONS BELOW */}
+                <div className="dark-card bg-[#002B36] text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-[#005F73]/20">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-white font-['Gilroy']">
+                      AC Chargers
+                    </h3>
+                    <span className="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white font-extrabold text-xs uppercase tracking-wider">
+                      Home & Commercial
+                    </span>
+                  </div>
+
+                  <p className="text-lg text-gray-200 mb-10 leading-relaxed max-w-4xl">
+                    Safe, reliable, and premium AC charging solutions designed for homes, workplaces, and commercial spaces. Delivers 7.4 kW to 22 kW charging capacity.
+                  </p>
+
+                  {/* Specifications Grid */}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Power Output</span>
+                      <p className="text-xl font-black text-white">7.4 kW - 22 kW</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Parking Bays</span>
+                      <p className="text-xl font-black text-white">1 to 2 Bays</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Target Use</span>
+                      <p className="text-xl font-black text-white">Homes & Offices</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Charge Speed</span>
+                      <p className="text-xl font-black text-white">3-8 Hours (80%)</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="dc"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="flex flex-col gap-8 max-w-5xl mx-auto"
+              >
+                {/* 1. FULL UNCROPPED IMAGE FIRST AT TOP */}
+                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-white">
+                  <img 
+                    src="/images/home-charging-split-2.jpg" 
+                    alt="DC Fast Charger" 
+                    className="w-full h-auto max-h-[520px] object-cover rounded-3xl"
+                  />
+                </div>
+
+                {/* 2. FULL CONTEXTUAL INFORMATIONS BELOW */}
+                <div className="dark-card bg-[#002B36] text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-[#005F73]/20">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-white font-['Gilroy']">
+                      DC Chargers
+                    </h3>
+                    <span className="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white font-extrabold text-xs uppercase tracking-wider">
+                      Highways & Commercial Hubs
+                    </span>
+                  </div>
+
+                  <p className="text-lg text-gray-200 mb-10 leading-relaxed max-w-4xl">
+                    High-power DC fast charging solutions designed for quick turnaround, highway charging plazas, fleets, and public spaces. Delivers 60 kW to 360 kW charging capacity.
+                  </p>
+
+                  {/* Specifications Grid */}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Power Output</span>
+                      <p className="text-xl font-black text-white">60 kW - 360 kW</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Parking Bays</span>
+                      <p className="text-xl font-black text-white">2 to 20 Bays</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Target Use</span>
+                      <p className="text-xl font-black text-white">Highways & Fleets</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                      <span className="text-xs uppercase tracking-widest text-white font-bold block mb-1">Charge Speed</span>
+                      <p className="text-xl font-black text-white">15-45 Mins (80%)</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
       <div className="w-full bg-white">
         <ScrollSplitCard
           imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2832&auto=format&fit=crop"
