@@ -233,7 +233,7 @@ function ImageCarousel({ images }: { images: CarouselImage[] }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -5 }}
           transition={{ duration: 0.2 }}
-          className="text-center text-lg md:text-xl font-extrabold text-[#005F73] font-['Gilroy'] mt-6 select-none"
+          className="text-center text-lg md:text-xl font-bold text-[#005F73] mt-6 select-none"
         >
           {images[imageIndex].title}
         </motion.div>
