@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
-import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, Home, Star } from "lucide-react";
+import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, ChevronLeft, Home, Star } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
@@ -125,6 +125,115 @@ function SplitText({ text, startIndex = 0, color = 'inherit' }: { text: string, 
         </span>
       ))}
     </>
+  );
+}
+
+/* ── CUSTOM IMAGE CAROUSEL COMPONENT ── */
+const carouselVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+    scale: 0.95
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? "100%" : "-100%",
+    opacity: 0,
+    scale: 0.95
+  })
+};
+
+function ImageCarousel({ images }: { images: string[] }) {
+  const [[page, direction], setPage] = useState([0, 0]);
+  const imageIndex = Math.abs(page % images.length);
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") paginate(-1);
+      if (e.key === "ArrowRight") paginate(1);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [page]);
+
+  return (
+    <div className="w-full bg-[#0A1A14] flex flex-col items-center justify-center py-12 px-4 rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+      <div className="relative flex items-center justify-center gap-4 md:gap-8 w-full max-w-[680px]">
+        {/* Left Arrow */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => paginate(-1)}
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white transition-all duration-200 cursor-pointer focus:outline-none shrink-0"
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </motion.button>
+
+        {/* Image Container */}
+        <div className="relative w-full max-w-[500px] aspect-[3/2] rounded-[12px] overflow-hidden shadow-xl bg-black border border-white/10 shrink-0">
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            <motion.img
+              key={page}
+              src={images[imageIndex]}
+              custom={direction}
+              variants={carouselVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 150, damping: 20, bounce: 0.3, duration: 0.8 },
+                opacity: { duration: 0.25 },
+                scale: { type: "spring", stiffness: 150, damping: 20, bounce: 0.3, duration: 0.8 }
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = offset.x;
+                if (swipe < -50) {
+                  paginate(1);
+                } else if (swipe > 50) {
+                  paginate(-1);
+                }
+              }}
+              className="absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing"
+            />
+          </AnimatePresence>
+        </div>
+
+        {/* Right Arrow */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => paginate(1)}
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white transition-all duration-200 cursor-pointer focus:outline-none shrink-0"
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </motion.button>
+      </div>
+
+      {/* Counter */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={imageIndex}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
+          transition={{ duration: 0.2 }}
+          className="text-center text-xs font-semibold tracking-wider text-slate-400 mt-6 select-none"
+        >
+          {imageIndex + 1} / {images.length}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -440,9 +549,15 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col gap-8 max-w-5xl mx-auto min-h-[500px]"
+                className="flex flex-col gap-8 max-w-5xl mx-auto"
               >
-                {/* Empty space placeholder */}
+                <ImageCarousel 
+                  images={[
+                    '/images/ac_7_4kw.webp',
+                    '/images/ac_11kw.webp',
+                    '/images/ac_22kw.webp'
+                  ]} 
+                />
               </motion.div>
             ) : (
               <motion.div 
@@ -451,9 +566,18 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col gap-8 max-w-5xl mx-auto min-h-[500px]"
+                className="flex flex-col gap-8 max-w-5xl mx-auto"
               >
-                {/* Empty space placeholder */}
+                <ImageCarousel 
+                  images={[
+                    '/images/dc_30kw.webp',
+                    '/images/dc_60kw.webp',
+                    '/images/dc_120kw.webp',
+                    '/images/dc_180kw.webp',
+                    '/images/dc_240kw.webp',
+                    '/images/dc_360kw.webp'
+                  ]} 
+                />
               </motion.div>
             )}
           </AnimatePresence>
