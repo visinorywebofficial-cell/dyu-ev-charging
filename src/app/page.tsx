@@ -302,6 +302,7 @@ export default function HomePage() {
   const [activeChargerTab, setActiveChargerTab] = useState<'ac' | 'dc'>('ac');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [formExpanded, setFormExpanded] = useState(false);
+  const [formPinned, setFormPinned] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleFormMouseEnter = () => {
@@ -310,9 +311,15 @@ export default function HomePage() {
   };
 
   const handleFormMouseLeave = () => {
+    if (formPinned) return;
     hoverTimeoutRef.current = setTimeout(() => {
       setFormExpanded(false);
     }, 250);
+  };
+
+  const handleFormClick = () => {
+    setFormPinned(true);
+    setFormExpanded(true);
   };
 
   useEffect(() => {
@@ -938,7 +945,7 @@ export default function HomePage() {
             className="lg:col-span-5 flex flex-col justify-center cursor-pointer select-none"
             onMouseEnter={handleFormMouseEnter}
             onMouseLeave={handleFormMouseLeave}
-            onClick={() => setFormExpanded(true)}
+            onClick={handleFormClick}
           >
             <span className="badge badge-outline" style={{ marginBottom: '20px', display: 'inline-block' }}>Get in touch</span>
             <h2 className="flex flex-col gap-2 text-4xl md:text-6xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.05]">
@@ -953,6 +960,7 @@ export default function HomePage() {
               className={`form-uiverse ${formExpanded ? 'expanded' : ''}`}
               onMouseEnter={handleFormMouseEnter}
               onMouseLeave={handleFormMouseLeave}
+              onClick={handleFormClick}
               onSubmit={(e) => { 
                 e.preventDefault(); 
                 alert('Request submitted successfully! Our team will contact you soon.'); 
