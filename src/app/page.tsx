@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
-import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, ChevronLeft, Home, Star } from "lucide-react";
+import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Home, Star } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
@@ -152,6 +152,41 @@ interface CarouselImage {
   title: string;
 }
 
+const FAQS = [
+  {
+    q: "Why choose DYU EV chargers?",
+    a: "DYU combines EV charging hardware, software and infrastructure support to provide a complete charging solution rather than just a standalone charger. Our portfolio covers AC charging, DC fast charging and higher-power charging solutions for different types of applications. We focus on reliability, ease of operation, scalability and suitability for the Indian market, helping businesses build charging infrastructure that can grow with their EV requirements."
+  },
+  {
+    q: "What makes DYU different from other EV charger manufacturers?",
+    a: "DYU takes a solution-oriented approach to EV charging. Instead of focusing only on the charger itself, we look at the entire charging ecosystem—from the right charger and electrical infrastructure to software, installation, commissioning and ongoing support. This gives businesses a single partner for their charging requirements and makes it easier to deploy, manage and scale their charging network as demand grows."
+  },
+  {
+    q: "What EV charging solutions does DYU provide?",
+    a: "DYU provides EV charging solutions for residential, commercial, fleet and public-charging applications. Our portfolio includes AC chargers, portable EV chargers, DC fast chargers, high-power DC charging systems, charging software and charging infrastructure solutions. Depending on the project, DYU can also support site assessment, installation, commissioning, network integration and after-sales service."
+  },
+  {
+    q: "Where is DYU EV Chargers based?",
+    a: "DYU is an India-focused EV charging company serving customers and businesses across India. Headquarters & registered-office Hyderabad, Telangana."
+  },
+  {
+    q: "Who manufactures DYU EV chargers?",
+    a: "DYU develops and supplies EV charging solutions under the DYU brand, working with qualified manufacturing and technology partners where required to deliver reliable charging products for the Indian market."
+  },
+  {
+    q: "Are DYU EV chargers designed for Indian conditions?",
+    a: "Yes. DYU's charging solutions are intended for the requirements of the Indian EV market, including commercial and public charging environments. Indian charging locations can experience high temperatures, dust, voltage fluctuations, monsoon conditions and demanding operating environments, so charger selection needs to take the site conditions and electrical infrastructure into account. DYU focuses on providing charging solutions that are practical for these operating conditions, while the exact environmental and electrical specifications depend on the individual charger model."
+  },
+  {
+    q: "What industries and businesses does DYU serve?",
+    a: "DYU serves businesses and organisations looking to install EV charging infrastructure across a range of applications. These include:\n\n• Public EV charging stations\n• Highways and highway amenities\n• Hotels and resorts\n• Restaurants and cafés\n• Shopping malls and commercial properties\n• Corporate offices and campuses\n• Apartment communities\n• Petrol and fuel stations\n• Fleet and logistics operators\n• Automotive dealerships\n• Parking operators\n• Retail and destination locations\n\nWhether the requirement is a single AC charger or a high-power DC charging station, the solution can be selected according to the site's traffic, vehicle mix, available electrical capacity and expected charging demand."
+  },
+  {
+    q: "Why should businesses choose DYU for EV charging infrastructure?",
+    a: "Businesses should choose DYU when they want more than simply purchasing an EV charger. DYU can bring together charging hardware, software, installation, commissioning and infrastructure support, allowing businesses to approach EV charging as a complete commercial solution. We also offer a range of charging capacities, from everyday AC charging to high-power DC fast charging, so businesses can start with what they need today and scale their charging infrastructure as EV adoption increases. Ultimately, our focus is to help businesses build reliable, scalable and commercially viable EV charging infrastructure without having to coordinate multiple technology providers for every part of the project."
+  }
+];
+
 function ImageCarousel({ images }: { images: CarouselImage[] }) {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = Math.abs(page % images.length);
@@ -265,6 +300,7 @@ export default function HomePage() {
   const [resourcesActive, setResourcesActive] = useState(false);
   const resourcesRef = useRef<HTMLDivElement>(null);
   const [activeChargerTab, setActiveChargerTab] = useState<'ac' | 'dc'>('ac');
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   // Dedicated 3-second slideshow timer loop (never reset by resize/re-render)
   useEffect(() => {
@@ -813,6 +849,65 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ———————————————————————————————————————————————— */}
+      {/* SECTION 7 — FAQs */}
+      {/* ———————————————————————————————————————————————— */}
+      <section className="py-20 md:py-32 bg-white border-t border-[#005F73]/10">
+        <div className="container-wispr max-w-4xl mx-auto px-6">
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+            <span className="badge badge-outline" style={{ marginBottom: '16px' }}>FAQs</span>
+            <h2 className="flex flex-col gap-1 text-3xl md:text-4xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+              <span className="text-[#222222]">Frequently Asked</span>
+              <span className="text-[#888888] italic">Questions</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {FAQS.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div 
+                  key={index} 
+                  className="border-b border-[#005F73]/10 pb-4 transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between text-left py-4 focus:outline-none group cursor-pointer"
+                  >
+                    <span className="text-base md:text-lg font-bold text-gray-800 group-hover:text-[#005F73] transition-colors duration-200">
+                      {faq.q}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                      className="ml-4 shrink-0 text-gray-500 group-hover:text-[#005F73]"
+                    >
+                      <ChevronDown size={20} />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-sm md:text-base text-gray-600 leading-relaxed pt-2 pb-4 whitespace-pre-line font-medium">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
