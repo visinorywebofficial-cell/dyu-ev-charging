@@ -318,6 +318,7 @@ export default function HomePage() {
   };
 
   const handleFormClick = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setFormPinned(true);
     setFormExpanded(true);
   };
@@ -939,10 +940,10 @@ export default function HomePage() {
       </section>
 
       <section className="py-28 md:py-44 bg-[var(--color-cream-paper)] border-t border-[#005F73]/10">
-        <div className="container-wispr max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="container-wispr max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
           {/* Left info column */}
           <div 
-            className="lg:col-span-5 flex flex-col justify-center cursor-pointer select-none"
+            className="lg:col-span-5 flex flex-col justify-center cursor-pointer select-none py-16 px-8 hover:bg-[#005F73]/5 rounded-3xl transition-all duration-300"
             onMouseEnter={handleFormMouseEnter}
             onMouseLeave={handleFormMouseLeave}
             onClick={handleFormClick}
