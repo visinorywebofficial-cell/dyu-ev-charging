@@ -920,91 +920,66 @@ export default function HomePage() {
           {/* Left info column */}
           <div className="lg:col-span-5 flex flex-col justify-center">
             <span className="badge badge-outline" style={{ marginBottom: '16px', display: 'inline-block' }}>Get in touch</span>
-            <h2 className="flex flex-col gap-1 mb-6 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+            <h2 className="flex flex-col gap-1 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
               <span className="text-[#222222]">Let's build the</span>
-              <span className="text-[#888888] italic">future together.</span>
+              <span className="text-[#888888]">future together.</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-              Have questions about our chargers, CMS software, or looking to partner for a franchise location? Drop us a message, and our team will get back to you within 24 hours.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider">Email:</span>
-                <a href="mailto:sayhi@dyu.co.in" className="text-base font-bold text-[#005F73] hover:underline">sayhi@dyu.co.in</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider">Contact:</span>
-                <a href="tel:+919949055516" className="text-base font-bold text-[#005F73] hover:underline">+91 99490 55516</a>
-              </div>
-            </div>
           </div>
 
           {/* Right form card column */}
           <div className="lg:col-span-7">
-            <div className="bg-[#002B36] p-8 md:p-10 rounded-3xl border border-[#005F73]/30 shadow-2xl">
-              <h3 className="text-2xl font-extrabold tracking-tight mb-6 text-white font-['Gilroy']">
-                Submit Inquiry
-              </h3>
-              
-              <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); alert('Request submitted successfully! Our team will contact you soon.'); }}>
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-xs uppercase tracking-wider text-gray-300">
-                    Full Name <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="Enter Name"
-                    className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
-                  />
-                </div>
+            <form 
+              className="form-uiverse" 
+              onSubmit={(e) => { 
+                e.preventDefault(); 
+                alert('Request submitted successfully! Our team will contact you soon.'); 
+              }}
+            >
+              <label>
+                <span>Full Name *</span>
+                <input 
+                  type="text" 
+                  required 
+                  placeholder="Enter Name" 
+                />
+              </label>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-xs uppercase tracking-wider text-gray-300">
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="email" 
-                    required
-                    placeholder="Enter Email"
-                    className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
-                  />
-                </div>
+              <label>
+                <span>Email *</span>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="Enter Email" 
+                />
+              </label>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-xs uppercase tracking-wider text-gray-300">
-                    Mobile Number <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="tel" 
-                    required
-                    pattern="[0-9]{10}"
-                    maxLength={10}
-                    placeholder="Enter 10-digit number"
-                    className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500"
-                  />
-                </div>
+              <label>
+                <span>Mobile Number *</span>
+                <input 
+                  type="tel" 
+                  required 
+                  pattern="[0-9]{10}" 
+                  maxLength={10} 
+                  placeholder="Enter 10-digit number" 
+                />
+              </label>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-xs uppercase tracking-wider text-gray-300">
-                    Your Message
-                  </label>
-                  <textarea 
-                    placeholder="Tell us about your requirement..."
-                    rows={3}
-                    className="w-full bg-[#001E2B] border border-white/20 rounded-xl px-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-[#00F0FF] transition-all placeholder:text-gray-500 resize-none"
-                  ></textarea>
-                </div>
+              <label>
+                <span>Your Message</span>
+                <textarea 
+                  placeholder="Tell us about your requirement..." 
+                  rows={2}
+                  className="resize-none"
+                ></textarea>
+              </label>
 
-                <button 
-                  type="submit"
-                  className="w-full bg-[#005F73] hover:bg-[#00F0FF] hover:text-[#001E2B] text-white rounded-full py-3.5 text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4 cursor-pointer"
-                >
+              <div className="submitCard">
+                <button type="submit">
                   Submit Details
                   <ArrowRight className="w-4 h-4" />
                 </button>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </section>

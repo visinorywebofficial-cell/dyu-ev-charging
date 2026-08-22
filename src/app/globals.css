@@ -1240,5 +1240,155 @@ h1, h2, h3, h4, .tracking-tighter {
   animation-play-state: paused;
 }
 
+/* ── UIVERSE INTERACTIVE FORM ── */
+.form-uiverse {
+  --col1: #002B36;
+  --col2: #ffffff;
+  --col3: rgba(0, 95, 115, 0.15);
+  --col4: #002B36;
+  --col5: #005F73;
+  --sh: rgba(0, 43, 54, 0.15);
+  --rad: 12px;
+  --radBig: 24px;
+  border-radius: var(--radBig);
+  box-shadow: 0 10px 30px var(--sh);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  padding: 2em;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-height: 105px;
+  background: #ffffff;
+  transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 95, 115, 0.1);
+}
+
+.form-uiverse::before {
+  content: 'Ready to connect with us?';
+  color: #002B36;
+  font-size: 1.25em;
+  font-weight: 700;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  place-items: center;
+  z-index: 9999;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  pointer-events: none;
+  transition: all .4s ease-out;
+}
+
+.form-uiverse::after {
+  content: '';
+  backdrop-filter: blur(8px) grayscale(50%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: block;
+  position: absolute;
+  z-index: 998;
+  pointer-events: none;
+  transition: all .4s ease-out;
+}
+
+/* Form hover and focus */
+.form-uiverse:hover,
+.form-uiverse:focus-within {
+  max-height: 520px;
+  background: #ffffff;
+}
+
+.form-uiverse:focus-within {
+  overflow: initial;
+}
+
+.form-uiverse:hover::before,
+.form-uiverse:focus-within::before {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.form-uiverse:hover::after,
+.form-uiverse:focus-within::after {
+  opacity: 0;
+  backdrop-filter: blur(0) grayscale(0%);
+  pointer-events: none;
+}
+
+/* Labels and inputs UI */
+.form-uiverse label {
+  display: flex;
+  flex-direction: column;
+  color: var(--col4);
+  gap: .35em;
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-uiverse input, 
+.form-uiverse textarea {
+  appearance: none;
+  border: 1px solid rgba(0, 43, 54, 0.15);
+  padding: .85em 1em;
+  border-radius: var(--rad);
+  transition: all .3s ease-out;
+  background: #f8fbfc;
+  color: #002B36;
+  font-size: 1rem;
+}
+
+.form-uiverse input::placeholder,
+.form-uiverse textarea::placeholder {
+  color: #9aa5b1;
+}
+
+/* Form and UI valid and invalid states */
+.form-uiverse input:focus,
+.form-uiverse textarea:focus {
+  outline: 2px solid var(--col5);
+  background: #ffffff;
+  border-color: transparent;
+}
+
+/* Submit Card animation */
+.form-uiverse .submitCard {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.form-uiverse button[type="submit"] {
+  background-color: var(--col1);
+  color: #ffffff;
+  border: none;
+  font-size: 1em;
+  font-weight: 700;
+  padding: .85em 2em;
+  border-radius: 100px;
+  cursor: pointer;
+  width: 100%;
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-uiverse button[type="submit"]:hover {
+  background-color: var(--col5);
+  box-shadow: 0 4px 15px rgba(0, 95, 115, 0.3);
+}
+
 
 
