@@ -1301,23 +1301,27 @@ h1, h2, h3, h4, .tracking-tighter {
 
 /* Form hover and focus */
 .form-uiverse:hover,
-.form-uiverse:focus-within {
+.form-uiverse:focus-within,
+.form-uiverse.expanded {
   max-height: 520px;
   background: #ffffff;
 }
 
-.form-uiverse:focus-within {
+.form-uiverse:focus-within,
+.form-uiverse.expanded {
   overflow: initial;
 }
 
 .form-uiverse:hover::before,
-.form-uiverse:focus-within::before {
+.form-uiverse:focus-within::before,
+.form-uiverse.expanded::before {
   opacity: 0;
   transform: translateY(-10px);
 }
 
 .form-uiverse:hover::after,
-.form-uiverse:focus-within::after {
+.form-uiverse:focus-within::after,
+.form-uiverse.expanded::after {
   opacity: 0;
   backdrop-filter: blur(0) grayscale(0%);
   pointer-events: none;

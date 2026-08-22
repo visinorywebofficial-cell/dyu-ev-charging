@@ -301,6 +301,7 @@ export default function HomePage() {
   const resourcesRef = useRef<HTMLDivElement>(null);
   const [activeChargerTab, setActiveChargerTab] = useState<'ac' | 'dc'>('ac');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [leftHovered, setLeftHovered] = useState(false);
 
   // Dedicated 3-second slideshow timer loop (never reset by resize/re-render)
   useEffect(() => {
@@ -912,15 +913,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ———————————————————————————————————————————————— */}
-      {/* SECTION 8 — SUBMIT CONTACT US FORM */}
-      {/* ———————————————————————————————————————————————— */}
-      <section className="py-20 md:py-32 bg-[var(--color-cream-paper)] border-t border-[#005F73]/10">
-        <div className="container-wispr max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="py-28 md:py-44 bg-[var(--color-cream-paper)] border-t border-[#005F73]/10">
+        <div className="container-wispr max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Left info column */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="badge badge-outline" style={{ marginBottom: '16px', display: 'inline-block' }}>Get in touch</span>
-            <h2 className="flex flex-col gap-1 text-3xl md:text-5xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.1]">
+          <div 
+            className="lg:col-span-5 flex flex-col justify-center cursor-pointer select-none"
+            onMouseEnter={() => setLeftHovered(true)}
+            onMouseLeave={() => setLeftHovered(false)}
+          >
+            <span className="badge badge-outline" style={{ marginBottom: '20px', display: 'inline-block' }}>Get in touch</span>
+            <h2 className="flex flex-col gap-2 text-4xl md:text-6xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.05]">
               <span className="text-[#222222]">Let's build the</span>
               <span className="text-[#888888]">future together.</span>
             </h2>
@@ -929,7 +931,7 @@ export default function HomePage() {
           {/* Right form card column */}
           <div className="lg:col-span-7">
             <form 
-              className="form-uiverse" 
+              className={`form-uiverse ${leftHovered ? 'expanded' : ''}`}
               onSubmit={(e) => { 
                 e.preventDefault(); 
                 alert('Request submitted successfully! Our team will contact you soon.'); 
