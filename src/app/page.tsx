@@ -301,7 +301,25 @@ export default function HomePage() {
   const resourcesRef = useRef<HTMLDivElement>(null);
   const [activeChargerTab, setActiveChargerTab] = useState<'ac' | 'dc'>('ac');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [leftHovered, setLeftHovered] = useState(false);
+  const [formExpanded, setFormExpanded] = useState(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleFormMouseEnter = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setFormExpanded(true);
+  };
+
+  const handleFormMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setFormExpanded(false);
+    }, 250);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
 
   // Dedicated 3-second slideshow timer loop (never reset by resize/re-render)
   useEffect(() => {
@@ -918,8 +936,9 @@ export default function HomePage() {
           {/* Left info column */}
           <div 
             className="lg:col-span-5 flex flex-col justify-center cursor-pointer select-none"
-            onMouseEnter={() => setLeftHovered(true)}
-            onMouseLeave={() => setLeftHovered(false)}
+            onMouseEnter={handleFormMouseEnter}
+            onMouseLeave={handleFormMouseLeave}
+            onClick={() => setFormExpanded(true)}
           >
             <span className="badge badge-outline" style={{ marginBottom: '20px', display: 'inline-block' }}>Get in touch</span>
             <h2 className="flex flex-col gap-2 text-4xl md:text-6xl font-['Gilroy'] font-extrabold tracking-tighter leading-[1.05]">
@@ -931,7 +950,9 @@ export default function HomePage() {
           {/* Right form card column */}
           <div className="lg:col-span-7">
             <form 
-              className={`form-uiverse ${leftHovered ? 'expanded' : ''}`}
+              className={`form-uiverse ${formExpanded ? 'expanded' : ''}`}
+              onMouseEnter={handleFormMouseEnter}
+              onMouseLeave={handleFormMouseLeave}
               onSubmit={(e) => { 
                 e.preventDefault(); 
                 alert('Request submitted successfully! Our team will contact you soon.'); 
