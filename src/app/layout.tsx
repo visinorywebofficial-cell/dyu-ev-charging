@@ -74,10 +74,10 @@ export default function RootLayout({
               {/* Left Side: Navigation Links */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 order-2 md:order-1">
                 {[
-                  { heading: 'Software', links: [{ name: 'EV Charging App', href: '/ev-charging-app' }, { name: 'CSMS Platform', href: '/ev-charging-software/csms' }, { name: 'EV Linq Roaming Hub', href: '/ev-charging-software/evlinq' }] },
-                  { heading: 'EV Chargers', links: [{ name: 'Level 3 (DC Chargers)', href: '/dc-chargers' }, { name: 'Level 2 (AC Chargers)', href: '/ac-chargers' }, { name: 'Advertise With Us', href: '/adwall' }, { name: 'Portable Charger', href: '/products/portable-charger' }] },
+                  { heading: 'Software', links: [{ name: 'Mobile App', href: '/ev-charging-app' }, { name: 'CSMS', href: '/ev-charging-software/csms' }, { name: 'Advertise With Us', href: '/adwall' }] },
+                  { heading: 'EV Chargers', links: [{ name: 'Level 3 (DC Chargers)', href: '/dc-chargers' }, { name: 'Level 2 (AC Chargers)', href: '/ac-chargers' }, { name: 'Portable Charger', href: '/products/portable-charger' }] },
                   { heading: 'Discover', links: [{ name: 'EV Calculator', href: '/ev-calculator' }, { name: 'Business With Us', href: '/ev-charging-station-franchise' }] },
-                  { heading: 'Company', links: [{ name: 'About Us', href: '/about-us' }, { name: 'Contact Us', href: '/contact-us' }] },
+                  { heading: 'Company', links: [{ name: 'About DYU', href: '/about-us' }, { name: 'Connect with DYU', href: '/contact-us' }] },
                 ].map((col) => (
                   <div key={col.heading}>
                     <p style={{ fontFamily: 'var(--font-figtree)', fontSize: '12px', fontWeight: 700, color: '#737373', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>

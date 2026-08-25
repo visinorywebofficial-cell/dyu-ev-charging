@@ -139,7 +139,7 @@ export function Navbar() {
 
   const companyItems = [
     { label: "About DYU", desc: "Building the largest green energy network in India.", href: "/about-us", icon: Info },
-    { label: "Contact Us", desc: "Get in touch with our support and sales teams.", href: "/contact-us", icon: PhoneCall }
+    { label: "Connect with DYU", desc: "Get in touch with our support and sales teams.", href: "/contact-us", icon: PhoneCall }
   ];
 
   const resourceItems = [
