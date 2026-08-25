@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
+import { motion, useInView, Variants, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Zap, ShieldCheck, MapPin, Briefcase, Leaf, Globe, ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Home, Star } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -277,6 +277,91 @@ function ImageCarousel({ images }: { images: CarouselImage[] }) {
       {/* Counter */}
       <div className="text-center text-xs font-semibold tracking-wider text-gray-500 mt-2 select-none">
         {imageIndex + 1} / {images.length}
+      </div>
+    </div>
+  );
+function ScrollTextRevealSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const steps = [
+    "solutions DYU PROVIDES",
+    "Highway",
+    "Commercial",
+    "Workplace",
+    "Hotels",
+    "Malls"
+  ];
+
+  return (
+    <div ref={containerRef} className="relative h-[550vh] bg-[#001E2B]">
+      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center">
+        {steps.map((text, index) => {
+          const stepSize = 1 / steps.length;
+          const start = index * stepSize;
+          const end = (index + 1) * stepSize;
+          const peak = start + stepSize / 2;
+
+          const input = [
+            Math.max(0, start),
+            start + stepSize * 0.15,
+            peak,
+            end - stepSize * 0.15,
+            Math.min(1, end)
+          ];
+          const opacityOutput = [0, 1, 1, 1, 0];
+          const scaleOutput = [0.85, 1, 1, 1, 1.15];
+          const yOutput = [30, 0, 0, 0, -30];
+
+          const opacityVal = useTransform(scrollYProgress, input, opacityOutput);
+          const scaleVal = useTransform(scrollYProgress, input, scaleOutput);
+          const yVal = useTransform(scrollYProgress, input, yOutput);
+
+          const opacity = index === 0 
+            ? useTransform(scrollYProgress, [0, stepSize * 0.8, stepSize], [1, 1, 0])
+            : index === steps.length - 1
+            ? useTransform(scrollYProgress, [start, start + stepSize * 0.2, 1], [0, 1, 1])
+            : opacityVal;
+
+          const scale = index === 0
+            ? useTransform(scrollYProgress, [0, stepSize * 0.8, stepSize], [1, 1, 1.15])
+            : index === steps.length - 1
+            ? useTransform(scrollYProgress, [start, start + stepSize * 0.2, 1], [0.85, 1, 1])
+            : scaleVal;
+
+          const y = index === 0
+            ? useTransform(scrollYProgress, [0, stepSize * 0.8, stepSize], [0, 0, -30])
+            : index === steps.length - 1
+            ? useTransform(scrollYProgress, [start, start + stepSize * 0.2, 1], [30, 0, 0])
+            : yVal;
+
+          return (
+            <motion.div
+              key={index}
+              style={{
+                opacity,
+                scale,
+                y,
+                position: "absolute"
+              }}
+              className="text-center px-4 w-full max-w-4xl"
+            >
+              {index === 0 ? (
+                <h2 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tight text-white font-['Gilroy'] leading-none">
+                  solutions <span className="text-[#00F0FF] block mt-4 font-normal italic">DYU PROVIDES</span>
+                </h2>
+              ) : (
+                <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-[#00F0FF] font-['Gilroy']">
+                  {text}
+                </h2>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
@@ -656,6 +741,9 @@ export default function HomePage() {
           </AnimatePresence>
         </div>
       </section>
+
+      <ScrollTextRevealSection />
+
       <div className="w-full bg-white">
         <ScrollSplitCard
           imageSrc="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2832&auto=format&fit=crop"
